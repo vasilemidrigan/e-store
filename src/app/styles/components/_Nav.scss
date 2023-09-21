@@ -2,4 +2,13 @@
   box-shadow: inset 0 0 0 2px grey;;
 
   height: 5rem;
+  &__elements-wrapper {
+    box-shadow: inset 0 0 0 2px grey;
+
+    width: $width-l;
+    height: 100%;
+    margin: 0 auto;
+
+    @include d-flex(space-between, center);
+  }
 }

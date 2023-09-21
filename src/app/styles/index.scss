@@ -1,5 +1,6 @@
 @import "variables";
 @import "globals";
+@import "mixins";
 
 @import "pages/Homepage.scss";
 
@@ -7,4 +8,8 @@
 @import "components/Footer.scss";
 @import "components/CategoriesBar.scss";
 @import "components/ImageCarousel.scss";
+@import "components/HomepageGrid.scss";
 
+@import 'ui/nav-elements/Logo';
+@import 'ui/nav-elements/MenuBtn';
+@import 'ui/nav-elements/SearchBar';
