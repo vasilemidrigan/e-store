@@ -1,9 +1,10 @@
-@use "./variables.scss";
-@use "./globals.scss";
+@import "variables";
+@import "globals";
 
-@use "./pages/Homepage.scss";
+@import "pages/Homepage.scss";
 
-@use "./components/Nav.scss";
-@use "./components/Footer.scss";
-@use "./components/CategoriesBar.scss";
+@import "components/Nav.scss";
+@import "components/Footer.scss";
+@import "components/CategoriesBar.scss";
+@import "components/ImageCarousel.scss";
 
