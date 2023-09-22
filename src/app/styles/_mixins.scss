@@ -1,5 +1,6 @@
-@mixin d-flex($j-c, $a-i) {
+@mixin d-flex($j-c, $a-i, $f-d) {
   display: flex;
   justify-content: $j-c;
   align-items: $a-i;
+  flex-direction: $f-d;
 }

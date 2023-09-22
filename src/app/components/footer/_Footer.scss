@@ -1,6 +1,9 @@
 .Footer { 
-  box-shadow: inset 0 0 0px 2px gray;
-
-  // temp
-  height: 23.125rem;
+  background-color: black;
+  @include d-flex(center, center, column);
+  .Logo {
+    margin: 0 auto;
+    height: 3.875rem;
+    margin: .9375rem;
+  }
 }

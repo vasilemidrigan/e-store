@@ -5,7 +5,7 @@
 @import "../pages/Homepage/Homepage";
 
 @import "../components/navigation/Navigation.scss";
-@import '../components/navigation/subcomponents/Logo';
+@import '../components/globals/Logo';
 @import '../components/navigation/subcomponents/MenuBtn';
 @import '../components/navigation/subcomponents/SearchBar';
 
@@ -21,3 +21,5 @@
 @import "../components/homepageGrid/HomepageGrid.scss";
 
 @import "../components/footer/Footer.scss";
+@import "../components/footer/FooterGrid";
+

@@ -1,5 +1,5 @@
 .ControlsWrapper {
   width: 4.769rem;
   height: .3866rem;
-  @include d-flex(space-between, center);
+  @include d-flex(space-between, center, row);
 }

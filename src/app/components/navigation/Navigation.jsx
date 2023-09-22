@@ -1,11 +1,11 @@
-import Logo from "./subcomponents/Logo"
+import Logo from "../globals/Logo"
 import MenuBtn from "./subcomponents/MenuBtn"
 import SearchBar from "./subcomponents/SearchBar"
 
 export default function Nav() {
   return (
-    <div className="Nav">
-      <div className="Nav__elements-wrapper">
+    <div className="Navigation">
+      <div className="Navigation__elements">
         <Logo/>
         <MenuBtn/>
         <SearchBar/>
