@@ -1,32 +1,13 @@
-$font-l: 1.75rem;
-$font-m: 1.3125rem;
-$font-s: 1.125rem;
+$font-size-l: 1.75rem;
+$font-size-m: 1.3125rem;
+$font-size-s: 1.125rem;
 
 $font-weigth-thin: 300;
 $font-weigth-regular: 400;
 $font-weigth-bold: 700;
 
-@mixin roboto-thin-s {
-  font-family: 'Roboto';
-  font-size: $font-s;
-  font-weight: $font-weigth-thin;  
+@mixin font($font-family, $font-size, $font-weight) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
 }
-
-@mixin roboto-thin-m {
-  font-family: 'Roboto';
-  font-size: $font-m;
-  font-weight: $font-weigth-thin;  
-}
-
-@mixin roboto-reg-s {
-  font-family: 'Roboto';
-  font-size: $font-s;
-  font-weight: $font-weigth-regular;  
-}
-
-@mixin roboto-reg-m {
-  font-family: 'Roboto';
-  font-size: $font-m;
-  font-weight: $font-weigth-regular;  
-}
-

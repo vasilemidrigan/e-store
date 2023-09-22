@@ -20,7 +20,7 @@
       height: 100%;
       padding-left: 2.6875rem;
       border-radius: $bord-rad-all-6px;
-      @include roboto-reg-s;
+      @include font('Roboto', $font-size-s, $font-weigth-regular);
     }
   }
 }

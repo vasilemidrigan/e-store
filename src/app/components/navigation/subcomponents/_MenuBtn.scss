@@ -4,6 +4,6 @@
   @include d-flex(center, center, row);
   &__text {
     color: $grey98;
-    @include roboto-thin-m;
+    @include font('Roboto', $font-size-m, $font-weigth-thin);
   }
 }
