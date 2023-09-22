@@ -1,6 +1,26 @@
-.SearchBar { 
-  box-shadow: inset 0 0 0px 2px gray;
+.SearchBar {
+  height: 2.25rem;
+  width: 31.4375rem;
+  position: relative;
 
-  height: 2.1875rem;
-  width: 31.25rem;
+  &__label {
+    &:before {
+      content: "";
+      position: absolute;
+      top: .5rem;
+      left: .5rem;
+          
+      height: 21px;
+      width: 21px;
+      background: url('../../../../../public/icons/search-bar/loupe.svg') center no-repeat;
+    }
+
+    &__input { 
+      width: 100%;
+      height: 100%;
+      padding-left: 2.6875rem;
+      border-radius: $bord-rad-all-6px;
+      @include roboto-reg-s;
+    }
+  }
 }

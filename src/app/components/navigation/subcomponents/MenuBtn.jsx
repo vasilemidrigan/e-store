@@ -1,7 +1,9 @@
 export default function MenuBtn() {
   return (
     <div className="MenuBtn">
-      menuBtn
+      <span className="MenuBtn__text">
+        Products
+      </span>
     </div>
   )
 }

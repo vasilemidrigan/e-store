@@ -5,7 +5,7 @@ import SearchBar from "./subcomponents/SearchBar"
 export default function Nav() {
   return (
     <div className="Navigation">
-      <div className="Navigation__elements">
+      <div className="Navigation__elements-wrapper">
         <Logo/>
         <MenuBtn/>
         <SearchBar/>

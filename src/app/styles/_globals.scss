@@ -1,14 +1,24 @@
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
 html {
   background-color: beige;
 }
 
 body {
-  background-color:azure ;
+  background-color: azure;
+}
 
+input {
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+.Logo, .MenuBtn, .ControlBtn {
+  cursor: pointer;
 }

@@ -1,6 +1,9 @@
 .MenuBtn { 
-  box-shadow: inset 0 0 0px 2px gray;
-
   height: 5rem;
-  width: 6.5625rem;
+  width: 9.25rem;
+  @include d-flex(center, center, row);
+  &__text {
+    color: $grey98;
+    @include roboto-thin-m;
+  }
 }

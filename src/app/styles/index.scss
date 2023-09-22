@@ -1,11 +1,13 @@
 @import "variables";
+@import "fonts";
 @import "globals";
 @import "mixins";
 
 @import "../pages/Homepage/Homepage";
 
-@import "../components/navigation/Navigation.scss";
 @import '../components/globals/Logo';
+
+@import "../components/navigation/Navigation.scss";
 @import '../components/navigation/subcomponents/MenuBtn';
 @import '../components/navigation/subcomponents/SearchBar';
 
