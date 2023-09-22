@@ -1,0 +1,7 @@
+.ControlsBar { 
+  width: $width-l;
+  height: 1rem;
+  @include d-flex(center, center);
+  border-radius: $bord-rad-bottom-3px;
+  background-color: $light-gray;
+}

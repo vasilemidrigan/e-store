@@ -1,4 +1,4 @@
-import CategoryIcon from "../ui/categories/CategoryIcon";
+import CategoryIcon from "./CategoryIcon/CategoryIcon";
 
 export default function CategoriesBar() {
   return (

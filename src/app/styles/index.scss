@@ -2,14 +2,22 @@
 @import "globals";
 @import "mixins";
 
-@import "pages/Homepage.scss";
+@import "../pages/Homepage/Homepage";
 
-@import "components/Nav.scss";
-@import "components/Footer.scss";
-@import "components/CategoriesBar.scss";
-@import "components/ImageCarousel.scss";
-@import "components/HomepageGrid.scss";
+@import "../components/navigation/Navigation.scss";
+@import '../components/navigation/subcomponents/Logo';
+@import '../components/navigation/subcomponents/MenuBtn';
+@import '../components/navigation/subcomponents/SearchBar';
 
-@import 'ui/nav-elements/Logo';
-@import 'ui/nav-elements/MenuBtn';
-@import 'ui/nav-elements/SearchBar';
+@import "../components/categoriesBar/CategoriesBar.scss";
+
+@import "../components/imageCarousel/ImageCarousel.scss";
+@import "../components/imageCarousel/imageCard/ImageCard";
+@import "../components/imageCarousel/textCard/TextCard";
+@import "../components/imageCarousel/carouselControls/ControlBtn";
+@import "../components/imageCarousel/carouselControls/ControlsWrapper";
+@import "../components/imageCarousel/carouselControls/ControlsBar";
+
+@import "../components/homepageGrid/HomepageGrid.scss";
+
+@import "../components/footer/Footer.scss";

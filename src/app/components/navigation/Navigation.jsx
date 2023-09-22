@@ -1,6 +1,6 @@
-import Logo from "../ui/nav-elements/Logo"
-import MenuBtn from "../ui/nav-elements/MenuBtn"
-import SearchBar from "../ui/nav-elements/SearchBar"
+import Logo from "./subcomponents/Logo"
+import MenuBtn from "./subcomponents/MenuBtn"
+import SearchBar from "./subcomponents/SearchBar"
 
 export default function Nav() {
   return (

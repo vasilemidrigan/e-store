@@ -2,11 +2,11 @@
 
 import "./styles/index.scss";
 
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import CategoriesBar from "./components/CategoriesBar";
+import Nav from "./components/navigation/Navigation";
+import Footer from "./components/footer/Footer";
+import CategoriesBar from "./components/categoriesBar/CategoriesBar";
 
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/homepage/Homepage";
 
 export default function Home() {
   return (
