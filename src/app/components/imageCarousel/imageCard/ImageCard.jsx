@@ -1,7 +1,7 @@
-import TextCard from "../textCard/TextCard"
+import TextCard from '@/components/imageCarousel/textCard/TextCard';
 
-import appleImg from '../../../../../public/images/desktop-version/image-carousel/apple-electronics.jpg';
-import headphonesImg from '../../../../../public/images/desktop-version/image-carousel/headphones.jpg';
+import appleImg from '@/public/images/desktop-version/image-carousel/apple-electronics.jpg';
+import headphonesImg from '@/public/images/desktop-version/image-carousel/headphones.jpg';
 
 export default function ImageCard() {
   return (

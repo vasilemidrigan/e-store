@@ -4,4 +4,5 @@
   height: 4.375rem;
   width: $width-l;
   margin: 0 auto $margin-l auto;
+  @include d-flex(center, center, row);
 }

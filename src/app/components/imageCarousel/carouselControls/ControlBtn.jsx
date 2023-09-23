@@ -1,4 +1,4 @@
-import controlActive from '../../../../../public/icons/image-carousel/control-active.svg'
+import controlActive from "@/public/icons/image-carousel/control-active.svg";
 
 export default function ControlBtn({isActive}) {  
   return (

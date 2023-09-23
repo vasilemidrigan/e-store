@@ -6,19 +6,18 @@
   &__label {
     &:before {
       content: "";
+      width: 21px;
+      height: 21px;
       position: absolute;
       top: .5rem;
-      left: .5rem;
-          
-      height: 21px;
-      width: 21px;
+      left: .5rem;        
       background: url('../../../../../public/icons/search-bar/loupe.svg') center no-repeat;
     }
 
     &__input { 
       width: 100%;
       height: 100%;
-      padding-left: 2.6875rem;
+      padding: 0 1rem 0 2.6875rem;
       border-radius: $bord-rad-all-6px;
       @include font('Roboto', $font-size-s, $font-weigth-regular);
     }

@@ -1,4 +1,4 @@
-import Logo from "../globals/Logo"
+import Logo from "@/components/globals/Logo"
 import FooterGrid from "./FooterGrid"
 
 export default function Footer() {

@@ -3,25 +3,26 @@
 @import "globals";
 @import "mixins";
 
-@import "../pages/Homepage/Homepage";
+@import "@/pages/Homepage/Homepage";
 
-@import '../components/globals/Logo';
+@import '@/components/globals/Logo';
 
-@import "../components/navigation/Navigation.scss";
-@import '../components/navigation/subcomponents/MenuBtn';
-@import '../components/navigation/subcomponents/SearchBar';
+@import "@/components/navigation/Navigation.scss";
+@import '@/components/navigation/subcomponents/MenuBtn';
+@import '@/components/navigation/subcomponents/SearchBar';
 
-@import "../components/categoriesBar/CategoriesBar.scss";
+@import "@/components/categoriesBar/CategoriesBar.scss";
+@import '@/components/categoriesBar/CategoryIcon/CategoryIcon';
 
-@import "../components/imageCarousel/ImageCarousel.scss";
-@import "../components/imageCarousel/imageCard/ImageCard";
-@import "../components/imageCarousel/textCard/TextCard";
-@import "../components/imageCarousel/carouselControls/ControlBtn";
-@import "../components/imageCarousel/carouselControls/ControlsWrapper";
-@import "../components/imageCarousel/carouselControls/ControlsBar";
+@import "@/components/imageCarousel/ImageCarousel.scss";
+@import "@/components/imageCarousel/imageCard/ImageCard";
+@import "@/components/imageCarousel/textCard/TextCard";
+@import "@/components/imageCarousel/carouselControls/ControlBtn";
+@import "@/components/imageCarousel/carouselControls/ControlsWrapper";
+@import "@/components/imageCarousel/carouselControls/ControlsBar";
 
-@import "../components/homepageGrid/HomepageGrid.scss";
+@import "@/components/homepageGrid/HomepageGrid.scss";
 
-@import "../components/footer/Footer.scss";
-@import "../components/footer/FooterGrid";
+@import "@/components/footer/Footer.scss";
+@import "@/components/footer/FooterGrid";
 

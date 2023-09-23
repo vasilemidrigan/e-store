@@ -1,4 +1,4 @@
-import Logo from "../globals/Logo"
+import Logo from "@/components/globals/Logo"
 import MenuBtn from "./subcomponents/MenuBtn"
 import SearchBar from "./subcomponents/SearchBar"
 

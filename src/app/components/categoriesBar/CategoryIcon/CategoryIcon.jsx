@@ -1,7 +1,9 @@
-export default function CategoryIcon() {
+export default function CategoryIcon({category}) {
   return (
     <div className="CategoryIcon">
-      C
+      <span>
+        {category}
+      </span>
     </div>
   )
 }
