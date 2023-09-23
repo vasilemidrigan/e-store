@@ -1,8 +1,17 @@
 .CategoriesBar {  
-  box-shadow: inset 0 0 0px 1px gray;
-
-  height: 4.375rem;
+  height: 6.875rem;
   width: $width-l;
+  position: relative;
   margin: 0 auto $margin-l auto;
+  background-color: $light-gray; 
   @include d-flex(center, center, row);
+  &__wrapper {
+    height: 3.8475rem;
+    position: absolute;
+    top: 50%;
+    left: 7.5rem;
+    right: 7.5rem;
+    transform: translate(0%, -50%);
+    @include d-flex(space-between, center, row);
+  }
 }

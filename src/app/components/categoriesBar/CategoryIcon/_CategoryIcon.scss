@@ -1,6 +1,11 @@
 .CategoryIcon { 
-  border: .5px solid grey;
-
-  width: 4.75rem;
-  height: 2.5rem;
+  height: 100%;
+  @include d-flex(center, center, column);
+  justify-content: space-between;
+  &__img {
+    margin: 0 auto;
+  }
+  &__description {
+    @include font('Roboto', $font-size-xs, $font-weigth-thin)
+  }
 }

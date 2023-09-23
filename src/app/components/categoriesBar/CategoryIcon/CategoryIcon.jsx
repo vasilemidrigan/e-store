@@ -1,9 +1,8 @@
-export default function CategoryIcon({category}) {
+export default function CategoryIcon(props) {
   return (
     <div className="CategoryIcon">
-      <span>
-        {category}
-      </span>
+        <img src={props.src} className={`CategoryIcon__img ${props.category}`} alt={`${props.category} icon`} />
+        <span className="CategoryIcon__description">{props.category}</span>
     </div>
   )
 }
