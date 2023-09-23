@@ -1,12 +1,9 @@
 import TextCard from '@/components/imageCarousel/textCard/TextCard';
 
-import appleImg from '@/public/images/desktop-version/image-carousel/apple-electronics.jpg';
-import headphonesImg from '@/public/images/desktop-version/image-carousel/headphones.jpg';
-
-export default function ImageCard() {
+export default function ImageCard(props) { 
   return (
     <div className="ImageCard">
-      <img src={appleImg.src} className="ImageCard__img" alt="apple laptop and mice, and an iphone on table" />
+      <img src={props.img.src} className="ImageCard__img" alt={props.img.alt} />
       <TextCard/>
     </div>
   )

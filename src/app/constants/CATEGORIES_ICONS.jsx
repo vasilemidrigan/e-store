@@ -1,5 +1,3 @@
-import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
-
 export const CATEGORIES_ICONS = [ {
     id: 1,
     category: "Smartphones",

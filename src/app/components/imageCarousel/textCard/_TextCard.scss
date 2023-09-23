@@ -1,12 +1,14 @@
 .TextCard {
-  box-shadow: inset 0 0 0px 1px gray;
   
   width: 22.2568rem;
-  height: 3.6084rem;
- 
+  height: 3.6084rem; 
   position: absolute;
-  top: 8.375rem;
-  left: 28.6875rem;
-
+  bottom: 2.1875rem;
+  left: 50%;
+  transform: translate(-50%);
   text-align: center;
+  @include font('Roboto', $font-size-l, $font-weigth-bold);
+  color: $white;
+  mix-blend-mode: difference;
+
 }

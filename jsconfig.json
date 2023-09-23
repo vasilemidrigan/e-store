@@ -5,6 +5,7 @@
       "@/public/*": ["public/*"],
       "@/components/*": ["src/app/components/*"],
       "@/constants/*": ["src/app/constants/*"],
+      "@/data/*": ["src/app/data/*"],
       "@/pages/*": ["src/app/pages/*"],
       "@/styles/*": ["src/app/styles/*"]
     }

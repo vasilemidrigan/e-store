@@ -1,7 +1,8 @@
 export default function TextCard() {
   return (
     <div className="TextCard">
-      Lorem Ipsum
+      "William the Conqueror, whose cause ...
     </div>
-  )
+    
+  );
 }
