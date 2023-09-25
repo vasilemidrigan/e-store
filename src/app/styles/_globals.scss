@@ -11,6 +11,11 @@ input {
   outline: none;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .Logo, .MenuBtn, .ControlBtn, .SearchBar__label {
   cursor: pointer;
 }
+

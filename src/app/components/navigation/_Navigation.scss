@@ -1,5 +1,9 @@
 .Navigation {
   height: 5rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
   background-color: $black;
   &__elements-wrapper {
     width: $width-l;

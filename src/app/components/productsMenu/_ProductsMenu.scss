@@ -1,10 +1,39 @@
 .ProductsMenu {
-  border: .5px solid black;
-    
-   z-index: 1;
-   height: 70px;
-   position: sticky;
-   top: 0;
-   left: 0;
-}
+  width: $width-l;
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  background-color: $white;
+  @include font("Roboto", $font-size-m, $font-weigth-thin);
+  display: none;
 
+  &__categories {
+    height: 4.375rem;
+    max-width: 79.75rem;
+    margin: 0 auto;
+    border-bottom: 1px solid $grey;
+    @include d-flex(space-between, center, row);
+  }
+
+  &__subcategories {
+  }
+
+  &__subcategory-wrapper {
+  }
+
+  &__subcategory {
+    margin: 3.125rem 0 0 0.8125rem;
+    display: inline-block;
+    position: relative;
+    display: none;
+  }
+  &__items {
+    margin: 3.125rem 0 0 18.75rem;
+    display: none;
+  }
+  & li {
+    margin-bottom: 1.5625rem;
+  }
+}

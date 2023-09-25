@@ -1,0 +1,17 @@
+.active {
+  display: unset;
+}
+
+.bg-blur--active {
+  filter: blur(30px);
+}
+
+.border-bottom--active:after {
+  content: "";
+  position: absolute;
+  bottom: -0.625rem;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  border-bottom: 1px solid #d2d7da;
+}
