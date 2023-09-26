@@ -1,0 +1,17 @@
+.CategoryIllustration {
+  width: 100%;
+
+  &__header {
+    margin-top: 4.6875rem;
+    text-align: center;
+    line-height: 1rem;
+    @include font('PT Sans Caption', $font-size-xm, $font-weigth-bold);
+  }
+
+  &__img {
+    width: 28.875rem;
+    height: 21.75rem;
+    display: block;
+    margin: 81px auto 0 auto; 
+  }
+}

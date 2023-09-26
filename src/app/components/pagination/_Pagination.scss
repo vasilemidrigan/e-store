@@ -1,0 +1,18 @@
+.Pagination {
+  width: 13.0625rem;
+  height: 1.5625rem;
+  margin: 50px auto;
+  @include d-flex(center, center, row);
+
+  &__back { 
+  }
+
+  &__index { 
+    & span:nth-child(1), & span:last-child {
+      margin: 0 2.5625rem 0 2.5625rem;
+    }
+  }
+
+  &__forward {
+  }
+}

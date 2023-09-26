@@ -5,7 +5,12 @@
 
 @import '@/styles/categories-icons';
 
-@import "@/pages/Homepage/Homepage";
+@import "@/pages/homepage/Homepage";
+@import '@/pages/productListing/ProductListing';
+
+@import '@/components/categoryIllustration/CategoryIllustration';
+@import '@/components/productCard/ProductCard';
+@import '@/components/pagination/Pagination';
 
 @import '@/components/globals/Logo';
 

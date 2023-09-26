@@ -1,0 +1,15 @@
+.ProductListing {
+  border: 1px solid grey;
+
+  width: $width-l;
+  margin: 0 auto;
+
+  &__grid {
+    border: 1px solid grey;
+    @include d-flex(center, unset, unset);
+    flex-wrap: wrap;
+    gap: 65px;
+    margin-top: $margin-xxl;
+
+  }
+}
