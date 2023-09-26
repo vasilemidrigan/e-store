@@ -11,7 +11,7 @@
 
   &__categories {
     height: 4.375rem;
-    max-width: 79.75rem;
+    max-width: 79.625rem;
     margin: 0 auto;
     border-bottom: 1px solid $grey;
     @include d-flex(space-between, center, row);
@@ -24,7 +24,7 @@
   }
 
   &__subcategory {
-    margin: 3.125rem 0 0 0.8125rem;
+    margin: 3.125rem 0 0 .9375rem;
     display: inline-block;
     position: relative;
     display: none;
