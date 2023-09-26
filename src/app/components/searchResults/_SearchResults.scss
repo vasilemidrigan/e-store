@@ -2,7 +2,6 @@
   width: $width-l;
   margin: 0 auto;
   position: fixed;
-  position: fixed;
   top: 5rem;
   left: 50%;
   transform: translate(-50%);
@@ -12,10 +11,10 @@
   @include font("Roboto", $font-size-s, $font-weigth-regular);
   
   &__list {
-    margin-left: 0.9375rem;
+    margin-left: $margin-m;
   }
 
   &__item {
-    margin: 3.125rem 0 ;
+    margin: $margin-xl 0 ;
   }
 }

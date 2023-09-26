@@ -24,16 +24,16 @@
   }
 
   &__subcategory {
-    margin: 3.125rem 0 0 .9375rem;
+    margin: $margin-xl 0 0 $margin-m;
     display: inline-block;
     position: relative;
     display: none;
   }
   &__items {
-    margin: 3.125rem 0 0 18.75rem;
+    margin: $margin-xl 0 0 18.75rem;
     display: none;
   }
   & li {
-    margin-bottom: 1.5625rem;
+    margin-bottom: $margin-l;
   }
 }
