@@ -19,9 +19,9 @@ export default function Home() {
       <SearchResults/>
       <ProductsMenu/>
       <CategoriesBar/>
-      {/* <Homepage/> */}
+      <Homepage/>
       {/* <ProductListing/> */}
-      <ProductPage/>
+      {/* <ProductPage/> */}
       <Footer/>
     </div>
   )

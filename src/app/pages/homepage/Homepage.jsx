@@ -1,5 +1,5 @@
-import ImageCarousel from '@/components/imageCarousel/ImageCarousel'
-import HomepageGrid from "@/components/homepageGrid/HomepageGrid"
+import ImageCarousel from '@/components/homepage/imageCarousel/ImageCarousel'
+import HomepageGrid from "@/components/homepage/homepageGrid/HomepageGrid"
 
 export default function Homepage() {
   return (

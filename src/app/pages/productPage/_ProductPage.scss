@@ -16,7 +16,7 @@
       1.875rem 1fr
       / repeat(2, 50%);
     grid-template-areas:
-      "id id"
+      "title title"
       "collage description";
     grid-area: overview;
   }
@@ -31,81 +31,5 @@
       right: 0;
       width: 75%;
     }
-  }
-
-  &__collage {
-    display: grid;
-    grid-template:
-      repeat(3, 1fr)
-      / [main-photo] 28.5625rem [gap] 2.25rem [photo] 9.875rem;
-    grid-template-areas:
-      "main-photo . photo-1"
-      "main-photo . photo-2"
-      "main-photo . photo-3";
-
-    &__main-photo {
-      grid-area: main-photo;
-    }
-
-    &__photo {
-      &-1 {
-        grid-area: photo-1;
-      }
-      &-2 {
-        grid-area: photo-2;
-      }
-      &-3 {
-        grid-area: photo-3;
-      }
-    }
-  }
-
-  &__description {
-    grid-area: description;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 3.125rem;
-    background-color: $grey98;
-    border-radius: 1.25rem;
-
-    &__price {
-      width: 27.625rem;
-      margin-top: $margin-xl;
-      color: $red;
-      text-align: end;
-      @include font("Roboto", $font-size-l, $font-weigth-regular);
-    }
-
-    &__about {
-      h2 {
-        margin-bottom: $margin-xl;
-        text-align: center;
-        @include font("Roboto", $font-size-l, $font-weigth-bold);
-      }
-      ul {
-        width: 27.625rem;
-        list-style: disc;
-        li {
-          @include font("Roboto", $font-size-s, $font-weigth-regular);
-        }
-      }
-    }
-  }
-
-  &__details {
-    grid-area: details;
-    width: 100%;
-    margin: 0 auto;
-
-    table {
-      width: 100%;
-      text-align: center;
-      table-layout: fixed;
-
-      .detail {
-        @include font("PT Sans Caption", $font-size-m, $font-weigth-bold);
-      }
-    }
-  }
+  } 
 }

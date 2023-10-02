@@ -1,0 +1,27 @@
+.ProductCollage {
+  display: grid;
+  grid-template:
+    repeat(3, 1fr)
+    / [main-photo] 28.5625rem [gap] 2.25rem [photo] 9.875rem;
+  grid-template-areas:
+    "main-photo . photo-1"
+    "main-photo . photo-2"
+    "main-photo . photo-3";
+  grid-area: collage;
+ 
+  &__main-photo {
+    grid-area: main-photo;
+  }
+
+  &__photo {
+    &-1 {
+      grid-area: photo-1;
+    }
+    &-2 {
+      grid-area: photo-2;
+    }
+    &-3 {
+      grid-area: photo-3;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import TextCard from '@/components/imageCarousel/textCard/TextCard';
+import TextCard from '@/components/homepage/imageCarousel/textCard/TextCard';
 
 export default function ImageCard(props) { 
   return (

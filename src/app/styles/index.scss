@@ -6,33 +6,37 @@
 
 @import '@/styles/categories-icons';
 
-@import "@/pages/homepage/Homepage";
-@import '@/pages/productListing/ProductListing';
-@import '@/pages/productPage/ProductPage';
-
-@import '@/components/categoryIllustration/CategoryIllustration';
-@import '@/components/productCard/ProductCard';
-@import '@/components/pagination/Pagination';
-
 @import '@/components/globals/Logo';
 
 @import "@/components/navigation/Navigation";
 @import '@/components/navigation/subcomponents/MenuBtn';
 @import '@/components/navigation/subcomponents/SearchBar';
 
-@import '@/components/productsMenu/ProductsMenu';
-@import '@/components/searchResults/SearchResults';
-
 @import "@/components/categoriesBar/CategoriesBar";
 @import '@/components/categoriesBar/CategoryIcon/CategoryIcon';
 
-@import "@/components/imageCarousel/ImageCarousel";
-@import "@/components/imageCarousel/imageCard/ImageCard";
-@import "@/components/imageCarousel/textCard/TextCard";
-@import "@/components/imageCarousel/controlsBar/ControlBtn";
-@import "@/components/imageCarousel/controlsBar/ControlsBar";
+@import '@/components/productsMenu/ProductsMenu';
 
-@import "@/components/homepageGrid/HomepageGrid";
+@import '@/components/searchResults/SearchResults';
+
+@import "@/pages/homepage/Homepage";
+@import "@/components/homepage/homepageGrid/HomepageGrid";
+@import "@/components/homepage/imageCarousel/ImageCarousel";
+@import "@/components/homepage/imageCarousel/imageCard/ImageCard";
+@import "@/components/homepage/imageCarousel/textCard/TextCard";
+@import "@/components/homepage/imageCarousel/controlsBar/ControlBtn";
+@import "@/components/homepage/imageCarousel/controlsBar/ControlsBar";
+
+@import '@/pages/productListing/ProductListing';
+@import '@/components/categoryIllustration/CategoryIllustration';
+@import '@/components/productCard/ProductCard';
+@import '@/components/pagination/Pagination';
+
+@import '@/pages/productPage/ProductPage';
+@import '@/components/productPage/productTitle/ProductTitle';
+@import '@/components/productPage/productCollage/ProductCollage';
+@import '@/components/productPage/productDescription/ProductDescription';
+@import '@/components/productPage/productDetails/ProductDetails';
 
 @import "@/components/footer/Footer";
 @import "@/components/footer/FooterGrid";
