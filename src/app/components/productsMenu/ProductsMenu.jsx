@@ -1,13 +1,17 @@
+import { useContext } from "react";
+
 import { productsListing } from "@/data/products-listing";
 
+import { IsMenuActive } from "src/app/context/ActiveStatesContext";
+
 export default function ProductsMenu() {
+  const isMenuActive = useContext(IsMenuActive);
+
   return (
     <div className="ProductsMenu">
       <div className="ProductsMenu__categories">
         {productsListing.map((category) => (
-          <div key={category.id}>
-            {category.id}
-          </div>
+          <div key={category.id}>{category.id}</div>
         ))}
       </div>
       <div className="ProductsMenu__subcategories">
