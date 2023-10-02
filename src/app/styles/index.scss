@@ -2,11 +2,13 @@
 @import "fonts";
 @import "globals";
 @import "mixins";
+@import "active-states";
 
 @import '@/styles/categories-icons';
 
 @import "@/pages/homepage/Homepage";
 @import '@/pages/productListing/ProductListing';
+@import '@/pages/productPage/ProductPage';
 
 @import '@/components/categoryIllustration/CategoryIllustration';
 @import '@/components/productCard/ProductCard';
@@ -34,5 +36,3 @@
 
 @import "@/components/footer/Footer";
 @import "@/components/footer/FooterGrid";
-
-@import "active-states";

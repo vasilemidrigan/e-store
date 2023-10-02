@@ -1,4 +1,5 @@
 .Footer { 
+  margin-top: $margin-xl;
   background-color: black;
   @include d-flex(center, center, column);
   .Logo {

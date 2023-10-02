@@ -10,6 +10,7 @@ import SearchResults from "./components/searchResults/SearchResults";
 
 import Homepage from "./pages/homepage/Homepage";
 import ProductListing from "./pages/productListing/ProductListing";
+import ProductPage from "./pages/productPage/ProductPage";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
       <ProductsMenu/>
       <CategoriesBar/>
       {/* <Homepage/> */}
-      <ProductListing/>
+      {/* <ProductListing/> */}
+      <ProductPage/>
       <Footer/>
     </div>
   )
