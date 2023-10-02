@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 export default function Logo() {
   return (
-    <div className="Logo">
-    </div>
-  )
+    <Link href="/pages/home">
+      <div className="Logo"></div>
+    </Link>
+  );
 }

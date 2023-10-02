@@ -1,11 +1,14 @@
 .CategoryIcon { 
-  height: 100%;
+  height: 3.875rem;
   @include d-flex(center, center, column);
   justify-content: space-between;
+  cursor: pointer;
+
   &__img {
     margin: 0 auto;
   }
   &__description {
+    // margin-bottom: 1px;
     @include font('Roboto', $font-size-xs, $font-weigth-thin)
   }
 }

@@ -1,4 +1,5 @@
 .ProductCard {
+  cursor: pointer;
   @include product-card-l;
 
   &__photo {

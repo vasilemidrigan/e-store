@@ -1,4 +1,10 @@
-import head from "next/head";
+import Nav from "./components/navigation/Navigation";
+import Footer from "./components/footer/Footer";
+import CategoriesBar from "./components/categoriesBar/CategoriesBar";
+import ProductsMenu from "./components/productsMenu/ProductsMenu";
+import SearchResults from "./components/searchResults/SearchResults";
+
+import './styles/index.scss';
 
 export const metadata = {
   title: "eStore",
@@ -32,7 +38,14 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         ></link>
       </head>
-      <body>{children}</body>
+      <body>
+        <Nav />
+        <SearchResults />
+        <ProductsMenu />
+        <CategoriesBar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

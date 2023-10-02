@@ -1,7 +1,7 @@
 import CategoryIcon from "./CategoryIcon/CategoryIcon";
 import { CATEGORIES_ICONS } from "@/constants/CATEGORIES_ICONS";
 
-export default function CategoriesBar() { 
+export default function CategoriesBar() {
   return (
     <div className="CategoriesBar">
       <div className="CategoriesBar__wrapper">

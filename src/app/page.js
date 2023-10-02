@@ -2,27 +2,14 @@
 
 import "./styles/index.scss";
 
-import Nav from "./components/navigation/Navigation";
-import Footer from "./components/footer/Footer";
-import CategoriesBar from "./components/categoriesBar/CategoriesBar";
-import ProductsMenu from "./components/productsMenu/ProductsMenu";
-import SearchResults from "./components/searchResults/SearchResults";
-
-import Homepage from "./pages/homepage/Homepage";
-import ProductListing from "./pages/productListing/ProductListing";
-import ProductPage from "./pages/productPage/ProductPage";
+import Homepage from "./pages/home/page";
+import ProductListing from "./pages/product-listing/page";
+import ProductPage from "./pages/product-page/page";
 
 export default function Home() {
   return (
     <div className="AppWrapper">
-      <Nav/>
-      <SearchResults/>
-      <ProductsMenu/>
-      <CategoriesBar/>
-      <Homepage/>
-      {/* <ProductListing/> */}
-      {/* <ProductPage/> */}
-      <Footer/>
+      
     </div>
   )
 }
