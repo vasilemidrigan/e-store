@@ -6,8 +6,8 @@
   transform: translate(-50%);
   z-index: 1;
   background-color: $white;
-  @include font("Roboto", $font-size-m, $font-weigth-thin);
   display: none;
+  @include font("Roboto", $font-size-m, $font-weigth-thin);
 
   &__categories {
     height: 4.375rem;
@@ -15,6 +15,10 @@
     margin: 0 auto;
     border-bottom: 1px solid $grey;
     @include d-flex(space-between, center, row);
+  }
+
+  &__category {
+    cursor: pointer;
   }
 
   &__subcategories {

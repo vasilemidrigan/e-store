@@ -1,8 +1,4 @@
-'use client';
-
-import { useState } from "react";
-
-import ActiveStatesContext from "./context/ActiveStatesContext";
+"use client";
 
 import Nav from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
@@ -13,9 +9,6 @@ import SearchResults from "./components/searchResults/SearchResults";
 import "./styles/index.scss";
 
 export default function RootLayout({ children }) {
-
-  const [isMenuActive, setIsMenuActive] = useState(false);
-
   return (
     <html lang="en">
       <head>
@@ -43,14 +36,12 @@ export default function RootLayout({ children }) {
         ></link>
       </head>
       <body>
-        <ActiveStatesContext isMenuActive={isMenuActive}>
-          <Nav />
-          <SearchResults />
-          <ProductsMenu />
-          <CategoriesBar />
-          {children}
-          <Footer />
-        </ActiveStatesContext>
+        <Nav />
+        <SearchResults />
+        <ProductsMenu />
+        <CategoriesBar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

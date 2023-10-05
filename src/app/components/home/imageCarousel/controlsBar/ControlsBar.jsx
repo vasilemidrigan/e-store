@@ -1,5 +1,5 @@
 import ControlBtn from "./ControlBtn";
-import { carouselBtns } from "@/data/carousel-btns";
+import { carouselBtns } from "@/data/hardcoded-data/carousel-btns";
 
 export default function ControlsBar(props) {
   return (

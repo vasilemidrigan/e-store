@@ -2,7 +2,6 @@
 @import "fonts";
 @import "globals";
 @import "mixins";
-@import "active-states";
 
 @import '@/styles/categories-icons';
 
@@ -40,3 +39,5 @@
 
 @import "@/components/footer/Footer";
 @import "@/components/footer/FooterGrid";
+
+@import "active-states";

@@ -1,5 +1,3 @@
-// is there a need in this page?
-
 "use client";
 
 import "./styles/index.scss";

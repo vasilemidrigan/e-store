@@ -1,17 +1,20 @@
-import { useContext } from "react";
+import { useState } from "react";
 
-import { productsListing } from "@/data/products-listing";
-
-import { IsMenuActive } from "src/app/context/ActiveStatesContext";
+import { productsListing } from "@/data/hardcoded-data/products-listing";
 
 export default function ProductsMenu() {
-  const isMenuActive = useContext(IsMenuActive);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <div className="ProductsMenu">
       <div className="ProductsMenu__categories">
         {productsListing.map((category) => (
-          <div key={category.id}>{category.id}</div>
+          <div
+            className="ProductsMenu__category"
+            key={category.id}
+          >
+            {category.id}
+          </div>
         ))}
       </div>
       <div className="ProductsMenu__subcategories">
