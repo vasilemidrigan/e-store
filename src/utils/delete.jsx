@@ -1,7 +1,7 @@
-import { getEntities } from "./read";
-import { productsURL } from "@/data/api/endpoints";
+import { readFromDb } from "./read";
+import { productsURL } from "src/data/api/endpoints";
 
-function deleteEntity(url, entityId) {
+function deleteItemFromDb(url, entityId) {
   let targetURL = `${url}${entityId}`;
   fetch(targetURL, {
     method: "DELETE",
@@ -16,12 +16,15 @@ function deleteEntity(url, entityId) {
     .catch((err) => console.error(err));
 }
 
-function deleteEntities(limit) {
-  getEntities(productsURL, { limit: limit }).then((targets) =>
+function deleteItemsFromDb(limit) {
+  readFromDb(productsURL, { limit: limit }).then((targets) =>
     targets.data.forEach((target) => {
-      deleteEntity(`${productsURL.origin}${productsURL.pathname}`, target.id);
+      deleteItemFromDb(
+        `${productsURL.origin}${productsURL.pathname}`,
+        target.id
+      );
     })
   );
 }
 
-export { deleteEntity, deleteEntities };
+export { deleteItemFromDb, deleteItemsFromDb };

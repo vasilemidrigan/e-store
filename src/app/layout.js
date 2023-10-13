@@ -6,9 +6,17 @@ import CategoriesBar from "./components/categoriesBar/CategoriesBar";
 import ProductsMenu from "./components/productsMenu/ProductsMenu";
 import SearchResults from "./components/searchResults/SearchResults";
 
-import "./styles/index.scss";
+import "../styles/index.scss";
+
+import getImages from "src/utils/getImages";
+import { ref } from "firebase/storage";
+import { storage } from "src/firebase/firebase-config";
 
 export default function RootLayout({ children }) {
+  const images = ref(storage, "iphone-13-pro");
+  console.log(images);
+  getImages(images);
+
   return (
     <html lang="en">
       <head>

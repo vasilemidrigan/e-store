@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CategoryIcon(props) {
   return (
-    <Link href="/pages/product-listing">
+    <Link href="/product-listing">
       <div className="CategoryIcon">
         <img
           src={props.src}

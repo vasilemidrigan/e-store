@@ -1,4 +1,6 @@
-function createEntity(url, body) {
+import { productsURL } from "src/data/api/endpoints";
+
+function addItemToDb(url, body) {
   fetch(url, {
     method: "POST",
     headers: {
@@ -13,4 +15,15 @@ function createEntity(url, body) {
     .catch((err) => console.error(err));
 }
 
-export { createEntity };
+function addItemsToDb(itemsList) {
+  itemsList.forEach((item) => {
+    createItemIntoDb(productsURL, {
+      product: {
+        name: item.name,
+        price: item.price,
+      },
+    });
+  });
+}
+
+export { addItemToDb, addItemsToDb };

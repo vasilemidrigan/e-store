@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { productsListing } from "@/data/hardcoded-data/products-listing";
+import { productsListing } from "src/data/hardcoded-data/products-listing";
 
 export default function ProductsMenu() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -9,10 +9,7 @@ export default function ProductsMenu() {
     <div className="ProductsMenu">
       <div className="ProductsMenu__categories">
         {productsListing.map((category) => (
-          <div
-            className="ProductsMenu__category"
-            key={category.id}
-          >
+          <div className="ProductsMenu__category" key={category.id}>
             {category.id}
           </div>
         ))}

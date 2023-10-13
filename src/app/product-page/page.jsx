@@ -6,7 +6,7 @@ import ProductDetails from "@/components/productPage/productDetails/ProductDetai
 export default function ProductPage() {
   return (
     <div className="ProductPage">
-      <div className="ProductPage__overview"> 
+      <div className="ProductPage__overview">
         <ProductTitle />
         <ProductCollage />
         <ProductDescription />

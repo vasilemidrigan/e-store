@@ -1,4 +1,4 @@
-function getEntities(url, params) {
+function readFromDb(url, params) {
   Object.keys(params).forEach((key) =>
     url.searchParams.append(key, params[key])
   );
@@ -12,8 +12,11 @@ function getEntities(url, params) {
     },
   })
     .then((response) => response.json())
-    .then((data) => data)
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
     .catch((err) => console.log(err));
 }
 
-export { getEntities };
+export { readFromDb };
