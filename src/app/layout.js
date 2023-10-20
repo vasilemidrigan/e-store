@@ -10,12 +10,20 @@ import "../styles/index.scss";
 
 import getImages from "src/utils/getImages";
 import { ref } from "firebase/storage";
-import { storage } from "src/firebase/firebase-config";
+import { storage } from "src/api/firebase/firebase-config";
+
+import { deleteItemsFromDb } from "src/utils/delete";
+
+import { addItemToDb } from "src/utils/api";
+import { readFromDb } from "src/utils/read";
+
+import { productsURL } from "src/api/commercejs/endpoints";
 
 export default function RootLayout({ children }) {
-  const images = ref(storage, "iphone-13-pro");
-  console.log(images);
-  getImages(images);
+  // const imgRefIphone13Pro = ref(storage, "smartphones/apple-iphone-13-pro");
+  // const urls = getImages(imgRefIphone13Pro);
+  // readFromDb(productsURL, { limit: 10 });
+  // addItemToDb(productsURL, { product: { name: "Phone", price: 3 } });
 
   return (
     <html lang="en">

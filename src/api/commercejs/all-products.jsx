@@ -92,23 +92,23 @@ export const allProducts = {
     ],
     pc: [
       {
-        name: "Apple Macbook Pro with M1 Chip ",
-        price: 1300,
+        name: "Skytech Nebula",
+        price: 890,
       },
       {
-        name: "Dell XPS 13",
+        name: "Corsair One i160",
+        price: 2799,
+      },
+      {
+        name: "Origin PC Chronos",
+        price: 1500,
+      },
+      {
+        name: "MSI Trident 3",
         price: 999,
       },
       {
-        name: "HP Spectre x360",
-        price: 1099,
-      },
-      {
-        name: "Lenovo ThinkPad X1 Carbon",
-        price: 1331,
-      },
-      {
-        name: "Microsoft Surface Laptop 4",
+        name: "HP Omen Obelisk",
         price: 999,
       },
     ],
@@ -118,8 +118,8 @@ export const allProducts = {
         price: 549,
       },
       {
-        name: "LG OLED C1 Series",
-        price: 1799,
+        name: "Asus ProArt",
+        price: 1,
       },
       {
         name: "ASUS ROG Swift PG279QZ",
@@ -176,8 +176,8 @@ export const allProducts = {
         price: 2495,
       },
       {
-        name: "Canon EOS R5",
-        price: 3899,
+        name: "Canon M50",
+        price: 599,
       },
     ],
   },
