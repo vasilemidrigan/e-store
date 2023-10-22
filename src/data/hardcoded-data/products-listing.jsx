@@ -1,59 +1,59 @@
 export const productsListing = [
   {
-    id: "Smartphones & Tablets",
+    name: "Smartphones & Tablets",
     subcategories: [
       {
-        id: "Smartphones",
+        name: "Smartphones",
         items: ["Iphone", "Samsung", "Sony", "Xiaomi", "Huawei"],
       },
       {
-        id: "Tablets",
+        name: "Tablets",
         items: [],
       },
     ],
   },
   {
-    id: "Computers & Displays",
+    name: "Computers & Displays",
     subcategories: [
       {
-        id: "Computers",
+        name: "Computers",
         items: [],
       },
       {
-        id: "Displays",
-        items: [],
-      },
-    ],
-  },
-  {
-    id: "Photo & Video",
-    subcategories: [
-      {
-        id: "Photo",
-        items: [],
-      },
-      {
-        id: "Video",
+        name: "Displays",
         items: [],
       },
     ],
   },
-  {
-    id: "Video Games",
-    subcategories: [
-      {
-        id: "Consoles",
-        items: [],
-      } 
-    ],
-  },
-  {
-    id: "Accessories",
-    subcategories: [
-      {
-        id: "Smart Watches",
-        items: [],
-      }
-    ],
-  },
+  // {
+  //   name: "Photo & Video",
+  //   subcategories: [
+  //     {
+  //       name: "Photo",
+  //       items: [],
+  //     },
+  //     {
+  //       name: "Video",
+  //       items: [],
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Video Games",
+  //   subcategories: [
+  //     {
+  //       name: "Consoles",
+  //       items: [],
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Accessories",
+  //   subcategories: [
+  //     {
+  //       name: "Smart Watches",
+  //       items: [],
+  //     },
+  //   ],
+  // },
 ];

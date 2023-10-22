@@ -4,13 +4,13 @@ import { productsListing } from "src/data/hardcoded-data/products-listing";
 
 export default function ProductsMenu() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  
   return (
     <div className="ProductsMenu">
       <div className="ProductsMenu__categories">
         {productsListing.map((category) => (
-          <div className="ProductsMenu__category" key={category.id}>
-            {category.id}
+          <div className="ProductsMenu__category" key={category.category}>
+            {category.category}
           </div>
         ))}
       </div>

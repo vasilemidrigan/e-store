@@ -1,8 +1,15 @@
+'use client'
+
 import Link from "next/link";
+
+import { useSelector } from "react-redux";
+import { selectProducts } from "@/features/products/productsSlice";
 
 import smartphone from "@/public/images/desktop-version/smartphones/green-smartphone.png";
 
 export default function ProductCard() {
+  const products = useSelector(selectProducts);
+  
   return (
     <Link href="/product-page">
       <div className="ProductCard">

@@ -1,100 +1,135 @@
-import { productsURL } from "src/api/commercejs/endpoints";
-import { productsURL } from "src/api/commercejs/endpoints";
+/*
+  Notes: 
+    Find a better solution to use headers in order to avoid hardcoding 
+*/
 
-import { listAll, getDownloadURL } from "firebase/storage";
+import { productsURL } from "src/api/commercejs/endpoints";
 
 // Commercejs
 
-// read commercejs
-export function readFromDb(url, params) {
-  Object.keys(params).forEach((key) =>
-    url.searchParams.append(key, params[key])
-  );
+const publicHeaders = {
+  "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY}`,
+  Accept: "application/json",
+  "Content-Type": "application/json",
+};
 
-  return fetch(url, {
-    method: "GET",
-    headers: {
-      "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY}`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return data;
-    })
-    .catch((err) => console.log(err));
+const secretHeaders = {
+  "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
+  Accept: "application/json",
+  "Content-Type": "application/json",
+};
+
+// create
+function addItemToCommerceJS(item) {
+  fetchTemplate(productsURL, "POST", secretHeaders, { product: item });
 }
 
-// write commercejs
-export function addItemToDb(url, body) {
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+export function addMultipleItemsToCommerceJS(products) {
+  products.forEach((category) => {
+    for (let key in category) {
+      if (key !== "category") {
+        category[key].forEach((item) => {
+          addItemToCommerceJS(item);
+        });
+      }
+    }
+  });
+}
+
+// read
+async function readAllItemsFromCommerceJS() {
+  const items = await fetchTemplate(productsURL, "GET", publicHeaders);
+  return items;
+}
+
+// delete
+export function deleteItemFromDb(url, id) {
+  fetchTemplate(`${url}${id}`, "DELETE", secretHeaders);
+}
+
+export function deleteItemsFromDb() {
+  readAllItemsFromCommerceJS().then((targets) => {
+    console.log(targets);
+    targets.data.forEach((target) => {
+      deleteItemFromDb(productsURL, target.id);
+    });
+  });
+}
+
+async function fetchTemplate(url, method, headers, body) {
+  const data = await fetch(url, {
+    method: method,
+    headers: headers,
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => data)
     .catch((err) => console.error(err));
+  return data;
 }
 
-export function addItemsToDb(itemsList) {
-  itemsList.forEach((item) => {
-    createItemIntoDb(productsURL, {
-      product: {
-        name: item.name,
-        price: item.price,
-      },
-    });
-  });
-}
+/*
+ export function createCategories(url) {
+   const headers = {
+     "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
+     "Content-Type": "application/json",
+     Accept: "application/json",
+   };
 
-// delete commercejs
-export function deleteItemFromDb(url, entityId) {
-  let targetURL = `${url}${entityId}`;
-  fetch(targetURL, {
-    method: "DELETE",
-    headers: {
-      "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.error(err));
-}
+   productsListing.forEach((category) => {
+     fetch(url, {
+       method: "POST",
+       headers: headers,
+       body: JSON.stringify({
+         name: category.name,
+         slug: `${category.name}`,
+       }),
+     });
+     category.subcategories.forEach((subcategory) => {
+       fetch(url, {
+         method: "POST",
+         headers: headers,
+         body: JSON.stringify({
+           name: subcategory.name,
+           slug: subcategory.name,
+         }),
+       });
+     });
+   });
+ }
 
-export function deleteItemsFromDb(limit) {
-  readFromDb(productsURL, { limit: limit }).then((targets) =>
-    targets.data.forEach((target) => {
-      deleteItemFromDb(
-        `${productsURL.origin}${productsURL.pathname}`,
-        target.id
-      );
-    })
-  );
-}
+ export function updateCategories() {
+   const url = new URL("https://api.chec.io/v1/categories");
 
-// Firebase 
+   const headers = {
+     "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
+     "Content-Type": "application/json",
+     Accept: "application/json",
+   };
 
-// get images from firebase storage
-// storageImagesRef: a reference to images from firebase storage
-export default function getImages(storageImagesRef) {
-  const imgURLs = [];
+   fetch(url, {
+     method: "PUT",
+     headers: headers,
+     body: JSON.stringify({ description: "utuutututu" }),
+   }).then((response) => response.json());
+ }
 
-  listAll(storageImagesRef).then((response) => {
-    response.items.forEach((item) => {
-      getDownloadURL(item).then((url) => {
-        imgURLs.push(url);
-      });
-    });
-  });
+ Firebase
+  
+  get images from firebase storage
+  storageImagesRef: a reference to images from firebase storage
+ 
+  export default function getImages(storageImagesRef) {
+   const imgURLs = [];
 
-  return imgURLs;
-}
+   listAll(storageImagesRef).then((response) => {
+     response.items.forEach((item) => {
+       getDownloadURL(item).then((url) => {
+         imgURLs.push(url);
+       });
+     });
+   });
+
+   return imgURLs;
+ }
+*/
