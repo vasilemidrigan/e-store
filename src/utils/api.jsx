@@ -37,7 +37,7 @@ export function addMultipleItemsToCommerceJS(products) {
 }
 
 // read
-async function readAllItemsFromCommerceJS() {
+export async function readAllItemsFromCommerceJS() {
   const items = await fetchTemplate(productsURL, "GET", publicHeaders);
   return items;
 }

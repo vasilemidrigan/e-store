@@ -1,13 +1,14 @@
 /*
   Notes: 
     Find a solution to persist data trough refreshes on 
-         addMultipleItemsToCommerceJS()
+         addMultipleItemsToCommerceJS(), store.dispatch(fetchProducts())
 */
 
 "use client";
 
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./redux/store";
+import { fetchProducts } from "@/features/products/productsSlice";
 
 import Nav from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
 
   // addItemsToDb(allProducts);
 
-  // store.dispatch(fetchProducts());
+  store.dispatch(fetchProducts());
 
   // when application starts, write items into commerce.js
   // addMultipleItemsToCommerceJS(allProducts);
