@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { readAllItemsFromCommerceJS } from "src/utils/api";
+import {
+  getAllProductsFromDb,
+  readAllItemsFromCommerceJS,
+} from "src/utils/api";
 
 const initialState = {
   products: [],
@@ -34,7 +37,7 @@ const productsSlice = createSlice({
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async () => readAllItemsFromCommerceJS()
+  async () => getAllProductsFromDb()
 );
 
 export default productsSlice.reducer;

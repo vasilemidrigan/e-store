@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   // readFromDb(productsURL, { limit: 10 });
   // addItemToDb(productsURL, { product: { name: "Phone", price: 3 } });
 
-  // store.dispatch(fetchProducts());
+  store.dispatch(fetchProducts());
   // deleteItemsFromDb();
 
   // when application starts, write items into commerce.js

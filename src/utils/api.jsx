@@ -1,7 +1,7 @@
 import { productsURL, assetsURL } from "src/api/commercejs/endpoints";
 
 import { storage } from "src/api/firebase/firebase-config";
-import { connectStorageEmulator, listAll, ref } from "firebase/storage";
+import { listAll, ref } from "firebase/storage";
 
 // ****** fetch ******
 
@@ -25,7 +25,6 @@ async function fetchTemplate(url, method, headers, body) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((err) => console.error("An error occured in fetchTemplate()", err));
@@ -50,8 +49,12 @@ export function addAllProductsToDb(products) {
   });
 }
 
-function addAssetsToProducts(productId, body) {
-  fetchTemplate(
+async function createAssets(body) {
+  const data = await fetchTemplate(assetsURL, "POST", secretHeaders, body);
+}
+
+async function addAssetsToProducts(productId, body) {
+  const data = await fetchTemplate(
     `${productsURL}${productId}/assets`,
     "POST",
     secretHeaders,
@@ -71,14 +74,12 @@ export async function getAllProductsFromDb() {
 
 async function listAssets() {
   const assets = await fetchTemplate(assetsURL, "GET", secretHeaders);
-  console.log(assets);
 }
 
 // ****** delete ******
 
 async function deleteAllAssets() {
   const assets = await listAssets();
-  console.log(assets);
   const url = new URL("https://api.chec.io/v1/assets");
 
   const headers = {
