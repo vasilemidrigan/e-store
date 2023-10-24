@@ -18,23 +18,23 @@ const secretHeaders = {
 };
 
 async function fetchTemplate(url, method, headers, body) {
-  const data = await fetch(url, {
+  return await fetch(url, {
     method: method,
     headers: headers,
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((err) => console.error("An error occured in fetchTemplate()", err));
-  return data;
 }
 
 // ****** write ******
 
-function addProductToDb(item) {
-  fetchTemplate(productsURL, "POST", secretHeaders, { product: item });
+async function addProductToDb(item) {
+  await fetchTemplate(productsURL, "POST", secretHeaders, { product: item });
 }
 
 export function addAllProductsToDb(products) {
@@ -50,11 +50,11 @@ export function addAllProductsToDb(products) {
 }
 
 async function createAssets(body) {
-  const data = await fetchTemplate(assetsURL, "POST", secretHeaders, body);
+  await fetchTemplate(assetsURL, "POST", secretHeaders, body);
 }
 
 async function addAssetsToProducts(productId, body) {
-  const data = await fetchTemplate(
+  await fetchTemplate(
     `${productsURL}${productId}/assets`,
     "POST",
     secretHeaders,
@@ -72,30 +72,17 @@ export async function getAllProductsFromDb() {
   return items;
 }
 
-async function listAssets() {
-  const assets = await fetchTemplate(assetsURL, "GET", secretHeaders);
+async function getAllAssets() {
+  return await fetchTemplate(assetsURL, "GET", secretHeaders);
 }
 
 // ****** delete ******
 
 async function deleteAllAssets() {
-  const assets = await listAssets();
-  const url = new URL("https://api.chec.io/v1/assets");
-
-  const headers = {
-    "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-
-  assets.forEach((asset) => {
-    fetch(`${url}/${asset.id}`, {
-      method: "DELETE",
-      headers: headers,
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  });
+  const assets = await getAllAssets();
+  assets.data.forEach((asset) =>
+    fetchTemplate(`${assetsURL}/${asset.id}`, "DELETE", secretHeaders)
+  );
 }
 
 export function deleteProductFromDb(url, id) {
