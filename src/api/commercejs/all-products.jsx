@@ -6,44 +6,44 @@ export const allProducts = [
         name: "Apple iPhone 13 Pro",
         price: 999,
       },
-      {
-        name: "Samsung Galaxy S21 Ultra",
-        price: 1199,
-      },
-      {
-        name: "Google Pixel 5",
-        price: 699,
-      },
-      {
-        name: "OnePlus 9 Pro",
-        price: 969,
-      },
-      {
-        name: "Xiaomi Mi 11",
-        price: 699,
-      },
+      // {
+      //   name: "Samsung Galaxy S21 Ultra",
+      //   price: 1199,
+      // },
+      // {
+      //   name: "Google Pixel 5",
+      //   price: 699,
+      // },
+      // {
+      //   name: "OnePlus 9 Pro",
+      //   price: 969,
+      // },
+      // {
+      //   name: "Xiaomi Mi 11",
+      //   price: 699,
+      // },
     ],
     tablets: [
       {
         name: "Apple iPad Pro",
         price: 799,
       },
-      {
-        name: "Samsung Galaxy Tab S7",
-        price: 649,
-      },
-      {
-        name: "Samsung Galaxy Tab S7+",
-        price: 849,
-      },
-      {
-        name: "Microsoft Surface Pro 7",
-        price: 749,
-      },
-      {
-        name: "Amazon Fire HD 10",
-        price: 149,
-      },
+      // {
+      //   name: "Samsung Galaxy Tab S7",
+      //   price: 649,
+      // },
+      // {
+      //   name: "Samsung Galaxy Tab S7+",
+      //   price: 849,
+      // },
+      // {
+      //   name: "Microsoft Surface Pro 7",
+      //   price: 749,
+      // },
+      // {
+      //   name: "Amazon Fire HD 10",
+      //   price: 149,
+      // },
     ],
   },
   //   {

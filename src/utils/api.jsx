@@ -1,11 +1,9 @@
-/*
-  Notes: 
-    Find a better solution to use headers in order to avoid hardcoding 
-*/
+import { productsURL, assetsURL } from "src/api/commercejs/endpoints";
 
-import { productsURL } from "src/api/commercejs/endpoints";
+import { storage } from "src/api/firebase/firebase-config";
+import { connectStorageEmulator, listAll, ref } from "firebase/storage";
 
-// Commercejs
+// ****** fetch ******
 
 const publicHeaders = {
   "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY}`,
@@ -19,43 +17,6 @@ const secretHeaders = {
   "Content-Type": "application/json",
 };
 
-// create
-function addItemToCommerceJS(item) {
-  fetchTemplate(productsURL, "POST", secretHeaders, { product: item });
-}
-
-export function addMultipleItemsToCommerceJS(products) {
-  products.forEach((category) => {
-    for (let key in category) {
-      if (key !== "category") {
-        category[key].forEach((item) => {
-          addItemToCommerceJS(item);
-        });
-      }
-    }
-  });
-}
-
-// read
-export async function readAllItemsFromCommerceJS() {
-  const items = await fetchTemplate(productsURL, "GET", publicHeaders);
-  return items;
-}
-
-// delete
-export function deleteItemFromDb(url, id) {
-  fetchTemplate(`${url}${id}`, "DELETE", secretHeaders);
-}
-
-export function deleteItemsFromDb() {
-  readAllItemsFromCommerceJS().then((targets) => {
-    console.log(targets);
-    targets.data.forEach((target) => {
-      deleteItemFromDb(productsURL, target.id);
-    });
-  });
-}
-
 async function fetchTemplate(url, method, headers, body) {
   const data = await fetch(url, {
     method: method,
@@ -63,73 +24,107 @@ async function fetchTemplate(url, method, headers, body) {
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
-    .then((data) => data)
-    .catch((err) => console.error(err));
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => console.error("An error occured in fetchTemplate()", err));
   return data;
 }
 
-/*
- export function createCategories(url) {
-   const headers = {
-     "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
-     "Content-Type": "application/json",
-     Accept: "application/json",
-   };
+// ****** write ******
 
-   productsListing.forEach((category) => {
-     fetch(url, {
-       method: "POST",
-       headers: headers,
-       body: JSON.stringify({
-         name: category.name,
-         slug: `${category.name}`,
-       }),
-     });
-     category.subcategories.forEach((subcategory) => {
-       fetch(url, {
-         method: "POST",
-         headers: headers,
-         body: JSON.stringify({
-           name: subcategory.name,
-           slug: subcategory.name,
-         }),
-       });
-     });
-   });
- }
+function addProductToDb(item) {
+  fetchTemplate(productsURL, "POST", secretHeaders, { product: item });
+}
 
- export function updateCategories() {
-   const url = new URL("https://api.chec.io/v1/categories");
+export function addAllProductsToDb(products) {
+  products.forEach((category) => {
+    for (let key in category) {
+      if (key !== "category") {
+        category[key].forEach((item) => {
+          addProductToDb(item);
+        });
+      }
+    }
+  });
+}
 
-   const headers = {
-     "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
-     "Content-Type": "application/json",
-     Accept: "application/json",
-   };
+function addAssetsToProducts(productId, body) {
+  fetchTemplate(
+    `${productsURL}${productId}/assets`,
+    "POST",
+    secretHeaders,
+    body
+  );
+}
 
-   fetch(url, {
-     method: "PUT",
-     headers: headers,
-     body: JSON.stringify({ description: "utuutututu" }),
-   }).then((response) => response.json());
- }
+// ****** read ******
 
- Firebase
-  
-  get images from firebase storage
-  storageImagesRef: a reference to images from firebase storage
- 
-  export default function getImages(storageImagesRef) {
-   const imgURLs = [];
+export async function getAllProductsFromDb() {
+  const items = await fetchTemplate(productsURL, "GET", publicHeaders);
+  items.data.forEach((item) => {
+    if (item.name === "Apple iPad Pro") console.log(item);
+  });
+  return items;
+}
 
-   listAll(storageImagesRef).then((response) => {
-     response.items.forEach((item) => {
-       getDownloadURL(item).then((url) => {
-         imgURLs.push(url);
-       });
-     });
-   });
+async function listAssets() {
+  const assets = await fetchTemplate(assetsURL, "GET", secretHeaders);
+  console.log(assets);
+}
 
-   return imgURLs;
- }
-*/
+// ****** delete ******
+
+async function deleteAllAssets() {
+  const assets = await listAssets();
+  console.log(assets);
+  const url = new URL("https://api.chec.io/v1/assets");
+
+  const headers = {
+    "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+
+  assets.forEach((asset) => {
+    fetch(`${url}/${asset.id}`, {
+      method: "DELETE",
+      headers: headers,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  });
+}
+
+export function deleteProductFromDb(url, id) {
+  fetchTemplate(`${url}${id}`, "DELETE", secretHeaders);
+}
+
+export function deleteProductsFromDb() {
+  getAllProductsFromDb().then((targets) => {
+    targets.data.forEach((target) => {
+      deleteProductsFromDb(productsURL, target.id);
+    });
+  });
+}
+
+// ****** firebase storage ******
+
+export const appleRef = ref(storage, "apple/imac-24/imac-24-inch-1.jpg");
+console.log(appleRef);
+
+export default function getImages(storageImagesRef) {
+  const imgURLs = [];
+
+  listAll(storageImagesRef).then((response) => {
+    console.log(storageImagesRef);
+    console.log(response);
+    response.items.forEach((item) => {
+      getDownloadURL(item).then((url) => {
+        imgURLs.push(url);
+      });
+    });
+  });
+  return imgURLs;
+}

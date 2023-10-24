@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 import { productsListing } from "src/data/hardcoded-data/products-listing";
 
 export default function ProductsMenu() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  
   return (
     <div className="ProductsMenu">
       <div className="ProductsMenu__categories">
-        {productsListing.map((category) => (
-          <div className="ProductsMenu__category" key={category.category}>
+        {productsListing.map((category) => {
+          <div className="ProductsMenu__category" key={uuid()}>
             {category.category}
-          </div>
-        ))}
+          </div>;
+        })}
       </div>
       <div className="ProductsMenu__subcategories">
         <div className="ProductsMenu__subcategory-wrapper">

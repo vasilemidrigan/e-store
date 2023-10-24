@@ -18,15 +18,18 @@ import SearchResults from "./components/searchResults/SearchResults";
 
 import "../styles/index.scss";
 
+import { appleRef, deleteItemsFromDb } from "src/utils/api";
+import { addMultipleItemsToCommerceJS } from "src/utils/api";
+import { allProducts } from "src/api/commercejs/all-products";
+
 export default function RootLayout({ children }) {
   // const imgRefIphone13Pro = ref(storage, "smartphones/apple-iphone-13-pro");
   // const urls = getImages(imgRefIphone13Pro);
   // readFromDb(productsURL, { limit: 10 });
   // addItemToDb(productsURL, { product: { name: "Phone", price: 3 } });
 
-  // addItemsToDb(allProducts);
-
-  store.dispatch(fetchProducts());
+  // store.dispatch(fetchProducts());
+  // deleteItemsFromDb();
 
   // when application starts, write items into commerce.js
   // addMultipleItemsToCommerceJS(allProducts);

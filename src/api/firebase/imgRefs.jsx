@@ -1,4 +1,7 @@
-const imgRefIphone13Pro = ref(storage, "iphone-13-pro");
+import { ref } from "firebase/storage";
+import { storage } from "./firebase-config";
+
+const imgRefIphone13Pro = ref(storage, "smartphones/apple-iphone-13");
 
 const imgsRef = {
   smartphones: {
