@@ -1,5 +1,5 @@
 import CategoryIcon from "./CategoryIcon/CategoryIcon";
-import { CATEGORIES_ICONS } from "@/data/hardcoded-data/CATEGORIES_ICONS";
+import { CATEGORIES_ICONS } from "src/constants/CATEGORIES_ICONS";
 
 export default function CategoriesBar() {
   return (

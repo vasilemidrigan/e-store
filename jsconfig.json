@@ -4,6 +4,8 @@
     "paths": {
       "@/public/*": ["public/*"],
       "@/components/*": ["src/app/components/*"],
+      "@/features/*": ["src/app/redux/features/*"],
+      "@/constants/*": ["src/constants/*"],
       "@/data/*": ["src/data/*"],
       "@/pages/*": ["src/app/pages/*"],
       "@/styles/*": ["src/app/styles/*"]
