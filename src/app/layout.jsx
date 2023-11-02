@@ -10,26 +10,12 @@ import SearchResults from "./components/searchResults/SearchResults";
 
 import "../styles/index.scss";
 
-import {
-  deleteOneEntitiesPageFromAPI,
-  deleteAssetsFromProducts,
-  deleteEntireClassFromAPI,
-} from "src/utils/api";
-
-import monitorizeAPI from "src/utils/monitorize-api";
-
-import { assetsURL, productsURL } from "src/api/endpoints";
 import initializeProductsToAPI from "src/utils/initialize-api";
 
 export default function RootLayout({ children }) {
   useEffect(() => {
     initializeProductsToAPI();
   }, []);
-
-  monitorizeAPI();
-
-  // deleteEntireClassFromAPI(productsURL);
-  // deleteEntireClassFromAPI(assetsURL);
 
   return (
     <html lang="en">

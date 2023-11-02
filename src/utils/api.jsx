@@ -28,37 +28,35 @@ export async function addAssetsToProduct(productId, body) {
   );
 }
 
-export async function findAssetsByProductName(productName, url) {
-  const allAssets = await getAllAssetsFromAPI(url);
-  const targetAsset = await allAssets.data.filter((asset) => {
-    return asset.filename.slice(0, -6) === productName;
-  });
-
-  if (targetAsset.length > 0) console.log(targetAsset[0].filename);
-
-  if (targetAsset.length == 0 && allAssets.meta.pagination.links.next) {
-    findAssetsByProductName(productName, allAssets.meta.pagination.links.next);
-  } else {
-    return targetAsset;
-  }
-}
-
 /* read */
 
 export async function getProductFromAPI(name) {
-  const products = await getAllProductsFromAPI();
+  const products = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    productsURL
+  );
   const product = await products.data?.find((product) => product.name === name);
-  return product;
+  return product ? product : console.log("product not found");
 }
 
-export async function getAllProductsFromAPI(url = productsURL) {
-  const products = await fetchTemplate(url, "GET", publicHeaders);
-  return products;
+export async function getFirstPageFromClassInAPI(url) {
+  const entities = await fetchTemplate(url, "GET", secretHeaders);
+  console.log(entities);
+  return entities;
 }
 
-export async function getAllAssetsFromAPI(url = assetsURL) {
-  const assets = await fetchTemplate(url, "GET", secretHeaders);
-  return assets;
+export async function getEntireClassFromAPI(targetFunction, url) {
+  let { data, meta } = await targetFunction(url);
+  const totalPages = meta.pagination.total_pages;
+  let nextPage = meta.pagination.links.next;
+
+  for (let i = 2; i <= totalPages; i++) {
+    const results = await targetFunction(nextPage);
+    nextPage = results.meta.pagination.links.next;
+    data.push(...results.data);
+    Object.assign(meta.pagination, results.meta.pagination);
+  }
+  return { data, meta };
 }
 
 /* delete */
@@ -114,6 +112,6 @@ export async function deleteOnePageFromClassInAPI(url) {
 export async function deleteEntireClassFromAPI(url) {
   const pagesAmount = await deleteOnePageFromClassInAPI(url);
   for (let i = 2; i <= pagesAmount; i++) {
-    await deleteOnePageFromClassInAPI(productsURL);
+    await deleteOnePageFromClassInAPI(url);
   }
 }
