@@ -1,118 +1,119 @@
-import { productsURL, assetsURL } from "src/api/commercejs/endpoints";
+import { productsURL, assetsURL } from "src/api/endpoints";
+import { initialProductsData } from "src/api/productsData";
+import fetchTemplate, { publicHeaders, secretHeaders } from "./fetch";
 
-import { storage } from "src/api/firebase/firebase-config";
-import { listAll, ref } from "firebase/storage";
+/* write */
 
-// ****** fetch ******
-
-const publicHeaders = {
-  "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY}`,
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
-
-const secretHeaders = {
-  "X-Authorization": `${process.env.NEXT_PUBLIC_CHEC_PUBLIC_KEY_SECRET}`,
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
-
-async function fetchTemplate(url, method, headers, body) {
-  return await fetch(url, {
-    method: method,
-    headers: headers,
-    body: JSON.stringify(body),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return data;
-    })
-    .catch((err) => console.error("An error occured in fetchTemplate()", err));
-}
-
-// ****** write ******
-
-async function addProductToDb(item) {
-  await fetchTemplate(productsURL, "POST", secretHeaders, { product: item });
-}
-
-export function addAllProductsToDb(products) {
-  products.forEach((category) => {
-    for (let key in category) {
-      if (key !== "category") {
-        category[key].forEach((item) => {
-          addProductToDb(item);
-        });
-      }
-    }
+export async function addProductToAPI(item) {
+  const product = await fetchTemplate(productsURL.href, "POST", secretHeaders, {
+    product: item,
   });
+  return product;
 }
 
-async function createAssets(body) {
-  await fetchTemplate(assetsURL, "POST", secretHeaders, body);
+export async function addAssetsToAPI(body) {
+  const promises = [];
+  promises.push(
+    await fetchTemplate(assetsURL.href, "POST", secretHeaders, body)
+  );
+  return promises;
 }
 
-async function addAssetsToProducts(productId, body) {
+export async function addAssetsToProduct(productId, body) {
   await fetchTemplate(
-    `${productsURL}${productId}/assets`,
+    `${productsURL.href}/${productId}/assets`,
     "POST",
     secretHeaders,
     body
   );
 }
 
-// ****** read ******
-
-export async function getAllProductsFromDb() {
-  const items = await fetchTemplate(productsURL, "GET", publicHeaders);
-  items.data.forEach((item) => {
-    if (item.name === "Apple iPad Pro") console.log(item);
+export async function findAssetsByProductName(productName, url) {
+  const allAssets = await getAllAssetsFromAPI(url);
+  const targetAsset = await allAssets.data.filter((asset) => {
+    return asset.filename.slice(0, -6) === productName;
   });
-  return items;
+
+  if (targetAsset.length > 0) console.log(targetAsset[0].filename);
+
+  if (targetAsset.length == 0 && allAssets.meta.pagination.links.next) {
+    findAssetsByProductName(productName, allAssets.meta.pagination.links.next);
+  } else {
+    return targetAsset;
+  }
 }
 
-async function getAllAssets() {
-  return await fetchTemplate(assetsURL, "GET", secretHeaders);
+/* read */
+
+export async function getProductFromAPI(name) {
+  const products = await getAllProductsFromAPI();
+  const product = await products.data?.find((product) => product.name === name);
+  return product;
 }
 
-// ****** delete ******
-
-async function deleteAllAssets() {
-  const assets = await getAllAssets();
-  assets.data.forEach((asset) =>
-    fetchTemplate(`${assetsURL}/${asset.id}`, "DELETE", secretHeaders)
-  );
+export async function getAllProductsFromAPI(url = productsURL) {
+  const products = await fetchTemplate(url, "GET", publicHeaders);
+  return products;
 }
 
-export function deleteProductFromDb(url, id) {
-  fetchTemplate(`${url}${id}`, "DELETE", secretHeaders);
+export async function getAllAssetsFromAPI(url = assetsURL) {
+  const assets = await fetchTemplate(url, "GET", secretHeaders);
+  return assets;
 }
 
-export function deleteProductsFromDb() {
-  getAllProductsFromDb().then((targets) => {
-    targets.data.forEach((target) => {
-      deleteProductsFromDb(productsURL, target.id);
-    });
+/* delete */
+
+export function deleteProductFromAPI(url, id) {
+  fetchTemplate(`${url}/${id}`, "DELETE", secretHeaders);
+}
+
+export async function deleteAssetFromProduct(product, asset) {
+  if (asset == undefined) return;
+  await fetch(`${productsURL}/${product?.id}/assets/${asset?.id}`, {
+    method: "DELETE",
+    headers: secretHeaders,
   });
 }
 
-// ****** firebase storage ******
+export async function deleteAssetsFromProducts() {
+  let promises = [];
+  for (let category of initialProductsData) {
+    for (let product of category.products) {
+      const productTarget = await getProductFromDb(product.name);
 
-export const appleRef = ref(storage, "apple/imac-24/imac-24-inch-1.jpg");
-console.log(appleRef);
+      for (let i = 0; i < 4; i++) {
+        const assets = await getAssetsByProductName(productTarget?.name);
+        promises.push;
 
-export default function getImages(storageImagesRef) {
-  const imgURLs = [];
+        await deleteAssetFromProduct(productTarget, assets[i]);
+      }
+    }
+  }
+  return promises;
+}
 
-  listAll(storageImagesRef).then((response) => {
-    console.log(storageImagesRef);
-    console.log(response);
-    response.items.forEach((item) => {
-      getDownloadURL(item).then((url) => {
-        imgURLs.push(url);
+export async function deleteOnePageFromClassInAPI(url) {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: secretHeaders,
+  });
+
+  const data = await response.json();
+  if (data.data) {
+    for (let entity of data.data) {
+      console.log("delete ", entity.id, "...");
+      await fetch(`${url}/${entity.id}`, {
+        method: "DELETE",
+        headers: secretHeaders,
       });
-    });
-  });
-  return imgURLs;
+    }
+  }
+  return data.meta.pagination.total_pages;
+}
+
+export async function deleteEntireClassFromAPI(url) {
+  const pagesAmount = await deleteOnePageFromClassInAPI(url);
+  for (let i = 2; i <= pagesAmount; i++) {
+    await deleteOnePageFromClassInAPI(productsURL);
+  }
 }

@@ -1,14 +1,6 @@
-/*
-  Notes: 
-    Find a solution to persist data trough refreshes on 
-         addMultipleItemsToCommerceJS(), store.dispatch(fetchProducts())
-*/
-
 "use client";
 
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import { fetchProducts } from "@/features/products/productsSlice";
+import { useEffect } from "react";
 
 import Nav from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
@@ -18,21 +10,26 @@ import SearchResults from "./components/searchResults/SearchResults";
 
 import "../styles/index.scss";
 
-import { appleRef, deleteItemsFromDb } from "src/utils/api";
-import { addMultipleItemsToCommerceJS } from "src/utils/api";
-import { allProducts } from "src/api/commercejs/all-products";
+import {
+  deleteOneEntitiesPageFromAPI,
+  deleteAssetsFromProducts,
+  deleteEntireClassFromAPI,
+} from "src/utils/api";
+
+import monitorizeAPI from "src/utils/monitorize-api";
+
+import { assetsURL, productsURL } from "src/api/endpoints";
+import initializeProductsToAPI from "src/utils/initialize-api";
 
 export default function RootLayout({ children }) {
-  // const imgRefIphone13Pro = ref(storage, "smartphones/apple-iphone-13-pro");
-  // const urls = getImages(imgRefIphone13Pro);
-  // readFromDb(productsURL, { limit: 10 });
-  // addItemToDb(productsURL, { product: { name: "Phone", price: 3 } });
+  useEffect(() => {
+    initializeProductsToAPI();
+  }, []);
 
-  store.dispatch(fetchProducts());
-  // deleteItemsFromDb();
+  monitorizeAPI();
 
-  // when application starts, write items into commerce.js
-  // addMultipleItemsToCommerceJS(allProducts);
+  // deleteEntireClassFromAPI(productsURL);
+  // deleteEntireClassFromAPI(assetsURL);
 
   return (
     <html lang="en">
@@ -61,14 +58,12 @@ export default function RootLayout({ children }) {
         ></link>
       </head>
       <body>
-        <Provider store={store}>
-          <Nav />
-          <SearchResults />
-          <ProductsMenu />
-          <CategoriesBar />
-          {children}
-          <Footer />
-        </Provider>
+        <Nav />
+        <SearchResults />
+        <ProductsMenu />
+        <CategoriesBar />
+        {children}
+        <Footer />
       </body>
     </html>
   );
