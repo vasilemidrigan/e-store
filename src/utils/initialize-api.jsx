@@ -8,7 +8,10 @@
   to run initializeProductsToAPI()
 */
 
-import { initialProductsData, productsImgsURLs } from "src/api/productsData";
+import {
+  initialProductsData,
+  productsImgsURLs,
+} from "src/api/initial-products";
 import {
   addAssetsToAPI,
   addProductToAPI,
@@ -48,7 +51,7 @@ async function addAllProductsToAPI(products) {
 async function addAllImagesToAPI() {
   const assets = [];
 
-  for (let category of productsImgsURLs) {
+  for (let category of initialProductsData) {
     for (let product of category.products) {
       for (let i = 0; i < 4; i++) {
         console.log(`adding ${product.name}-${i}.jpg image file...`);

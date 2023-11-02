@@ -1,5 +1,5 @@
 import { productsURL, assetsURL } from "src/api/endpoints";
-import { initialProductsData } from "src/api/productsData";
+import { initialProductsData } from "src/api/initial-products";
 import fetchTemplate, { publicHeaders, secretHeaders } from "./fetch";
 
 /* write */
