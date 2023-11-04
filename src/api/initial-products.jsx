@@ -9,6 +9,13 @@ export const initialProductsData = [
       {
         name: "samsung",
         price: 1199,
+        categories: [
+          {
+            id: "cat_LvJjoPZ7qle0nO",
+            slug: "smartphones",
+            name: "smartphones",
+          },
+        ],
       },
       {
         name: "pixel",

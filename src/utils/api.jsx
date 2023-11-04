@@ -1,4 +1,4 @@
-import { productsURL, assetsURL } from "src/api/endpoints";
+import { productsURL, assetsURL, categoriesURL } from "src/api/endpoints";
 import { initialProductsData } from "src/api/initial-products";
 import fetchTemplate, { publicHeaders, secretHeaders } from "./fetch";
 
@@ -6,25 +6,25 @@ import fetchTemplate, { publicHeaders, secretHeaders } from "./fetch";
 
 export async function addProductToAPI(item) {
   const product = await fetchTemplate(productsURL.href, "POST", secretHeaders, {
-    product: item,
+    product: { ...item },
   });
   return product;
 }
 
-export async function addAssetsToAPI(body) {
+export async function addAssetsToAPI(assets) {
   const promises = [];
   promises.push(
-    await fetchTemplate(assetsURL.href, "POST", secretHeaders, body)
+    await fetchTemplate(assetsURL.href, "POST", secretHeaders, assets)
   );
   return promises;
 }
 
-export async function addAssetsToProduct(productId, body) {
+export async function addAssetsToProduct(productId, assets) {
   await fetchTemplate(
     `${productsURL.href}/${productId}/assets`,
     "POST",
     secretHeaders,
-    body
+    assets
   );
 }
 
@@ -41,22 +41,39 @@ export async function getProductFromAPI(name) {
 
 export async function getFirstPageFromClassInAPI(url) {
   const entities = await fetchTemplate(url, "GET", secretHeaders);
-  console.log(entities);
+  console.log(url.pathname, " -> ", entities);
   return entities;
 }
 
 export async function getEntireClassFromAPI(targetFunction, url) {
-  let { data, meta } = await targetFunction(url);
-  const totalPages = meta.pagination.total_pages;
-  let nextPage = meta.pagination.links.next;
+  const promises = await targetFunction(url);
+  const totalPages = promises.meta.pagination.total_pages;
+  let nextPage = promises.meta.pagination.links.next;
 
   for (let i = 2; i <= totalPages; i++) {
     const results = await targetFunction(nextPage);
     nextPage = results.meta.pagination.links.next;
-    data.push(...results.data);
-    Object.assign(meta.pagination, results.meta.pagination);
+    promises.data.push(...results.data);
+    Object.assign(promises.meta.pagination, results.meta.pagination);
   }
-  return { data, meta };
+  return promises;
+}
+
+export async function getAllCategories() {
+  const categories = await fetchTemplate(categoriesURL, "GET", publicHeaders);
+  return categories;
+}
+
+/* update */
+
+export async function updateProductFromAPI(productId, body) {
+  const product = await fetchTemplate(
+    `${productsURL.href}/${productId}`,
+    "PUT",
+    secretHeaders,
+    body
+  );
+  return product;
 }
 
 /* delete */

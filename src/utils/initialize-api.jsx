@@ -1,6 +1,7 @@
 /* 
   If commerce.js is not initialized, then run initializeProductsToAPI(), 
-  to populate it with products, that will initially have name, price and images. 
+  to populate it with products, that will initially have name, price, images. 
+  Also it will create categories and assign products to them.
   (For tests and development only.)
 
   !important
@@ -8,44 +9,100 @@
   to run initializeProductsToAPI()
 */
 
-import {
-  initialProductsData,
-  productsImgsURLs,
-} from "src/api/initial-products";
+import { initialProductsData } from "src/api/initial-products";
 import {
   addAssetsToAPI,
   addProductToAPI,
   addAssetsToProduct,
   getEntireClassFromAPI,
   getFirstPageFromClassInAPI,
+  updateProductFromAPI,
+  getAllCategories,
 } from "./api";
 
-import { assetsURL, productsURL, s3URL } from "src/api/endpoints";
+import {
+  assetsURL,
+  categoriesURL,
+  productsURL,
+  s3URL,
+} from "src/api/endpoints";
+import fetchTemplate, { secretHeaders } from "./fetch";
 
 export default async function initializeProductsToAPI() {
-  if (localStorage.getItem("isAPIInitialized")) return;
+  if (localStorage.getItem("isAPIInitialized")) {
+    console.log("localStorage isAPIInitialized: true");
+    return;
+  }
 
+  await addAllCategoriesToAPI();
   await addAllProductsToAPI(initialProductsData);
+  await assignCategoriesToAllProducts();
   await addAllImagesToAPI();
   await assignAssetsToAllProducts();
 
   localStorage.setItem("isAPIInitialized", true);
 }
 
-async function addAllProductsToAPI(products) {
+async function addAllProductsToAPI(productsArr) {
   const promises = [];
-  for (let category of products) {
-    for (let key in category) {
-      if (key === "products") {
-        for (let item of category[key]) {
-          console.log(`adding ${item.name} product...`);
-          await promises.push(addProductToAPI(item));
+  const { data: categories } = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    categoriesURL
+  );
+
+  let categoryName = "";
+  let categoryTarget = {};
+
+  for (let category of productsArr) {
+    for (let property in category) {
+      if (categoryName !== category.category) {
+        categoryName = category.category;
+        categoryTarget = await categories.find(
+          (cat) => cat.name === categoryName
+        );
+      }
+
+      if (property == "products") {
+        for (let product of category[property]) {
+          console.log(`adding ${product.name} product...`);
+          promises.push(
+            await addProductToAPI({
+              ...product,
+              meta: { category: category.category },
+            })
+          );
         }
       }
     }
   }
-
   return promises;
+}
+
+async function addAllCategoriesToAPI() {
+  for (let category of initialProductsData) {
+    fetchTemplate(categoriesURL, "POST", secretHeaders, {
+      name: category.category,
+      slug: category.category,
+    });
+  }
+}
+
+async function assignCategoriesToAllProducts() {
+  const { data: products } = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    productsURL
+  );
+
+  const { data: categories } = await getAllCategories();
+
+  for (let product of products) {
+    const { id: categoryId, name: categoryName } = await categories.find(
+      (cat) => cat.name === product.meta.category
+    );
+    await updateProductFromAPI(product.id, {
+      categories: [{ id: categoryId }],
+    });
+  }
 }
 
 async function addAllImagesToAPI() {
@@ -64,12 +121,11 @@ async function addAllImagesToAPI() {
       }
     }
   }
-
   return assets;
 }
 
 async function assignAssetsToAllProducts() {
-  const products = await getEntireClassFromAPI(
+  const { data: products } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     productsURL
   );
@@ -77,15 +133,17 @@ async function assignAssetsToAllProducts() {
     getFirstPageFromClassInAPI,
     assetsURL
   );
-  for (let product of products.data) {
+
+  for (let product of products) {
     const assets = allAssets.filter(
       (asset) => asset.filename.slice(0, -6) === product.name
     );
     if (assets) {
       for (let i = 0; i < assets.length; i++) {
         console.log(`assigning ${assets[i].id} to ${product.name}`);
+        console.log(assets);
         await addAssetsToProduct(product.id, {
-          assets: { id: { id: assets[i]?.id } },
+          assets: [{ id: assets[i]?.id }],
         });
       }
     }
