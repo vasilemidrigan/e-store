@@ -1,0 +1,23 @@
+.ProductsMenu {
+  width: $width-l;
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  background-color: $white;
+  @include font("Roboto", $font-size-m, $font-weigth-thin);
+
+  &__categories {
+    height: 6.25rem;
+    max-width: 69.0625rem;
+    margin: 0 auto;
+    @include d-flex(center, center, row);
+    gap: 8.5rem;
+    width: 100%;
+  }
+
+  &__category {
+    cursor: pointer;
+  }
+}

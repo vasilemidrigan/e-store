@@ -7,14 +7,14 @@
 
 @import "@/components/globals/Logo";
 
-@import "@/components/navigation/Navigation";
-@import "@/components/navigation/subcomponents/MenuBtn";
-@import "@/components/navigation/subcomponents/SearchBar";
+@import "@/components/navBar/NavBar";
+@import "@/components/navBar/subcomponents/MenuBtn/MenuBtn";
+@import "@/components/navBar/subcomponents/SearchBar/SearchBar";
 
 @import "@/components/categoriesBar/CategoriesBar";
 @import "@/components/categoriesBar/CategoryIcon/CategoryIcon";
 
-@import "@/components/productsMenu/ProductsMenu";
+@import "@/components/navBar/subcomponents/productsMenu/ProductsMenu";
 
 @import "@/components/searchResults/SearchResults";
 

@@ -49,13 +49,13 @@ export async function getEntireClassFromAPI(targetFunction, url) {
   const promises = await targetFunction(url);
   const totalPages = promises.meta.pagination.total_pages;
   let nextPage = promises.meta.pagination.links.next;
-
   for (let i = 2; i <= totalPages; i++) {
     const results = await targetFunction(nextPage);
     nextPage = results.meta.pagination.links.next;
     promises.data.push(...results.data);
     Object.assign(promises.meta.pagination, results.meta.pagination);
   }
+  console.log(promises)
   return promises;
 }
 

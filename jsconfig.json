@@ -6,7 +6,7 @@
       "@/components/*": ["src/app/components/*"],
       "@/data/*": ["src/data/*"],
       "@/pages/*": ["src/app/pages/*"],
-      "@/styles/*": ["src/app/styles/*"]
+      "@/styles/*": ["src/app/styles/*"], 
     }
   }
 }

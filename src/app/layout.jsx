@@ -1,22 +1,19 @@
-"use client";
-
-import { useEffect } from "react";
-
-import Nav from "./components/navigation/Navigation";
+import Nav from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
 import CategoriesBar from "./components/categoriesBar/CategoriesBar";
-import ProductsMenu from "./components/productsMenu/ProductsMenu";
 import SearchResults from "./components/searchResults/SearchResults";
 
 import "../styles/index.scss";
 
 import initializeProductsToAPI from "src/utils/initialize-api";
+import {
+  getAllCategories,
+  getEntireClassFromAPI,
+  getFirstPageFromClassInAPI,
+} from "src/utils/api";
+import { categoriesURL } from "src/api/endpoints";
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    initializeProductsToAPI();
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -46,7 +43,6 @@ export default function RootLayout({ children }) {
       <body>
         <Nav />
         <SearchResults />
-        <ProductsMenu />
         <CategoriesBar />
         {children}
         <Footer />
