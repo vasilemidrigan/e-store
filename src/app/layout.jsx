@@ -1,19 +1,13 @@
 import Nav from "./components/navBar/NavBar";
+import { NavMenuWrapper } from "./components/navBar/subcomponents/navMenu/navMenuWrapper";
 import Footer from "./components/footer/Footer";
 import CategoriesBar from "./components/categoriesBar/CategoriesBar";
-import SearchResults from "./components/searchResults/SearchResults";
+import Logo from "./components/globals/Logo";
+import SearchBar from "./components/navBar/subcomponents/searchBar/SearchBar";
 
 import "../styles/index.scss";
 
-import initializeProductsToAPI from "src/utils/initialize-api";
-import {
-  getAllCategories,
-  getEntireClassFromAPI,
-  getFirstPageFromClassInAPI,
-} from "src/utils/api";
-import { categoriesURL } from "src/api/endpoints";
-
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
@@ -41,8 +35,11 @@ export default function RootLayout({ children }) {
         ></link>
       </head>
       <body>
-        <Nav />
-        <SearchResults />
+        <Nav>
+          <Logo />
+          <NavMenuWrapper />
+          <SearchBar />
+        </Nav>
         <CategoriesBar />
         {children}
         <Footer />
