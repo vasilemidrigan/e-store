@@ -1,11 +1,12 @@
 import Nav from "./components/navBar/NavBar";
-import { NavMenuWrapper } from "./components/navBar/subcomponents/navMenu/navMenuWrapper";
+import NavMenuBtn from "./components/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
 import Footer from "./components/footer/Footer";
 import CategoriesBar from "./components/categoriesBar/CategoriesBar";
 import Logo from "./components/globals/Logo";
 import SearchBar from "./components/navBar/subcomponents/searchBar/SearchBar";
 
 import "../styles/index.scss";
+import NavMenu from "./components/navBar/subcomponents/navMenu/NavMenu";
 
 export default async function RootLayout({ children }) {
   return (
@@ -37,7 +38,9 @@ export default async function RootLayout({ children }) {
       <body>
         <Nav>
           <Logo />
-          <NavMenuWrapper />
+          <NavMenuBtn>
+            <NavMenu />
+          </NavMenuBtn>
           <SearchBar />
         </Nav>
         <CategoriesBar />

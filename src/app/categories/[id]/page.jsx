@@ -2,25 +2,18 @@ import CategoryIllustration from "@/components/categoryIllustration/CategoryIllu
 import ProductCard from "@/components/productCard/ProductCard";
 import Pagination from "@/components/pagination/Pagination";
 
-export default function ProductListing() {
+export default function CategoryPage() {
   return (
-    <div className="ProductListing">
+    <div className="CategoryPage">
       <CategoryIllustration />
-      <div className="ProductListing__grid">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+      <div className="CategoryPage__grid">
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
       </div>
-      <div className="ProductListing__pagination">
+      <div className="CategoryPage__pagination">
         <Pagination />
       </div>
     </div>
