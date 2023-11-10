@@ -1,6 +1,6 @@
-import CategoryIllustration from "@/components/categoryIllustration/CategoryIllustration";
-import ProductCard from "@/components/productCard/ProductCard";
-import Pagination from "@/components/pagination/Pagination";
+import CategoryIllustration from "src/components/categoryIllustration/CategoryIllustration";
+import ProductCard from "src/components/productCard/ProductCard";
+import Pagination from "src/components/pagination/Pagination";
 
 export default function CategoryPage() {
   return (

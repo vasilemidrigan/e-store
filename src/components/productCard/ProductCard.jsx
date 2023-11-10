@@ -6,7 +6,7 @@ import smartphone from "@/public/images/desktop-version/smartphones/green-smartp
 
 export default function ProductCard() {
   return (
-    <Link href="/product-page">
+    <Link href="/product">
       <div className="ProductCard">
         <div className="ProductCard__photo">
           <img src={smartphone.src} alt="smartphone photo" />

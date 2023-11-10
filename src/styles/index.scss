@@ -14,7 +14,7 @@
 @import "@/components/categoriesBar/CategoriesBar";
 @import "@/components/categoriesBar/CategoryIcon/CategoryIcon";
 
-@import "@/components/navBar/subcomponents/navMenu/navMenu/NavMenu";
+@import "@/components/navBar/subcomponents/navMenu/NavMenu";
 
 @import "@/components/searchResults/SearchResults";
 
@@ -26,12 +26,12 @@
 @import "@/components/home/imageCarousel/controlsBar/ControlBtn";
 @import "@/components/home/imageCarousel/controlsBar/ControlsBar";
 
-@import "../app/categories/[id]/CategoryPage";
+@import "../app/category/[id]/page";
 @import "@/components/categoryIllustration/CategoryIllustration";
 @import "@/components/productCard/ProductCard";
 @import "@/components/pagination/Pagination";
 
-@import "../app/product-page/ProductPage";
+@import "../app/product/page";
 @import "@/components/productPage/productTitle/ProductTitle";
 @import "@/components/productPage/productCollage/ProductCollage";
 @import "@/components/productPage/productDescription/ProductDescription";
