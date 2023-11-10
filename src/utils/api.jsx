@@ -31,11 +31,11 @@ export async function addAssetsToProduct(productId, assets) {
 /* read */
 
 export async function getProductFromAPI(name) {
-  const products = await getEntireClassFromAPI(
+  const { data: products } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     productsURL
   );
-  const product = await products.data?.find((product) => product.name === name);
+  const product = await products.find((product) => product.name === name);
   return product ? product : console.log("product not found");
 }
 

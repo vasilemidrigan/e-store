@@ -31,8 +31,8 @@
 @import "@/components/product/productCard/ProductCard";
 @import "@/components/globals/pagination/Pagination";
 
-@import "../app/product/page";
-@import "@/components/product/productPage/productTitle/ProductTitle";
+@import "../app/product/[id]/page";
+@import "@/components/product/productPage/productName/ProductName";
 @import "@/components/product/productPage/productCollage/ProductCollage";
 @import "@/components/product/productPage/productDescription/ProductDescription";
 @import "@/components/product/productPage/productDetails/ProductDetails";

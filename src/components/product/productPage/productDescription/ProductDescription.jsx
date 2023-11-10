@@ -1,8 +1,8 @@
-export default function ProductDescription() {
+export default function ProductDescription({ price }) {
   return (
     <div className="ProductDescription">
       <div className="ProductDescription__price">
-        <span>376$</span>
+        <span>{price.formatted_with_symbol}</span>
       </div>
       <div className="ProductDescription__about">
         <h2>About:</h2>
