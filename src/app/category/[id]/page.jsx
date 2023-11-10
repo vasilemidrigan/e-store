@@ -1,17 +1,29 @@
-import CategoryIllustration from "src/components/categoryIllustration/CategoryIllustration";
+/*
+  There is no reason to move pagination into layout, as the layout will not 
+  re-render between changing pages probably. 
+
+  It seems like Next.js Templates is more suitable for pagination, as
+  they re-render when there is a change. https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
+
+  Need to check this when implementing pagination. 
+*/
+
+import { v4 as uuid } from "uuid";
+
 import ProductCard from "src/components/productCard/ProductCard";
 import Pagination from "src/components/pagination/Pagination";
 
-export default function CategoryPage() {
+import { getProductsByCategoryName } from "src/utils/api";
+
+export default async function CategoryPage({ params }) {
+  const { data: products } = await getProductsByCategoryName(params.id);
+
   return (
     <div className="CategoryPage">
-      <CategoryIllustration />
       <div className="CategoryPage__grid">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map((product) => (
+          <ProductCard key={uuid()} name={product.name} price={product.price} />
+        ))}
       </div>
       <div className="CategoryPage__pagination">
         <Pagination />

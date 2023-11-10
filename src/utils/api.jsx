@@ -39,6 +39,23 @@ export async function getProductFromAPI(name) {
   return product ? product : console.log("product not found");
 }
 
+export async function getProductsByCategoryName(categoryName) {
+  const { data: allCategories } = await getAllCategories();
+  const targetCategory = allCategories.find((cat) => cat.name === categoryName);
+
+  const url = productsURL;
+  const params = {
+    category_id: targetCategory.id,
+  };
+
+  Object.keys(params).forEach((key) =>
+    url.searchParams.append(key, params[key])
+  );
+
+  const products = await fetchTemplate(url, "GET", publicHeaders);
+  return products;
+}
+
 export async function getFirstPageFromClassInAPI(url) {
   const entities = await fetchTemplate(url, "GET", secretHeaders);
   console.log(url.pathname, " -> ", entities);
@@ -55,7 +72,7 @@ export async function getEntireClassFromAPI(targetFunction, url) {
     promises.data.push(...results.data);
     Object.assign(promises.meta.pagination, results.meta.pagination);
   }
-  console.log(promises)
+  console.log(promises);
   return promises;
 }
 

@@ -1,7 +1,11 @@
+/*
+  Modify <head>  
+  https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
+*/
+
 import Nav from "../components/navBar/NavBar";
 import NavMenuBtn from "../components/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
 import Footer from "../components/footer/Footer";
-import CategoriesBar from "../components/categoriesBar/CategoriesBar";
 import Logo from "../components/globals/Logo";
 import SearchBar from "../components/navBar/subcomponents/searchBar/SearchBar";
 
@@ -43,7 +47,6 @@ export default async function RootLayout({ children }) {
           </NavMenuBtn>
           <SearchBar />
         </Nav>
-        <CategoriesBar />
         {children}
         <Footer />
       </body>

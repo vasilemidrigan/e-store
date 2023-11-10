@@ -25,7 +25,6 @@ const delay = (ms = 250) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function fetchTemplate(url, method, headers, body) {
   // await delay();
-
   const response = await fetch(url, {
     method: method,
     headers: headers,
