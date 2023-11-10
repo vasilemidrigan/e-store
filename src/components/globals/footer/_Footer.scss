@@ -1,4 +1,4 @@
-.Footer { 
+.Footer {
   margin-top: $margin-xl;
   background-color: black;
   @include d-flex(center, center, column);
@@ -6,7 +6,8 @@
     margin: 0 auto;
     height: 3.875rem;
     width: 6.5625rem;
-    margin: .9375rem;
-    background: no-repeat url(../../../public/icons/logo/logo-footer.svg) center;
+    margin: 0.9375rem;
+    background: no-repeat url(../../../../public/icons/logo/logo-footer.svg)
+      center;
   }
 }

@@ -5,18 +5,18 @@
 
 @import "./categories-icons";
 
-@import "@/components/globals/Logo";
+@import "@/components/globals/logo/Logo";
 
-@import "@/components/navBar/NavBar";
-@import "@/components/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
-@import "@/components/navBar/subcomponents/SearchBar/SearchBar";
+@import "@/components/globals/navBar/NavBar";
+@import "@/components/globals/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
+@import "@/components/globals/navBar/subcomponents/SearchBar/SearchBar";
 
-@import "@/components/categoriesBar/CategoriesBar";
-@import "@/components/categoriesBar/CategoryIcon/CategoryIcon";
+@import "@/components/category/categoriesBar/CategoriesBar";
+@import "@/components/category/categoriesBar/CategoryIcon/CategoryIcon";
 
-@import "@/components/navBar/subcomponents/navMenu/NavMenu";
+@import "@/components/globals/navBar/subcomponents/navMenu/NavMenu";
 
-@import "@/components/searchResults/SearchResults";
+@import "@/components/globals/searchResults/SearchResults";
 
 @import "../app/page";
 @import "@/components/home/homeGrid/HomeGrid";
@@ -27,17 +27,17 @@
 @import "@/components/home/imageCarousel/controlsBar/ControlsBar";
 
 @import "../app/category/[id]/page";
-@import "@/components/categoryIllustration/CategoryIllustration";
-@import "@/components/productCard/ProductCard";
-@import "@/components/pagination/Pagination";
+@import "@/components/category/categoryIllustration/CategoryIllustration";
+@import "@/components/product/productCard/ProductCard";
+@import "@/components/globals/pagination/Pagination";
 
 @import "../app/product/page";
-@import "@/components/productPage/productTitle/ProductTitle";
-@import "@/components/productPage/productCollage/ProductCollage";
-@import "@/components/productPage/productDescription/ProductDescription";
-@import "@/components/productPage/productDetails/ProductDetails";
+@import "@/components/product/productPage/productTitle/ProductTitle";
+@import "@/components/product/productPage/productCollage/ProductCollage";
+@import "@/components/product/productPage/productDescription/ProductDescription";
+@import "@/components/product/productPage/productDetails/ProductDetails";
 
-@import "@/components/footer/Footer";
-@import "@/components/footer/FooterGrid";
+@import "@/components/globals/footer/Footer";
+@import "@/components/globals/footer/FooterGrid";
 
 @import "active-states";

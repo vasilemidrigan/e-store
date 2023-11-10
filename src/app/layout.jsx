@@ -3,14 +3,14 @@
   https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 */
 
-import Nav from "../components/navBar/NavBar";
-import NavMenuBtn from "../components/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
-import Footer from "../components/footer/Footer";
-import Logo from "../components/globals/Logo";
-import SearchBar from "../components/navBar/subcomponents/searchBar/SearchBar";
+import Nav from "../components/globals/navBar/NavBar";
+import NavMenuBtn from "../components/globals/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
+import Footer from "../components/globals/footer/Footer";
+import Logo from "../components/globals/logo/Logo";
+import SearchBar from "../components/globals/navBar/subcomponents/searchBar/SearchBar";
 
 import "../styles/index.scss";
-import NavMenu from "../components/navBar/subcomponents/navMenu/NavMenu";
+import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
 
 export default async function RootLayout({ children }) {
   return (

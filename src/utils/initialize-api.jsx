@@ -7,6 +7,8 @@
   !important
   Check localStorage, and delete isAPIInitialized property in order to be able 
   to run initializeProductsToAPI()
+
+  ! To change initializeProductsToAPI() by using Promise.all[]
 */
 
 import { initialProductsData } from "src/api/initial-products";

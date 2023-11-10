@@ -10,8 +10,8 @@
 
 import { v4 as uuid } from "uuid";
 
-import ProductCard from "src/components/productCard/ProductCard";
-import Pagination from "src/components/pagination/Pagination";
+import ProductCard from "@/components/product/productCard/ProductCard";
+import Pagination from "@/components/globals/pagination/Pagination";
 
 import { getProductsByCategoryName } from "src/utils/api";
 
