@@ -1,23 +1,15 @@
-import mainPhoto from "@/public/images/desktop-version/smartphones/main-photo.png";
-import secondPhoto from "@/public/images/desktop-version/smartphones/second-photo.png";
+import { v4 } from "uuid";
 
-export default function ProductCollage() {
+export default function ProductCollage({ images }) {
+  const productImages = images.map((img) => (
+    <div key={v4()} className={`ProductCollage__photo-${images.indexOf(img)}`}>
+      <img src={img.url} alt="image" />
+    </div>
+  ));
+
   return (
     <>
-      <div className="ProductCollage">
-        <div className="ProductCollage__main-photo">
-          <img src={mainPhoto.src} alt="smartphone" />
-        </div>
-        <div className="ProductCollage__photo-1">
-          <img src={secondPhoto.src} alt="smartphone" />
-        </div>
-        <div className="ProductCollage__photo-2">
-          <img src={secondPhoto.src} alt="smartphone" />
-        </div>
-        <div className="ProductCollage__photo-3">
-          <img src={secondPhoto.src} alt="smartphone" />
-        </div>
-      </div>
+      <div className="ProductCollage">{productImages}</div>
       <hr className="hr-thin" />
     </>
   );

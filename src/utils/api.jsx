@@ -81,6 +81,17 @@ export async function getAllCategories() {
   return categories;
 }
 
+export async function getImagesByProductName(productName) {
+  const { data: assets } = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    assetsURL
+  );
+  const targetImages = assets.filter(
+    (img) => img.filename.slice(0, -6) === productName
+  );
+  return targetImages;
+}
+
 /* update */
 
 export async function updateProductFromAPI(productId, body) {
