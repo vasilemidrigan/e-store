@@ -45,7 +45,7 @@ export default async function initializeProductsToAPI() {
   localStorage.setItem("isAPIInitialized", true);
 }
 
-async function addAllProductsToAPI(productsArr) {
+export async function addAllProductsToAPI(productsArr) {
   const promises = [];
   const { data: categories } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
@@ -67,12 +67,16 @@ async function addAllProductsToAPI(productsArr) {
       if (property == "products") {
         for (let product of category[property]) {
           console.log(`adding ${product.name} product...`);
-          promises.push(
-            await addProductToAPI({
-              ...product,
-              meta: { category: category.category },
-            })
-          );
+          for (let i = 0; i < 5; i++) {
+            // add 5 instances of this product
+            promises.push(
+              // to simulate a bigger amount of prods.
+              await addProductToAPI({
+                ...product,
+                meta: { category: category.category },
+              })
+            );
+          }
         }
       }
     }
@@ -80,7 +84,7 @@ async function addAllProductsToAPI(productsArr) {
   return promises;
 }
 
-async function addAllCategoriesToAPI() {
+export async function addAllCategoriesToAPI() {
   for (let category of initialProductsData) {
     fetchTemplate(categoriesURL, "POST", secretHeaders, {
       name: category.category,
@@ -89,7 +93,7 @@ async function addAllCategoriesToAPI() {
   }
 }
 
-async function assignCategoriesToAllProducts() {
+export async function assignCategoriesToAllProducts() {
   const { data: products } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     productsURL
@@ -101,9 +105,15 @@ async function assignCategoriesToAllProducts() {
     const { id: categoryId, name: categoryName } = await categories.find(
       (cat) => cat.name === product.meta.category
     );
-    await updateProductFromAPI(product.id, {
-      categories: [{ id: categoryId }],
-    });
+    if (product.categories.length == 0) {
+      console.log("lenght is 0");
+      await updateProductFromAPI(product.id, {
+        categories: [{ id: categoryId }],
+      });
+    }
+    if (product.categories.length > 0) {
+      console.log("lenght is 0");
+    }
   }
 }
 

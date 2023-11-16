@@ -21,7 +21,7 @@ export default async function CategoryPage({ params }) {
   return (
     <div className="CategoryPage">
       <div className="CategoryPage__grid">
-        {products.map((product) => (
+        {products?.map((product) => (
           <ProductCard
             key={v4()}
             name={product.name}

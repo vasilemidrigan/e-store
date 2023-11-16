@@ -1,12 +1,9 @@
 .ControlBtn {
-  width: 0.3794rem;
-  height: 0.3866rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   background-color: $white;
   &--active {
-    width: 0.875rem;
-    height: 0.375rem;
-    background-color: $grey42;
-    border-radius: 40%; 
+    background-color: $very-light-grey;
   }
 }

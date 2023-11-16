@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 
 import ImageCard from "./imageCard/ImageCard";
 import ControlsBar from "./controlsBar/ControlsBar";
 
-import { imageCarousel } from "src/data/hardcoded-data/image-carousel";
+import { imageCarousel } from "@/data/image-carousel";
 
 export default function ImageCarousel() {
   const [images, setImages] = useState(imageCarousel);

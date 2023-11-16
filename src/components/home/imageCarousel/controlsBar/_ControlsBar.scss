@@ -1,12 +1,11 @@
 .ControlsBar {
   width: $width-l;
-  height: 1rem;
+  height: 3.75rem;
   @include d-flex(center, center, row);
-  border-radius: $bord-rad-bottom-3px;
+  border-radius: 0 0 1.25rem 1.25rem;
   background-color: $light-grey;
   &__btns-wrapper {
-    width: 4.769rem;
-    height: 0.3866rem;
     @include d-flex(space-between, center, row);
+    gap: 30px;
   }
 }
