@@ -107,7 +107,7 @@ async function assignCategoriesToAllProducts() {
   }
 }
 
-async function addAllImagesToAPI() {
+export async function addAllImagesToAPI() {
   const assets = [];
 
   for (let category of initialProductsData) {
@@ -126,7 +126,7 @@ async function addAllImagesToAPI() {
   return assets;
 }
 
-async function assignAssetsToAllProducts() {
+export async function assignAssetsToAllProducts() {
   const { data: products } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     productsURL

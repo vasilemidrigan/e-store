@@ -7,6 +7,7 @@ import { getImagesByProductName, getProductFromAPI } from "src/utils/api";
 export default async function ProductPage({ params }) {
   const product = await getProductFromAPI(params.id);
   const productImages = await getImagesByProductName(product.name);
+  console.log(productImages);
   return (
     <div className="ProductPage">
       <div className="ProductPage__overview">

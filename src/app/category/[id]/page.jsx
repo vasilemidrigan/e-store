@@ -8,7 +8,7 @@
   Need to check this when implementing pagination. 
 */
 
-import { v4 as uuid } from "uuid";
+import { v4 } from "uuid";
 
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
@@ -22,7 +22,12 @@ export default async function CategoryPage({ params }) {
     <div className="CategoryPage">
       <div className="CategoryPage__grid">
         {products.map((product) => (
-          <ProductCard key={uuid()} name={product.name} price={product.price} />
+          <ProductCard
+            key={v4()}
+            name={product.name}
+            price={product.price}
+            image={product.image.url}
+          />
         ))}
       </div>
       <div className="CategoryPage__pagination">

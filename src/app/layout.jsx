@@ -11,6 +11,11 @@ import SearchBar from "../components/globals/navBar/subcomponents/searchBar/Sear
 
 import "../styles/index.scss";
 import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
+import {
+  getEntireClassFromAPI,
+  getFirstPageFromClassInAPI,
+} from "src/utils/api";
+import { productsURL } from "src/api/endpoints";
 
 export default async function RootLayout({ children }) {
   return (
