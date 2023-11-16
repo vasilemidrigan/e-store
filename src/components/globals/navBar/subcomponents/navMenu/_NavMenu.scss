@@ -7,7 +7,7 @@
   z-index: 1;
   background-color: $white;
   @include font("Roboto", $font-size-m, $font-weigth-thin);
-
+  @include d-flex(space-between, center, row);
   &__categories {
     height: 6.25rem;
     max-width: 69.0625rem;
@@ -19,5 +19,10 @@
 
   &__category {
     cursor: pointer;
+  }
+  &__close {
+    cursor: pointer;
+    width: 1.875rem;
+    height: 1.875rem;
   }
 }
