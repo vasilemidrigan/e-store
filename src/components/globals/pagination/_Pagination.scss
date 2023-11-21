@@ -1,18 +1,38 @@
 .Pagination {
-  width: 13.0625rem;
+  font-size: $font-size-m;
   height: 1.5625rem;
   margin: 50px auto;
   @include d-flex(center, center, row);
+  gap: 20px;
 
-  &__back { 
-  }
-
-  &__index { 
-    & span:nth-child(1), & span:last-child {
-      margin: 0 2.5625rem 0 2.5625rem;
+  &__back,
+  &__forward {
+    margin: 20px;
+    cursor: pointer;
+    img {
+      width: 10px;
+      height: 20px;
     }
   }
 
-  &__forward {
+  &__index-wrapper {
+    @include d-flex(space-between, center, row);
+    gap: 20px;
+  }
+
+  &__index {
+    cursor: pointer;
+  }
+  &__link-wrapper {
+    width: 20px;
+    height: 20px;
+  }
+  &__link {
+    cursor: pointer;
+    &__active {
+      span {
+        font-weight: 700;
+      }
+    }
   }
 }

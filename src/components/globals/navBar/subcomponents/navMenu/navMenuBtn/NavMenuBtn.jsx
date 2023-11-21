@@ -6,24 +6,32 @@ import { assetsURL, productsURL } from "src/api/endpoints";
 import { initialProductsData } from "src/api/initial-products";
 import {
   deleteEntireClassFromAPI,
+  getAllCategories,
   getEntireClassFromAPI,
   getFirstPageFromClassInAPI,
-} from "src/utils/api";
+  getProductsByCategoryName,
+} from "src/lib/api";
 import {
+  addAllImagesToAPI,
   addAllProductsToAPI,
   assignAssetsToAllProducts,
   assignCategoriesToAllProducts,
-} from "src/utils/initialize-api";
+} from "src/lib/initialize-api";
 
 export default function NavMenuBtn({ children }) {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const ref = useRef(false);
 
+  // addAllImagesToAPI();
   // addAllProductsToAPI(initialProductsData);
   // assignAssetsToAllProducts();
   // deleteEntireClassFromAPI(productsURL);
+  // deleteEntireClassFromAPI(assetsURL);
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
+  // getEntireClassFromAPI(getFirstPageFromClassInAPI, assetsURL);
+  // getAllCategories();
   // assignCategoriesToAllProducts();
+  // getProductsByCategoryName("displays");
 
   function onClickOutsideMenu(event) {
     if (event.code === "Escape" || event.type === "click") {

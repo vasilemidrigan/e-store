@@ -1,3 +1,4 @@
+import { revalidatePath, revalidateTag } from "next/cache";
 import { productsURL, assetsURL, categoriesURL } from "src/api/endpoints";
 import { initialProductsData } from "src/api/initial-products";
 import fetchTemplate, { publicHeaders, secretHeaders } from "./fetch";
@@ -39,21 +40,32 @@ export async function getProductFromAPI(name) {
   return product ? product : console.log("product not found");
 }
 
-export async function getProductsByCategoryName(categoryName) {
+export async function getProductsByCategoryName(categoryName, page = 1) {
   const { data: allCategories } = await getAllCategories();
   const targetCategory = allCategories.find((cat) => cat.name === categoryName);
 
-  const url = productsURL;
   const params = {
-    category_id: targetCategory.id,
+    category_id: targetCategory?.id,
+    page: page,
   };
-
   Object.keys(params).forEach((key) =>
-    url.searchParams.append(key, params[key])
+    productsURL.searchParams.append(key, params[key])
   );
 
-  const products = await fetchTemplate(url, "GET", publicHeaders);
-  return products;
+  const data = await fetchTemplate(productsURL, "GET", publicHeaders);
+  const products = data.data;
+  const metadata = data.meta;
+
+  productsURL.searchParams.delete("category_id");
+  productsURL.searchParams.delete("page");
+
+  return {
+    products: products,
+    metadata: {
+      hasNextPage: metadata.pagination.links?.next,
+      totalPages: metadata.pagination.total_pages,
+    },
+  };
 }
 
 export async function getFirstPageFromClassInAPI(url) {
@@ -82,13 +94,21 @@ export async function getAllCategories() {
 }
 
 export async function getImagesByProductName(productName) {
+  let targetImages = [];
   const { data: assets } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     assetsURL
   );
-  const targetImages = assets.filter(
-    (img) => img.filename.slice(0, -6) === productName
-  );
+  if (assets.length > 0) {
+    targetImages.push(
+      assets.filter((img) => img.filename.slice(0, -6) === productName)
+    );
+  }
+  if (assets.length === 0) {
+    console.log("No assets in API");
+    return;
+  }
+
   return targetImages;
 }
 

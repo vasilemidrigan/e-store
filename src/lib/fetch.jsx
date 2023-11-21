@@ -25,12 +25,16 @@ const delay = (ms = 250) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default async function fetchTemplate(url, method, headers, body) {
   // await delay();
+
   const response = await fetch(url, {
     method: method,
     headers: headers,
     body: JSON.stringify(body),
+    cache: "force-cache",
   });
+
   const data = await response.json();
+  console.log("Fetched data with fetchTemplate(): ", data);
 
   return data;
 }

@@ -13,10 +13,13 @@ import { v4 } from "uuid";
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
 
-import { getProductsByCategoryName } from "src/utils/api";
+import { getProductsByCategoryName } from "src/lib/api";
 
-export default async function CategoryPage({ params }) {
-  const { data: products } = await getProductsByCategoryName(params.id);
+export default async function CategoryPage({ params, searchParams }) {
+  const { products, metadata } = await getProductsByCategoryName(
+    params.id,
+    searchParams?.page
+  );
 
   return (
     <div className="CategoryPage">
@@ -26,12 +29,13 @@ export default async function CategoryPage({ params }) {
             key={v4()}
             name={product.name}
             price={product.price}
-            image={product.image.url}
+            image={product.image?.url}
+            nr={product.meta.nr}
           />
         ))}
       </div>
       <div className="CategoryPage__pagination">
-        <Pagination />
+        <Pagination page={searchParams.page || 1} metadata={metadata} />
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ table {
 
   th {
     margin: 0 auto;
-    @include font('PT Sans Caption', $font-size-m, $font-weigth-bold);
+    @include font("PT Sans Caption", $font-size-m, $font-weigth-bold);
   }
 
   td {

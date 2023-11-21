@@ -53,7 +53,6 @@ export async function addAllProductsToAPI(productsArr) {
   );
 
   let categoryName = "";
-  let categoryTarget = {};
 
   for (let category of productsArr) {
     for (let property in category) {
@@ -67,13 +66,12 @@ export async function addAllProductsToAPI(productsArr) {
       if (property == "products") {
         for (let product of category[property]) {
           console.log(`adding ${product.name} product...`);
-          for (let i = 0; i < 5; i++) {
-            // add 5 instances of this product
+          for (let i = 0; i < 30; i++) {
+            // add 30 instances of the product
             promises.push(
-              // to simulate a bigger amount of prods.
               await addProductToAPI({
                 ...product,
-                meta: { category: category.category },
+                meta: { category: category.category, nr: i },
               })
             );
           }
@@ -105,15 +103,11 @@ export async function assignCategoriesToAllProducts() {
     const { id: categoryId, name: categoryName } = await categories.find(
       (cat) => cat.name === product.meta.category
     );
-    if (product.categories.length == 0) {
-      console.log("lenght is 0");
-      await updateProductFromAPI(product.id, {
-        categories: [{ id: categoryId }],
-      });
-    }
-    if (product.categories.length > 0) {
-      console.log("lenght is 0");
-    }
+    console.log(product.id, product.name);
+    console.log(categoryName);
+    await updateProductFromAPI(product.id, {
+      categories: [{ id: categoryId }],
+    });
   }
 }
 
