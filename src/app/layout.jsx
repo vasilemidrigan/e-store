@@ -11,8 +11,30 @@ import SearchBar from "../components/globals/navBar/subcomponents/searchBar/Sear
 
 import "../styles/index.scss";
 import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
+import {
+  deleteEntireClassFromAPI,
+  getEntireClassFromAPI,
+  getFirstPageFromClassInAPI,
+} from "src/lib/api";
+import { assetsURL, categoriesURL, productsURL } from "src/api/endpoints";
+import initializeProductsToAPI, {
+  addAllProductsToAPI,
+  assignCategoriesToAllProducts,
+} from "src/lib/initialize-api";
+import { initialProductsData } from "src/api/initial-products";
 
 export default async function RootLayout({ children }) {
+  // deleteEntireClassFromAPI(productsURL);
+  // deleteEntireClassFromAPI(assetsURL);
+  // deleteEntireClassFromAPI(categoriesURL);
+
+  // addAllProductsToAPI(initialProductsData);
+  // assignCategoriesToAllProducts();
+
+  // initializeProductsToAPI();
+
+  // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
+
   return (
     <html lang="en">
       <head>
