@@ -1,22 +1,12 @@
-"use client";
+import ImageCarouselClient from "@/components/home/imageCarousel/imageCarouselClient/ImageCarouselClient";
+import getImageCarouselAssets from "src/lib/api";
 
-import { useState } from "react";
-
-import ImageCard from "./imageCard/ImageCard";
-import ControlsBar from "./controls/ControlsBar";
-
-import { imageCarousel } from "@/data/image-carousel";
-
-export default function ImageCarousel() {
-  const [images, setImages] = useState(imageCarousel);
-  const [activeId, setActiveId] = useState(1);
-
-  let activeImg = images.filter((img) => img.id == activeId);
+export default async function ImageCarousel() {
+  const images = await getImageCarouselAssets();
 
   return (
-    <div className="ImageCarousel">
-      <ImageCard img={activeImg[0]} />
-      <ControlsBar activeId={activeId} setActiveId={setActiveId} />
-    </div>
+    <>
+      <ImageCarouselClient images={images} />
+    </>
   );
 }

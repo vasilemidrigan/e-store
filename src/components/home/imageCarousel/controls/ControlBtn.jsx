@@ -1,10 +1,10 @@
-export default function ControlBtn(props) {
+export default function ControlBtn({
+  activeStates: { id, activeId, setActiveId },
+}) {
   return (
     <div
-      className={`ControlBtn ${
-        props.activeId == props.id ? "ControlBtn--active" : ""
-      }`}
-      onClick={() => props.setActiveId(props.id)}
+      className={`ControlBtn ${activeId == id ? "ControlBtn--active" : ""}`}
+      onClick={() => setActiveId(id)}
     ></div>
   );
 }

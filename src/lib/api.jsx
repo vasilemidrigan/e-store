@@ -12,10 +12,10 @@ export async function addProductToAPI(item) {
   return product;
 }
 
-export async function addAssetsToAPI(assets) {
+export async function addAssetsToAPI(assets, cache = "no-cache") {
   const promises = [];
   promises.push(
-    await fetchTemplate(assetsURL.href, "POST", secretHeaders, assets)
+    await fetchTemplate(assetsURL.href, "POST", secretHeaders, assets, cache)
   );
   return promises;
 }
@@ -84,7 +84,8 @@ export async function getEntireClassFromAPI(targetFunction, url) {
     promises.data.push(...results.data);
     Object.assign(promises.meta.pagination, results.meta.pagination);
   }
-  console.log(promises);
+  // console.log(promises);
+  console.log(JSON.stringify(promises, null, 4));
   return promises;
 }
 
@@ -110,6 +111,26 @@ export async function getImagesByProductName(productName) {
   }
 
   return targetImages;
+}
+
+export default async function getImageCarouselAssets() {
+  let promises = [];
+  const { data: assets } = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    assetsURL
+  );
+  assets.forEach((asset) => {
+    if (asset.meta[0].category === "image-carousel") {
+      const promise = fetchTemplate(
+        `${assetsURL}/${asset.id}`,
+        "GET",
+        secretHeaders
+      );
+      promises.push(promise);
+    }
+  });
+
+  return Promise.all([...promises]);
 }
 
 /* update */
@@ -146,7 +167,7 @@ export async function deleteAssetsFromProducts() {
 
       for (let i = 0; i < 4; i++) {
         const assets = await getAssetsByProductName(productTarget?.name);
-        promises.push;
+        promises.push(assets);
 
         await deleteAssetFromProduct(productTarget, assets[i]);
       }

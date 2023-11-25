@@ -20,9 +20,8 @@
 
 @import "../app/page";
 @import "@/components/home/homeGrid/HomeGrid";
-@import "@/components/home/imageCarousel/ImageCarousel";
+@import "@/components/home/imageCarousel/imageCarouselClient/ImageCarouselClient";
 @import "@/components/home/imageCarousel/imageCard/ImageCard";
-@import "@/components/home/imageCarousel/textCard/TextCard";
 @import "@/components/home/imageCarousel/controls/ControlBtn";
 @import "@/components/home/imageCarousel/controls/ControlsBar";
 @import "@/components/home/imageCarousel/controls/ControlArrows";

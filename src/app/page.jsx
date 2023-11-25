@@ -1,4 +1,4 @@
-import ImageCarousel from "src/components/home/imageCarousel/ImageCarousel";
+import ImageCarousel from "@/components/home/imageCarousel/ImageCarousel";
 import HomeGrid from "src/components/home/homeGrid/HomeGrid";
 
 export default function HomePage() {

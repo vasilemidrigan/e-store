@@ -1,12 +1,14 @@
-import TextCard from "src/components/home/imageCarousel/textCard/TextCard";
 import ControlArrows from "../controls/ControlArrows";
 
-export default function ImageCard(props) {
+export default function ImageCard({
+  data: { activeId, setActiveId, activeImg },
+}) {
   return (
     <div className="ImageCard">
-      <img src={props.img.src} className="ImageCard__img" alt={props.img.alt} />
-      <ControlArrows />
-      <TextCard />
+      <img src={activeImg.url} className="ImageCard__img" alt="img" />
+      <ControlArrows
+        activeStates={{ imgId: activeImg.meta[1].id, activeId, setActiveId }}
+      />
     </div>
   );
 }

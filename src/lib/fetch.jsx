@@ -23,18 +23,27 @@ const delay = (ms = 250) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /* reusable fetch template */
 
-export default async function fetchTemplate(url, method, headers, body) {
+export default async function fetchTemplate(
+  url,
+  method,
+  headers,
+  body,
+  cache = "no-cache"
+) {
   await delay();
 
   const response = await fetch(url, {
     method: method,
     headers: headers,
     body: JSON.stringify(body),
-    cache: "no-cache",
+    cache: cache,
   });
 
   const data = await response.json();
-  console.log("Fetched data with fetchTemplate(): ", data);
+  console.log(
+    "Fetched data with fetchTemplate(): ",
+    JSON.stringify(data, null, 4)
+  );
 
   return data;
 }

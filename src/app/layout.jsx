@@ -11,7 +11,7 @@ import SearchBar from "../components/globals/navBar/subcomponents/searchBar/Sear
 
 import "../styles/index.scss";
 import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
-import {
+import getImageCarouselAssets, {
   deleteEntireClassFromAPI,
   getEntireClassFromAPI,
   getFirstPageFromClassInAPI,
@@ -21,6 +21,7 @@ import initializeProductsToAPI, {
   addAllCategoriesToAPI,
   addAllImagesToAPI,
   addAllProductsToAPI,
+  addImageCarouselAssets,
   assignAssetsToAllProducts,
   assignCategoriesToAllProducts,
 } from "src/lib/initialize-api";
@@ -42,6 +43,9 @@ export default async function RootLayout({ children }) {
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, assetsURL);
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, categoriesURL);
+
+  // addImageCarouselAssets();
+  // getImageCarouselAssets();
 
   return (
     <html lang="en">

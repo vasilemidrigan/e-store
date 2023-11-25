@@ -26,7 +26,8 @@ import {
   assetsURL,
   categoriesURL,
   productsURL,
-  s3URL,
+  s3ImageCarouselBucketURL,
+  s3ProductImagesBucketURL,
 } from "src/api/endpoints";
 import fetchTemplate, { secretHeaders } from "./fetch";
 
@@ -122,13 +123,38 @@ export async function addAllImagesToAPI() {
         assets.push(
           await addAssetsToAPI({
             filename: `${product.name}-${i}.jpg`,
-            url: `${s3URL}/${category.category}/${product.name}/${product.name}-${i}.jpg`,
+            url: `${s3ProductImagesBucketURL}/${category.category}/${product.name}/${product.name}-${i}.jpg`,
           })
         );
       }
     }
   }
   return assets;
+}
+
+export async function addImageCarouselAssets() {
+  const promises = [];
+  const imgsAmount = 3;
+  let i = 1;
+
+  while (i <= imgsAmount) {
+    console.log(i);
+    promises.push(
+      await addAssetsToAPI(
+        {
+          filename: `img-${i}.jpg`,
+          url: `${s3ImageCarouselBucketURL}/img-${i}.jpg`,
+          meta: [{ category: "image-carousel" }, { id: `${i}` }],
+        },
+        "no-store"
+      )
+    );
+
+    ++i;
+  }
+
+  console.log(JSON.stringify(promises, null, 4));
+  return promises;
 }
 
 export async function assignAssetsToAllProducts() {
