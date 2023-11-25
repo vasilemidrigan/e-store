@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import ImageCard from "./imageCard/ImageCard";
-import ControlsBar from "./controlsBar/ControlsBar";
+import ControlsBar from "./controls/ControlsBar";
 
 import { imageCarousel } from "@/data/image-carousel";
 

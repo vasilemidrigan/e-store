@@ -2,7 +2,6 @@
   width: $width-l;
   height: 3.75rem;
   @include d-flex(center, center, row);
-  border-radius: 0 0 1.25rem 1.25rem;
   background-color: $light-grey;
   &__btns-wrapper {
     @include d-flex(space-between, center, row);

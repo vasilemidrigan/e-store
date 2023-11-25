@@ -1,8 +1,7 @@
 .ImageCard {
   width: 100%;
   max-height: 31.5rem;
-  display: flex;
-  justify-content: center;
+  @include d-flex(center, unset, unset);
   position: relative;
   &__img {
     min-width: 100%;

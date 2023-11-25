@@ -23,8 +23,9 @@
 @import "@/components/home/imageCarousel/ImageCarousel";
 @import "@/components/home/imageCarousel/imageCard/ImageCard";
 @import "@/components/home/imageCarousel/textCard/TextCard";
-@import "@/components/home/imageCarousel/controlsBar/ControlBtn";
-@import "@/components/home/imageCarousel/controlsBar/ControlsBar";
+@import "@/components/home/imageCarousel/controls/ControlBtn";
+@import "@/components/home/imageCarousel/controls/ControlsBar";
+@import "@/components/home/imageCarousel/controls/ControlArrows";
 
 @import "../app/category/[id]/page";
 @import "@/components/category/categoryIllustration/CategoryIllustration";

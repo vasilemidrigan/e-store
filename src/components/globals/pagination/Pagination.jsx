@@ -1,4 +1,5 @@
-// ! Not tested on less then 5 pages
+// ! Implement a solution for more pages where we'll probably need to
+//   hide pages from start and from the end with "..."
 
 import Link from "next/link";
 import { v4 } from "uuid";

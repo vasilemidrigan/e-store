@@ -18,7 +18,10 @@ import {
 } from "src/lib/api";
 import { assetsURL, categoriesURL, productsURL } from "src/api/endpoints";
 import initializeProductsToAPI, {
+  addAllCategoriesToAPI,
+  addAllImagesToAPI,
   addAllProductsToAPI,
+  assignAssetsToAllProducts,
   assignCategoriesToAllProducts,
 } from "src/lib/initialize-api";
 import { initialProductsData } from "src/api/initial-products";
@@ -28,12 +31,17 @@ export default async function RootLayout({ children }) {
   // deleteEntireClassFromAPI(assetsURL);
   // deleteEntireClassFromAPI(categoriesURL);
 
+  // assignAssetsToAllProducts();
   // addAllProductsToAPI(initialProductsData);
   // assignCategoriesToAllProducts();
+  // addAllImagesToAPI();
+  // addAllCategoriesToAPI();
 
   // initializeProductsToAPI();
 
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
+  // getEntireClassFromAPI(getFirstPageFromClassInAPI, assetsURL);
+  // getEntireClassFromAPI(getFirstPageFromClassInAPI, categoriesURL);
 
   return (
     <html lang="en">

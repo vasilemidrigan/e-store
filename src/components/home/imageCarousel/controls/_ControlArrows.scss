@@ -1,0 +1,18 @@
+.ControlArrows {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include d-flex(space-between, unset, unset);
+
+  &__img {
+    width: 3.125rem;
+    height: 3.125rem;
+    margin: 0 $margin-l;
+    cursor: pointer;
+    &:nth-child(1) {
+      transform: rotate(180deg);
+    }
+  }
+}
