@@ -14,7 +14,7 @@ import CategoryIllustration from "@/components/category/categoryIllustration/Cat
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
 
-import { getProductsByCategoryName } from "src/lib/api";
+import { getImageByName, getProductsByCategoryName } from "src/lib/api";
 
 export default async function CategoryPage({ params, searchParams }) {
   const { products, metadata } = await getProductsByCategoryName(
@@ -22,9 +22,16 @@ export default async function CategoryPage({ params, searchParams }) {
     searchParams?.page
   );
 
+  const categoryIllustrationImage = await getImageByName(
+    "category-illustration",
+    params.id
+  );
+
   return (
     <div className="CategoryPage">
-      <CategoryIllustration />
+      <CategoryIllustration
+        categoryIllustrationImage={categoryIllustrationImage[0]}
+      />
       <div className="CategoryPage__grid">
         {products?.map((product) => (
           <ProductCard

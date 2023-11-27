@@ -42,6 +42,8 @@ export default function ClientLog() {
   // addImageCarouselAssets();
   // getImagesByType("category-illustration");
   // deleteImagesByType("image-carousel");
+  // deleteImagesByType("category-illustration");
+  // addCategoryIllustrationsToAPI();
 
   return <></>;
 }

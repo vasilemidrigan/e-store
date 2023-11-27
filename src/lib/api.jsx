@@ -111,6 +111,29 @@ export async function getImagesByProductName(productName) {
   return targetImages;
 }
 
+export async function getImageByName(type, name) {
+  let promises = [];
+  const { data: assets } = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    assetsURL
+  );
+
+  assets.forEach((asset) => {
+    if (asset.meta[0]?.type === type) {
+      if (name === asset.filename.slice(0, -4)) {
+        const promise = fetchTemplate(
+          `${assetsURL}/${asset.id}`,
+          "GET",
+          secretHeaders
+        );
+        promises.push(promise);
+      }
+    }
+  });
+
+  return Promise.all([...promises]);
+}
+
 export async function getImagesByType(type) {
   let promises = [];
   const { data: assets } = await getEntireClassFromAPI(
