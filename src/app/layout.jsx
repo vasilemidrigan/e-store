@@ -18,43 +18,7 @@ import "../styles/index.scss";
 
 import { MenuContext } from "src/context/providers";
 
-import getImageCarouselAssets, {
-  deleteEntireClassFromAPI,
-  getEntireClassFromAPI,
-  getFirstPageFromClassInAPI,
-} from "src/lib/api";
-import { assetsURL, categoriesURL, productsURL } from "src/api/endpoints";
-import initializeProductsToAPI, {
-  addAllCategoriesToAPI,
-  addAllImagesToAPI,
-  addAllProductsToAPI,
-  addCategoryIllustrationsToAPI,
-  addImageCarouselAssets,
-  assignAssetsToAllProducts,
-  assignCategoriesToAllProducts,
-} from "src/lib/initialize-api";
-import { initialProductsData } from "src/api/initial-products";
-
 export default async function RootLayout({ children }) {
-  // deleteEntireClassFromAPI(productsURL);
-  // deleteEntireClassFromAPI(assetsURL);
-  // deleteEntireClassFromAPI(categoriesURL);
-
-  // assignAssetsToAllProducts();
-  // addAllProductsToAPI(initialProductsData);
-  // assignCategoriesToAllProducts();
-  // addAllImagesToAPI();
-  // addAllCategoriesToAPI();
-
-  // initializeProductsToAPI();
-
-  // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
-
-  // getEntireClassFromAPI(getFirstPageFromClassInAPI, categoriesURL);
-
-  // addImageCarouselAssets();
-  // getImageCarouselAssets();
-
   return (
     <html lang="en">
       <head>

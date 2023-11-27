@@ -76,8 +76,7 @@ export async function addCategoryIllustrationsToAPI() {
     );
   });
 
-  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-  console.log("promises are: ", JSON.stringify(promises, null, 4));
+  console.log("promises are: ", promises);
   return promises;
 }
 
@@ -169,7 +168,7 @@ export async function addImageCarouselAssets() {
         {
           filename: `img-${i}.jpg`,
           url: `${s3ImageCarouselBucketURL}/img-${i}.jpg`,
-          meta: [{ category: "image-carousel" }, { id: `${i}` }],
+          meta: [{ type: "image-carousel" }, { id: `${i}` }],
         },
         "no-store"
       )

@@ -1,8 +1,9 @@
 import ImageCarouselClient from "@/components/home/imageCarousel/imageCarouselClient/ImageCarouselClient";
-import getImageCarouselAssets from "src/lib/api";
+
+import { getImagesByType } from "src/lib/api";
 
 export default async function ImageCarousel() {
-  const images = await getImageCarouselAssets();
+  const images = await getImagesByType("image-carousel");
 
   return (
     <>

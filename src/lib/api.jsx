@@ -111,14 +111,14 @@ export async function getImagesByProductName(productName) {
   return targetImages;
 }
 
-export default async function getImageCarouselAssets() {
+export async function getImagesByType(type) {
   let promises = [];
   const { data: assets } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     assetsURL
   );
   assets.forEach((asset) => {
-    if (asset.meta[0]?.category === "image-carousel") {
+    if (asset.meta[0]?.type === type) {
       const promise = fetchTemplate(
         `${assetsURL}/${asset.id}`,
         "GET",
@@ -198,4 +198,24 @@ export async function deleteEntireClassFromAPI(url) {
   for (let i = 2; i <= pagesAmount; i++) {
     await deleteOnePageFromClassInAPI(url);
   }
+}
+
+export async function deleteImagesByType(type) {
+  let promises = [];
+  const { data: assets } = await getEntireClassFromAPI(
+    getFirstPageFromClassInAPI,
+    assetsURL
+  );
+  assets.forEach((asset) => {
+    if (asset.meta[0]?.type === type) {
+      const promise = fetchTemplate(
+        `${assetsURL}/${asset.id}`,
+        "DELETE",
+        secretHeaders
+      );
+      promises.push(promise);
+    }
+  });
+
+  return Promise.all([...promises]);
 }
