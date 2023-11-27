@@ -2,6 +2,10 @@
   display: unset;
 }
 
+.hidden {
+  display: none;
+}
+
 .bg-blur--active {
   filter: blur(30px);
 }

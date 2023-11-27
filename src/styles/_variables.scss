@@ -1,4 +1,4 @@
-// colors
+/* colors */
 $white: #ffffff;
 $grey98: #fafafa;
 $grey: #f1f1f1;
@@ -16,17 +16,20 @@ $matterhorn: #514e4e;
 $grey42: #6b6b6b;
 $suva-grey: #8d8d8d;
 
-// border-radius
+/* active states */
+$menu--active: rgba(40, 40, 40, 0.6);
+
+/* border-radius */
 $bord-rad-all-3px: 3px;
 $bord-rad-all-6px: 6px;
 $bord-rad-bottom-3px: 0px 0px 3px 3px;
 $bord-rad-top-3px: 3px 3px 0 0;
 
-// margins
+/* margins */
 $margin-m: 0.9375rem;
 $margin-l: 1.5625rem;
 $margin-xl: 3.125rem;
 $margin-xxl: 6.25rem;
 
-// widths
+/* widths */
 $width-l: 81.25rem;

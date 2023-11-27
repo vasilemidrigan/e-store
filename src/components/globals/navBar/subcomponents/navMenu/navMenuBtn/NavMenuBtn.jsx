@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+
+import { IsMenuActiveContext } from "src/context/providers";
 
 export default function NavMenuBtn({ children }) {
-  const [isMenuActive, setIsMenuActive] = useState(false);
+  const { isMenuActive, setIsMenuActive } = useContext(IsMenuActiveContext);
   const ref = useRef(false);
 
   function onClickOutsideMenu(event) {
@@ -16,7 +17,7 @@ export default function NavMenuBtn({ children }) {
     }
   }
 
-  const onClickMenu = (event) => {
+  const onClickMenu = () => {
     if (!ref.current) {
       ref.current = true;
       document.addEventListener("click", onClickOutsideMenu);

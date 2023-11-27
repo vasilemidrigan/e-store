@@ -3,14 +3,18 @@
   https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 */
 
-import Nav from "../components/globals/navBar/NavBar";
-import NavMenuBtn from "../components/globals/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
-import Footer from "../components/globals/footer/Footer";
 import Logo from "../components/globals/logo/Logo";
+import NavBar from "../components/globals/navBar/NavBar";
+import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
+import NavMenuBtn from "../components/globals/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
+import DarkBg from "../components/globals/darkBg/DarkBg";
 import SearchBar from "../components/globals/navBar/subcomponents/searchBar/SearchBar";
+import Footer from "../components/globals/footer/Footer";
 
 import "../styles/index.scss";
-import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
+
+import { MenuContext } from "src/context/providers";
+
 import getImageCarouselAssets, {
   deleteEntireClassFromAPI,
   getEntireClassFromAPI,
@@ -74,15 +78,19 @@ export default async function RootLayout({ children }) {
         ></link>
       </head>
       <body>
-        <Nav>
-          <Logo />
-          <NavMenuBtn>
-            <NavMenu />
-          </NavMenuBtn>
-          <SearchBar />
-        </Nav>
-        {children}
-        <Footer />
+        <MenuContext>
+          <NavBar>
+            <Logo />
+            <NavMenuBtn>
+              <NavMenu />
+            </NavMenuBtn>
+            <SearchBar />
+          </NavBar>
+          {/* darken background when menu is active */}
+          <DarkBg />
+          {children}
+          <Footer />
+        </MenuContext>
       </body>
     </html>
   );
