@@ -76,6 +76,17 @@ export default async function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700&family=Roboto:wght@100;300;400;700&display=swap"
           rel="stylesheet"
         ></link>
+        {/* Roboto Condensed */}
+        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet"
+        ></link>
       </head>
       <body>
         <MenuContext>

@@ -120,7 +120,7 @@ export default async function getImageCarouselAssets() {
     assetsURL
   );
   assets.forEach((asset) => {
-    if (asset.meta[0].category === "image-carousel") {
+    if (asset.meta[0]?.category === "image-carousel") {
       const promise = fetchTemplate(
         `${assetsURL}/${asset.id}`,
         "GET",

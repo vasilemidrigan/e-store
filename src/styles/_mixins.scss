@@ -6,16 +6,17 @@
 }
 
 @mixin product-card-l {
-  display: inline-block;
-  padding: .625rem;
-  width: 15.3125rem;
+  width: 15.3719rem;
   height: 26.0625rem;
-  border-radius: 24px;
-  background-color: $white-smoke;
-  @include font('Roboto', $font-size-m, $font-weigth-regular);
+  display: inline-block;
+  padding: 0.625rem;
+  border-radius: 0.9375rem;
+  border: 0.2px solid $silver-tone;
+  background-color: $grey98;
+  @include font("Roboto Condensed", $font-size-m, $font-weigth-regular);
 }
 
 @mixin product-card-photo-l {
-  width: 9.625rem;
-  height: 275px;
+  width: 100%;
+  height: 17.125rem;
 }

@@ -10,6 +10,7 @@
 
 import { v4 } from "uuid";
 
+import CategoryIllustration from "@/components/category/categoryIllustration/CategoryIllustration";
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
 
@@ -23,6 +24,7 @@ export default async function CategoryPage({ params, searchParams }) {
 
   return (
     <div className="CategoryPage">
+      <CategoryIllustration />
       <div className="CategoryPage__grid">
         {products?.map((product) => (
           <ProductCard

@@ -38,10 +38,13 @@ export default async function initializeProductsToAPI() {
   }
 
   await addAllCategoriesToAPI();
+
   await addAllProductsToAPI(initialProductsData);
   await assignCategoriesToAllProducts();
   await addAllImagesToAPI();
   await assignAssetsToAllProducts();
+
+  await addImageCarouselAssets();
 
   localStorage.setItem("isAPIInitialized", true);
 }

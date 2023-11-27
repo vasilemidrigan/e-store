@@ -6,5 +6,7 @@ export const s3ProductImagesBucketURL =
   "https://e-store-images.s3.eu-west-3.amazonaws.com";
 export const s3ImageCarouselBucketURL =
   "https://image-carousel-assets.s3.eu-north-1.amazonaws.com";
+export const s3CategoryIllustrationsURL =
+  "https://category-illustrations.s3.eu-north-1.amazonaws.com";
 
 export { productsURL, categoriesURL, assetsURL };

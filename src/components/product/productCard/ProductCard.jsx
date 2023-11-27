@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductCard({ name, price, image, nr }) {
   return (
     <Link href={`/product/${name}`}>
       <div className="ProductCard">
-        <div className="ProductCard__photo">
-          <img src={image} alt="smartphone photo" />
+        <div className="ProductCard__photo-wrapper">
+          <Image src={image} alt={"product photo"} fill objectFit="contain" />
         </div>
         <div className="ProductCard__id">
           {name} {nr}

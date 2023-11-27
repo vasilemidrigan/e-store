@@ -2,14 +2,9 @@
   cursor: pointer;
   @include product-card-l;
 
-  &__photo {
-    margin: 0 auto;
+  &__photo-wrapper {
+    position: relative;
     @include product-card-photo-l;
-
-    & img {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   &__id {
@@ -18,12 +13,12 @@
   }
 
   &__price {
-    color: $matterhorn;
+    color: $raspberry;
   }
 
   &__id,
   &__price {
     text-align: center;
-    @include font("Roboto", $font-weigth-regular, $font-size-m);
+    font-family: inherit;
   }
 }
