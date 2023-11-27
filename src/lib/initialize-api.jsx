@@ -26,10 +26,12 @@ import {
   assetsURL,
   categoriesURL,
   productsURL,
+  s3CategoryIllustrationsURL,
   s3ImageCarouselBucketURL,
   s3ProductImagesBucketURL,
 } from "src/api/endpoints";
 import fetchTemplate, { secretHeaders } from "./fetch";
+import { CATEGORY_ILLUSTRATIONS_LIST } from "@/data/constants";
 
 export default async function initializeProductsToAPI() {
   if (localStorage.getItem("isAPIInitialized")) {
@@ -38,6 +40,7 @@ export default async function initializeProductsToAPI() {
   }
 
   await addAllCategoriesToAPI();
+  await addCategoryIllustrationsToAPI();
 
   await addAllProductsToAPI(initialProductsData);
   await assignCategoriesToAllProducts();
@@ -49,6 +52,35 @@ export default async function initializeProductsToAPI() {
   localStorage.setItem("isAPIInitialized", true);
 }
 
+export async function addAllCategoriesToAPI() {
+  for (let category of initialProductsData) {
+    fetchTemplate(categoriesURL, "POST", secretHeaders, {
+      name: category.category,
+      slug: category.category,
+    });
+  }
+}
+
+export async function addCategoryIllustrationsToAPI() {
+  const promises = [];
+  CATEGORY_ILLUSTRATIONS_LIST.forEach(async (cat) => {
+    promises.push(
+      await addAssetsToAPI(
+        {
+          filename: `${cat}.jpg`,
+          url: `${s3CategoryIllustrationsURL}/${cat}.jpg`,
+          meta: [{ type: "category-illustration" }],
+        },
+        "no-store"
+      )
+    );
+  });
+
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+  console.log("promises are: ", JSON.stringify(promises, null, 4));
+  return promises;
+}
+
 export async function addAllProductsToAPI(productsArr) {
   const promises = [];
   const { data: categories } = await getEntireClassFromAPI(
@@ -57,7 +89,6 @@ export async function addAllProductsToAPI(productsArr) {
   );
 
   let categoryName = "";
-  let categoryTarget = "";
 
   for (let category of productsArr) {
     for (let property in category) {
@@ -85,15 +116,6 @@ export async function addAllProductsToAPI(productsArr) {
     }
   }
   return promises;
-}
-
-export async function addAllCategoriesToAPI() {
-  for (let category of initialProductsData) {
-    fetchTemplate(categoriesURL, "POST", secretHeaders, {
-      name: category.category,
-      slug: category.category,
-    });
-  }
 }
 
 export async function assignCategoriesToAllProducts() {

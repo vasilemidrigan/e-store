@@ -40,10 +40,7 @@ export default async function fetchTemplate(
   });
 
   const data = await response.json();
-  console.log(
-    "Fetched data with fetchTemplate(): ",
-    JSON.stringify(data, null, 4)
-  );
+  console.log(data);
 
   return data;
 }

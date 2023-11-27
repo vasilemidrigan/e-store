@@ -3,6 +3,9 @@
   https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 */
 
+/* temp component for logging data into dev console */
+import ClientLog from "@/components/ClientLog";
+
 import Logo from "../components/globals/logo/Logo";
 import NavBar from "../components/globals/navBar/NavBar";
 import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu";
@@ -25,6 +28,7 @@ import initializeProductsToAPI, {
   addAllCategoriesToAPI,
   addAllImagesToAPI,
   addAllProductsToAPI,
+  addCategoryIllustrationsToAPI,
   addImageCarouselAssets,
   assignAssetsToAllProducts,
   assignCategoriesToAllProducts,
@@ -45,7 +49,7 @@ export default async function RootLayout({ children }) {
   // initializeProductsToAPI();
 
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
-  // getEntireClassFromAPI(getFirstPageFromClassInAPI, assetsURL);
+
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, categoriesURL);
 
   // addImageCarouselAssets();
@@ -89,6 +93,7 @@ export default async function RootLayout({ children }) {
         ></link>
       </head>
       <body>
+        <ClientLog />
         <MenuContext>
           <NavBar>
             <Logo />

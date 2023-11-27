@@ -70,7 +70,6 @@ export async function getProductsByCategoryName(categoryName, page = 1) {
 
 export async function getFirstPageFromClassInAPI(url) {
   const entities = await fetchTemplate(url, "GET", secretHeaders);
-  console.log(url.pathname, " -> ", entities);
   return entities;
 }
 
@@ -84,8 +83,7 @@ export async function getEntireClassFromAPI(targetFunction, url) {
     promises.data.push(...results.data);
     Object.assign(promises.meta.pagination, results.meta.pagination);
   }
-  // console.log(promises);
-  console.log(JSON.stringify(promises, null, 4));
+  console.log(promises);
   return promises;
 }
 
