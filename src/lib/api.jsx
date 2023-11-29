@@ -31,6 +31,13 @@ export async function addAssetsToProduct(productId, assets) {
 
 /* read */
 
+export async function getProductFromAPIByID(id) {
+  const url = new URL(`${productsURL}/${id}`); 
+  const product = await fetchTemplate(url, "GET", publicHeaders);
+
+  return product;
+}
+
 export async function getProductFromAPI(name) {
   const { data: products } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
@@ -62,8 +69,8 @@ export async function getProductsByCategoryName(categoryName, page = 1) {
   return {
     products: products,
     metadata: {
-      hasNextPage: metadata.pagination.links?.next,
-      totalPages: metadata.pagination.total_pages,
+      hasNextPage: metadata?.pagination.links?.next,
+      totalPages: metadata?.pagination.total_pages,
     },
   };
 }

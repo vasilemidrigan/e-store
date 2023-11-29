@@ -46,5 +46,7 @@ export default function ClientLog() {
   // deleteImagesByType("category-illustration");
   // addCategoryIllustrationsToAPI();
 
+
+
   return <></>;
 }

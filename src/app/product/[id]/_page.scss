@@ -1,4 +1,5 @@
 .ProductPage {
   width: $width-l;
   margin: 0 auto;
+  @include d-flex(unset, unset, unset);
 }

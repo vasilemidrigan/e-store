@@ -1,6 +1,6 @@
 .ProductDetails {
   @include product-details-l;
-
+  border: 1px solid black;
   &__price {
     width: 27.625rem;
     margin-top: $margin-xl;

@@ -15,7 +15,6 @@ export default function ProductCollage({ images }) {
   return (
     <>
       <div className="ProductCollage">{productImages ? productImages : ""}</div>
-      <hr className="hr-thin" />
     </>
   );
 }

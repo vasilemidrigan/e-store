@@ -37,6 +37,7 @@ export default async function CategoryPage({ params, searchParams }) {
           <ProductCard
             key={v4()}
             name={product.name}
+            id={product.id}
             price={product.price}
             image={product.image?.url}
             nr={product.meta.nr}
