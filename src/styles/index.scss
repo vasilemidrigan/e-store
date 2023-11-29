@@ -36,10 +36,8 @@
 @import "@/components/globals/pagination/IndexBtns";
 
 @import "../app/product/[id]/page";
-@import "@/components/product/productPage/productName/ProductName";
-@import "@/components/product/productPage/productCollage/ProductCollage";
-@import "@/components/product/productPage/productDescription/ProductDescription";
-@import "@/components/product/productPage/productDetails/ProductDetails";
+@import "@/components/product/productCollage/ProductCollage";
+@import "@/components/product/productDetails/ProductDetails";
 
 @import "@/components/globals/footer/Footer";
 @import "@/components/globals/footer/FooterGrid";

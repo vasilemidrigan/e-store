@@ -1,8 +1,7 @@
 /* 
   ! Implement a solution for more pages where we'll probably need to  
-  hide pages from start and from the end with "..."
-
-  Test pagination for more pages. 
+  hide pages from start and from the end with "...", and maybe limit the 
+  amount of indexes we show when there's a large amount of pages.
  */
 const START_PAGE = 1;
 

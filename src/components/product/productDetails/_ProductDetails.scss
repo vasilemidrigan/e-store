@@ -1,0 +1,11 @@
+.ProductDetails {
+  @include product-details-l;
+
+  &__price {
+    width: 27.625rem;
+    margin-top: $margin-xl;
+    color: $red;
+    text-align: end;
+    @include font("Roboto", $font-size-l, $font-weigth-regular);
+  }
+}

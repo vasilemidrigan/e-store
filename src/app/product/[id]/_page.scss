@@ -1,35 +1,4 @@
 .ProductPage {
   width: $width-l;
   margin: 0 auto;
-  display: grid;
-  grid-template:
-    [overview] 38rem [gap] 4.0625rem [details]
-    / [collage] 1fr [description] 1fr;
-  grid-template-areas:
-    "overview overview"
-    ". ."
-    "details details";
-
-  &__overview {
-    display: grid;
-    grid-template-columns:
-      1.875rem 1fr
-      / repeat(2, 50%);
-    grid-template-areas:
-      "title title"
-      "collage description";
-    grid-area: overview;
-  }
-
-  &__id {
-    position: relative;
-    grid-area: id;
-    @include font("Roboto", $font-size-l, $font-weigth-bold);
-    hr {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      width: 75%;
-    }
-  } 
 }

@@ -37,6 +37,7 @@ export default async function fetchTemplate(
     headers: headers,
     body: JSON.stringify(body),
     cache: cache,
+    // next: { revalidate: 10000 },
   });
 
   const data = await response.json();

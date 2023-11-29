@@ -12,7 +12,12 @@
   Choose a scalable solution for responsive design
 */
 
-/* product card */
+/* ProductDescription */
+@mixin product-details-l {
+  @include d-flex(unset, center, column);
+}
+
+/* ProductCard */
 
 @mixin product-card-l {
   width: 15.3719rem;
@@ -30,7 +35,7 @@
   height: 17.125rem;
 }
 
-/* category Illustration */
+/* CategoryIllustration */
 
 @mixin category-illustration-l {
   position: relative;
@@ -38,7 +43,7 @@
   height: 28.125rem;
 }
 
-/* pagination */
+/* Pagination */
 
 @mixin pagination-bar-l {
   max-width: fit-content;
