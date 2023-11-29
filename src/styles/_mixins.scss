@@ -5,6 +5,15 @@
   flex-direction: $f-d;
 }
 
+/* 
+  ! Probably a better solution for styling would be to use breakpoints:
+  for ex.: product-card(media-query) 
+
+  Choose a scalable solution for responsive design
+*/
+
+/* product card */
+
 @mixin product-card-l {
   width: 15.3719rem;
   height: 26.0625rem;
@@ -21,8 +30,40 @@
   height: 17.125rem;
 }
 
+/* category Illustration */
+
 @mixin category-illustration-l {
   position: relative;
   width: 81.25rem;
   height: 28.125rem;
+}
+
+/* pagination */
+
+@mixin pagination-bar-l {
+  max-width: fit-content;
+  font-size: $font-size-s;
+  height: 2.5rem;
+  @include d-flex(space-even, unset, unset);
+  gap: 1.3125rem;
+  margin: 4.75rem auto;
+  background-color: $grey98;
+}
+
+@mixin nav-btns-l {
+  width: 5.625rem;
+  border-radius: 0.25rem;
+}
+
+@mixin index-l {
+  width: 2.5rem;
+  @include d-flex(center, center, unset);
+}
+
+@mixin pagination-common-styles-l {
+  height: 2.5rem;
+  @include font("Roboto", $font-size-s, $font-weigth-regular);
+  border: 1px solid $silver-tone;
+  cursor: pointer;
+  background-color: $grey98;
 }

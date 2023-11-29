@@ -30,7 +30,10 @@
 @import "../app/category/[id]/page";
 @import "@/components/category/categoryIllustration/CategoryIllustration";
 @import "@/components/product/productCard/ProductCard";
+
 @import "@/components/globals/pagination/Pagination";
+@import "@/components/globals/pagination/NavBtn";
+@import "@/components/globals/pagination/IndexBtns";
 
 @import "../app/product/[id]/page";
 @import "@/components/product/productPage/productName/ProductName";
