@@ -1,4 +1,8 @@
 .NavBtn {
   @include nav-btns-l;
   @include pagination-common-styles-l;
+
+  &:hover {
+    background-color: $white;
+  }
 }

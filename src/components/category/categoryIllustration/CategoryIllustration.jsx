@@ -9,7 +9,11 @@ export default function CategoryIllustration({ categoryIllustrationImage }) {
     <div className="CategoryIllustration">
       <h2 className="CategoryIllustration__header">Smartphones</h2>
       <div className="CategoryIllustration__img-wrapper">
-        <Image src={categoryIllustrationImage.url} alt="two smartphones" fill />
+        <Image
+          src={categoryIllustrationImage?.url}
+          alt="two smartphones"
+          fill
+        />
       </div>
     </div>
   );

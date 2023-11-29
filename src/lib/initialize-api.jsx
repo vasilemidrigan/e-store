@@ -88,6 +88,7 @@ export async function addAllProductsToAPI(productsArr) {
   );
 
   let categoryName = "";
+  let categoryTarget = "";
 
   for (let category of productsArr) {
     for (let property in category) {
@@ -101,7 +102,7 @@ export async function addAllProductsToAPI(productsArr) {
       if (property == "products") {
         for (let product of category[property]) {
           console.log(`adding ${product.name} product...`);
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i < 100; i++) {
             // add 3 instances of the product
             promises.push(
               await addProductToAPI({

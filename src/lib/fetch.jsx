@@ -28,7 +28,7 @@ export default async function fetchTemplate(
   method,
   headers,
   body,
-  cache = "no-cache"
+  cache = "force-cache"
 ) {
   await delay();
 

@@ -27,9 +27,10 @@ export default function ClientLog() {
   // deleteEntireClassFromAPI(assetsURL);
   // deleteEntireClassFromAPI(categoriesURL);
 
-  // assignAssetsToAllProducts();
   // addAllProductsToAPI(initialProductsData);
   // assignCategoriesToAllProducts();
+  // assignAssetsToAllProducts();
+
   // addAllImagesToAPI();
   // addAllCategoriesToAPI();
 

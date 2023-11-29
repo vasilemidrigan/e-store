@@ -15,9 +15,9 @@ export default async function Pagination({ page, metadata }) {
 
   const pagination = (
     <div className="Pagination">
-      <NavBtn sense={"Back"} />
+      <NavBtn sense={"Back"} page={page} />
       <IndexBtns page={page} pages={pages} />
-      <NavBtn sense={"Next"} page={page} />
+      <NavBtn sense={"Next"} page={page} totalPages={totalPages} />
     </div>
   );
 

@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
 
-export default function NavBtn({ sense, page }) {
+export default function NavBtn({ sense, page, totalPages }) {
   let updatedPage;
+  const isFirstPage = Number(page) === 1 && sense === "Back" ? true : false;
+  const isLastPage =
+    Number(page) === totalPages && sense === "Next" ? true : false;
 
   if (sense === "Back") {
-    updatedPage = `?page=${page - 1}`;
+    updatedPage = `?page=${Number(page) - 1}`;
   }
 
   if (sense === "Next") {
-    updatedPage = `?page=${page + 1}`;
+    updatedPage = `?page=${Number(page) + 1}`;
   }
 
   if (sense !== "Next" && sense !== "Back") {
@@ -21,7 +26,7 @@ export default function NavBtn({ sense, page }) {
   return (
     <>
       <Link href={updatedPage}>
-        <button className="NavBtn" disabled={Number(page) == 1 ? true : false}>
+        <button className="NavBtn" disabled={isFirstPage || isLastPage}>
           {sense}
         </button>
       </Link>
