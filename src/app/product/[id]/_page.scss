@@ -1,5 +1,8 @@
 .ProductPage {
   width: $width-l;
   margin: 0 auto;
-  @include d-flex(unset, unset, unset);
+  padding-top: 6.25rem;
+  @include d-flex(space-between, unset, unset);
+  gap: 9.4375rem;
+
 }

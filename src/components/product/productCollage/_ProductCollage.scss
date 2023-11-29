@@ -1,5 +1,6 @@
 .ProductCollage {
-  border: 1px solid black;
+  width: 40.75rem;
+  height: 33.5rem;
   display: grid;
   grid-template:
     repeat(3, 1fr)
@@ -9,8 +10,9 @@
     "photo-0 . photo-2"
     "photo-0 . photo-3";
   grid-area: collage;
-
+  
   &__photo {
+    position: relative;
     &-0 {
       grid-area: photo-0;
     }

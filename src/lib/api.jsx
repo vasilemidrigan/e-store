@@ -99,25 +99,6 @@ export async function getAllCategories() {
   return categories;
 }
 
-export async function getImagesByProductName(productName) {
-  let targetImages = [];
-  const { data: assets } = await getEntireClassFromAPI(
-    getFirstPageFromClassInAPI,
-    assetsURL
-  );
-  if (assets.length > 0) {
-    targetImages.push(
-      assets.filter((img) => img.filename.slice(0, -6) === productName)
-    );
-  }
-  if (assets.length === 0) {
-    console.log("No assets in API");
-    return;
-  }
-
-  return targetImages;
-}
-
 export async function getImageByName(type, name) {
   let promises = [];
   const { data: assets } = await getEntireClassFromAPI(

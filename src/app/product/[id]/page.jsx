@@ -8,12 +8,11 @@ import {
 
 export default async function ProductPage({ params }) {
   const product = await getProductFromAPIByID(params.id);
-  // const productImages = await getImagesByProductName(product?.name);
 
   return (
     <div className="ProductPage">
-      {/* <ProductCollage images={productImages ? productImages : undefined} /> */}
-      {/* <ProductDetails name={product.name} price={product.price} /> */}
+      <ProductCollage images={product.assets} />
+      <ProductDetails name={product.name} price={product.price} />
     </div>
   );
 }

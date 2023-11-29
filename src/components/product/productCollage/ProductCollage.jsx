@@ -1,20 +1,18 @@
+import Image from "next/image";
 import { v4 } from "uuid";
 
 export default function ProductCollage({ images }) {
-  const productImages = images
-    ? images.map((img) => (
+  return (
+    <div className="ProductCollage">
+      {images && images.map((img) => (
         <div
           key={v4()}
-          className={`ProductCollage__photo-${images.indexOf(img)}`}
+          className={`ProductCollage__photo ProductCollage__photo-${images.indexOf(img)}`}
         >
-          <img src={img.url} alt="image" />
-        </div>
-      ))
-    : undefined;
 
-  return (
-    <>
-      <div className="ProductCollage">{productImages ? productImages : ""}</div>
-    </>
+          <Image src={img.url} alt="product photo" fill objectFit="contain" />
+        </div>
+      ))}
+    </div>
   );
 }
