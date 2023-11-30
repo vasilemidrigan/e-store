@@ -9,7 +9,7 @@ const nextConfig = {
         hostname: "cdn.chec.io",
         port: "",
         pathname: "/merchants/54399/assets/*",
-      },
+      }, 
     ],
   },
 };

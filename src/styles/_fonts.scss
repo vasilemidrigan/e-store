@@ -7,6 +7,7 @@ $font-size-xs: .75rem;
 
 $font-weigth-thin: 300;
 $font-weigth-regular: 400;
+$font-weigth-medium: 500;
 $font-weigth-bold: 700;
 
 @mixin font($font-family, $font-size, $font-weight) {

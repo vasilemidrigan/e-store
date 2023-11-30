@@ -32,7 +32,7 @@ export async function addAssetsToProduct(productId, assets) {
 /* read */
 
 export async function getProductFromAPIByID(id) {
-  const url = new URL(`${productsURL}/${id}`); 
+  const url = new URL(`${productsURL}/${id}`);
   const product = await fetchTemplate(url, "GET", publicHeaders);
 
   return product;
@@ -91,6 +91,7 @@ export async function getEntireClassFromAPI(targetFunction, url) {
     Object.assign(promises.meta.pagination, results.meta.pagination);
   }
   console.log(promises);
+
   return promises;
 }
 
@@ -123,12 +124,14 @@ export async function getImageByName(type, name) {
 }
 
 export async function getImagesByType(type) {
+  console.log("Get images by type runs!");
   let promises = [];
   const { data: assets } = await getEntireClassFromAPI(
     getFirstPageFromClassInAPI,
     assetsURL
   );
   assets.forEach((asset) => {
+    console.log(asset.meta);
     if (asset.meta[0]?.type === type) {
       const promise = fetchTemplate(
         `${assetsURL}/${asset.id}`,
@@ -138,6 +141,8 @@ export async function getImagesByType(type) {
       promises.push(promise);
     }
   });
+
+  console.log("PROMISES ARE: ", promises);
 
   return Promise.all([...promises]);
 }

@@ -12,9 +12,14 @@
   Choose a scalable solution for responsive design
 */
 
-/* ProductDescription */
+/* ProductDetails */
 @mixin product-details-l {
+  padding: 3.125rem;
+  width: 31.4375rem;
   @include d-flex(unset, center, column);
+  border: .5px solid $silver-tone;
+  border-radius: 0.625rem;
+  background-color: $light-gray;
 }
 
 /* ProductCard */

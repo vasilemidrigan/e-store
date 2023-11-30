@@ -10,20 +10,29 @@
     "photo-0 . photo-2"
     "photo-0 . photo-3";
   grid-area: collage;
-  
   &__photo {
     position: relative;
     &-0 {
       grid-area: photo-0;
+      border: 0.5px solid $silver-tone;
+      border-radius: 0.625rem;
     }
     &-1 {
       grid-area: photo-1;
+      border-radius: 10px 10px 0 0;
     }
     &-2 {
       grid-area: photo-2;
     }
     &-3 {
       grid-area: photo-3;
+      border-radius: 0 0 10px 10px;
+    }
+
+    &-1,
+    &-2,
+    &-3 {
+      border: .5px solid $silver-tone;
     }
   }
 }

@@ -40,7 +40,9 @@ export default function ClientLog() {
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, categoriesURL);
   // getEntireClassFromAPI(getFirstPageFromClassInAPI, assetsURL);
 
+  // getImagesByType('image-carousel')
   // addImageCarouselAssets();
+
   // getImagesByType("category-illustration");
   // deleteImagesByType("image-carousel");
   // deleteImagesByType("category-illustration");
