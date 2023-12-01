@@ -5,34 +5,41 @@ import { medusa } from "src/api/medusa-config";
 /* ********** write ********** */
 
 /* write products */
+
+export async function addProductToAPI(name, variant, price, categoryID) {
+  await medusa.admin.products
+    .create({
+      title: name,
+      variants: [
+        {
+          title: `${name} ${variant}`,
+          prices: [
+            {
+              amount: price,
+              currency_code: "EUR",
+            },
+          ],
+        },
+      ],
+      categories: [{ id: categoryID }],
+    })
+    .then(({ product }) =>
+      console.log(`Product ${product.title} initialized into API: `, product)
+    );
+}
+
 export async function addInitialProductsToAPI(productsArray) {
   productsArray.forEach(async (productsParentObj) => {
     productsParentObj.products.forEach(async (product) => {
       const productCategory = await getCategoryByName(
         productsParentObj.category
       );
-      await medusa.admin.products
-        .create({
-          title: product.name,
-          variants: [
-            {
-              title: `${product.name} ${product.variant}`,
-              prices: [
-                {
-                  amount: product.price,
-                  currency_code: "EUR",
-                },
-              ],
-            },
-          ],
-          categories: [{ id: productCategory.id }],
-        })
-        .then(({ product }) =>
-          console.log(
-            `Product ${product.title} initialized into API: `,
-            product
-          )
-        );
+      await addProductToAPI(
+        product.name,
+        product.variant,
+        product.price,
+        productCategory.id
+      );
     });
   });
 }
