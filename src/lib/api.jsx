@@ -4,31 +4,34 @@ import { medusa } from "src/api/medusa-config";
 
 /* ********** write ********** */
 
-/* 
-  products 
-  (add all hardcoded products to API, by assigning to them the title, subtitle
-    price and category )
-*/
+/* products */
 export async function addInitialProductsToAPI(productsArray) {
-  productsArray.forEach(async (productsObj) => {
-    productsObj.products.forEach(async (prod) => {
+  productsArray.forEach(async (productsParentObj) => {
+    productsParentObj.products.forEach(async (product) => {
+      const productCategory = await getCategoryByName(
+        productsParentObj.category
+      );
       await medusa.admin.products
         .create({
-          title: prod.name,
+          title: product.name,
           variants: [
             {
-              title: prod.variant,
+              title: `${product.name} ${product.variant}`,
               prices: [
                 {
-                  amount: prod.price,
+                  amount: product.price,
                   currency_code: "EUR",
                 },
               ],
             },
           ],
+          categories: [{ id: productCategory.id }],
         })
         .then(({ product }) =>
-          console.log(`Product ${product.title} added to API: `, product)
+          console.log(
+            `Product ${product.title} initialized into API: `,
+            product
+          )
         );
     });
   });
@@ -66,7 +69,7 @@ export async function addCategoriesToAPI(categoriesArray) {
 /* ********** read ********** */
 
 /* products */
-export async function getAllProductsIDsFromAPI() {
+export async function getAllProductsIDFromAPI() {
   const productsIDs = [];
   medusa.admin.products.list().then(({ products }) => {
     products.forEach((prod) => {
@@ -77,6 +80,16 @@ export async function getAllProductsIDsFromAPI() {
 }
 
 /* categories */
+
+export async function getCategoryByName(categoryName) {
+  let targetCategory;
+  await medusa.admin.productCategories.list().then(({ product_categories }) => {
+    targetCategory = product_categories.find(
+      (category) => category.handle === categoryName
+    );
+  });
+  return targetCategory;
+}
 
 export async function getAllCategoriesFromAPI() {
   medusa.admin.productCategories.list().then(({ product_categories }) => {

@@ -19,7 +19,7 @@ export default function ClientLog() {
     // addInitialProductsToAPI(initialProductsData);
     // addImagesToAllProducts();
     // addCategoriesToAPI(initialCategories);
-    getAllCategoriesFromAPI();
+    // getAllCategoriesFromAPI();
     // createSession();
   }, []);
 
