@@ -43,21 +43,6 @@ export async function addInitialProductsToAPI(productsArray) {
     });
   });
 }
-
-export async function addAllProductsToCategories() {
-  medusa.admin.productCategories
-    .addProducts(productCategoryId, {
-      product_ids: [
-        {
-          id: productId,
-        },
-      ],
-    })
-    .then(({ product_category }) => {
-      console.log(product_category.id);
-    });
-}
-
 /* write categories */
 export async function addCategoriesToAPI(categoriesArray) {
   categoriesArray.forEach(async (cat) => {
