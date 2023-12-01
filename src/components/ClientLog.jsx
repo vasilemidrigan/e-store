@@ -9,6 +9,8 @@ import {
   addImagesToAllProducts,
   addCategoriesToAPI,
   getAllCategoriesFromAPI,
+  getAllProductsFromAPI,
+  assignImagesToAllProductsFromAPI,
 } from "src/lib/api";
 import { createSession } from "src/lib/auth";
 
@@ -21,6 +23,8 @@ export default function ClientLog() {
     // addCategoriesToAPI(initialCategories);
     // getAllCategoriesFromAPI();
     // createSession();
+    // getAllProductsFromAPI();
+    // assignImagesToAllProductsFromAPI();
   }, []);
 
   return <></>;
