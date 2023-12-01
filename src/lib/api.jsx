@@ -4,7 +4,7 @@ import { medusa } from "src/api/medusa-config";
 
 /* ********** write ********** */
 
-/* products */
+/* write products */
 export async function addInitialProductsToAPI(productsArray) {
   productsArray.forEach(async (productsParentObj) => {
     productsParentObj.products.forEach(async (product) => {
@@ -51,7 +51,7 @@ export async function addAllProductsToCategories() {
     });
 }
 
-/* categories */
+/* write categories */
 export async function addCategoriesToAPI(categoriesArray) {
   categoriesArray.forEach(async (cat) => {
     await medusa.admin.productCategories
@@ -68,7 +68,7 @@ export async function addCategoriesToAPI(categoriesArray) {
 
 /* ********** read ********** */
 
-/* products */
+/* read products */
 export async function getAllProductsIDFromAPI() {
   const productsIDs = [];
   medusa.admin.products.list().then(({ products }) => {
@@ -79,7 +79,7 @@ export async function getAllProductsIDFromAPI() {
   return productsIDs;
 }
 
-/* categories */
+/* read categories */
 
 export async function getCategoryByName(categoryName) {
   let targetCategory;
