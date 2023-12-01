@@ -4,7 +4,7 @@ import {
   getProductFromAPI,
   getProductFromAPIByID,
   getProductsByCategoryName,
-} from "src/lib/api";
+} from "src/lib/ap";
 
 export default async function ProductPage({ params }) {
   // const product = await getProductFromAPIByID(params.id);

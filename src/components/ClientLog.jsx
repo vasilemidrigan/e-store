@@ -1,51 +1,27 @@
 "use client";
-/* Temporary Components for logging data into dev console */
+/* Temporary Component for logging data into dev console */
+
+import { initialProductsData } from "src/api/initial-products";
+import { initialCategories } from "src/api/initial-categories-data";
 
 import {
-  deleteEntireClassFromAPI,
-  deleteImagesByType,
-  getEntireClassFromAPI,
-  getFirstPageFromClassInAPI,
-  getImagesByType,
+  addInitialProductsToAPI,
+  addImagesToAllProducts,
+  addCategoriesToAPI,
+  getAllCategoriesFromAPI,
 } from "src/lib/api";
-import { assetsURL, categoriesURL, productsURL } from "src/api/endpoints";
-import initializeProductsToAPI, {
-  addAllCategoriesToAPI,
-  addAllImagesToAPI,
-  addAllProductsToAPI,
-  addCategoryIllustrationsToAPI,
-  addImageCarouselAssets,
-  assignAssetsToAllProducts,
-  assignCategoriesToAllProducts,
-} from "src/lib/initialize-api";
-import { initialProductsData } from "src/api/initial-products";
+import { createSession } from "src/lib/auth";
+
+import { useEffect } from "react";
 
 export default function ClientLog() {
-
-  // deleteEntireClassFromAPI(productsURL);
-  // deleteEntireClassFromAPI(assetsURL);
-  // deleteEntireClassFromAPI(categoriesURL);
-
-  // addAllProductsToAPI(initialProductsData);
-  // assignCategoriesToAllProducts();
-  // assignAssetsToAllProducts();
-
-  // addAllImagesToAPI();
-  // addAllCategoriesToAPI();
-
-  // initializeProductsToAPI();
-
-  // getEntireClassFromAPI(getFirstPageFromClassInAPI, productsURL);
-  // getEntireClassFromAPI(getFirstPageFromClassInAPI, categoriesURL);
-  // getEntireClassFromAPI(getFirstPageFromClassInAPI, assetsURL);
-
-  // getImagesByType('image-carousel')
-  // addImageCarouselAssets();
-
-  // getImagesByType("category-illustration");
-  // deleteImagesByType("image-carousel");
-  // deleteImagesByType("category-illustration");
-  // addCategoryIllustrationsToAPI();
+  useEffect(() => {
+    // addInitialProductsToAPI(initialProductsData);
+    // addImagesToAllProducts();
+    // addCategoriesToAPI(initialCategories);
+    getAllCategoriesFromAPI();
+    // createSession();
+  }, []);
 
   return <></>;
 }

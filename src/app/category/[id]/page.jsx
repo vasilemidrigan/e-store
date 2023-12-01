@@ -14,8 +14,6 @@ import CategoryIllustration from "@/components/category/categoryIllustration/Cat
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
 
-import { getImageByName, getProductsByCategoryName } from "src/lib/api";
-
 export default async function CategoryPage({ params, searchParams }) {
   // const { products, metadata } = await getProductsByCategoryName(
   //   params.id,

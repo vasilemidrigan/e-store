@@ -1,8 +1,6 @@
 import { v4 } from "uuid";
 import Link from "next/link";
 
-import { getAllCategories } from "src/lib/api";
-
 import closeIcon from "@/public/icons/menu/close.png";
 
 export default async function NavMenu() {
