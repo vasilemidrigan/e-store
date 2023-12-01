@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@chec/commerce.js": "^1.0.0",
+    "@medusajs/medusa-js": "^6.1.4",
     "eslint": "8.49.0",
     "eslint-config-next": "^14.0.3",
     "next": "^14.0.3",

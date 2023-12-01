@@ -21,7 +21,6 @@ import initializeProductsToAPI, {
 import { initialProductsData } from "src/api/initial-products";
 
 export default function ClientLog() {
-  console.log("*** LOGGING DATA ***");
 
   // deleteEntireClassFromAPI(productsURL);
   // deleteEntireClassFromAPI(assetsURL);
@@ -47,8 +46,6 @@ export default function ClientLog() {
   // deleteImagesByType("image-carousel");
   // deleteImagesByType("category-illustration");
   // addCategoryIllustrationsToAPI();
-
-
 
   return <></>;
 }

@@ -17,19 +17,19 @@ import Pagination from "@/components/globals/pagination/Pagination";
 import { getImageByName, getProductsByCategoryName } from "src/lib/api";
 
 export default async function CategoryPage({ params, searchParams }) {
-  const { products, metadata } = await getProductsByCategoryName(
-    params.id,
-    searchParams?.page
-  );
+  // const { products, metadata } = await getProductsByCategoryName(
+  //   params.id,
+  //   searchParams?.page
+  // );
 
-  const categoryIllustrationImage = await getImageByName(
-    "category-illustration",
-    params.id
-  );
+  // const categoryIllustrationImage = await getImageByName(
+  //   "category-illustration",
+  //   params.id
+  // );
 
   return (
     <div className="CategoryPage">
-      <CategoryIllustration
+      {/* <CategoryIllustration
         categoryIllustrationImage={categoryIllustrationImage[0]}
       />
       <div className="CategoryPage__grid">
@@ -46,7 +46,7 @@ export default async function CategoryPage({ params, searchParams }) {
       </div>
       <div className="CategoryPage__pagination">
         <Pagination page={searchParams.page || 1} metadata={metadata} />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -7,12 +7,12 @@ import {
 } from "src/lib/api";
 
 export default async function ProductPage({ params }) {
-  const product = await getProductFromAPIByID(params.id);
+  // const product = await getProductFromAPIByID(params.id);
 
   return (
     <div className="ProductPage">
-      <ProductCollage images={product.assets} />
-      <ProductDetails name={product.name} price={product.price} />
+      {/* <ProductCollage images={product.assets} />
+      <ProductDetails name={product.name} price={product.price} /> */}
     </div>
   );
 }

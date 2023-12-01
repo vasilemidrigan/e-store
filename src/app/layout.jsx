@@ -3,6 +3,7 @@
   https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 */
 
+
 /* temp component for logging data into dev console */
 import ClientLog from "@/components/ClientLog";
 
@@ -19,6 +20,7 @@ import "../styles/index.scss";
 import { MenuContext } from "src/context/providers";
 
 export default async function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <head>
@@ -58,7 +60,7 @@ export default async function RootLayout({ children }) {
       </head>
       <body>
         <ClientLog />
-        <MenuContext>
+        {/* <MenuContext>
           <NavBar>
             <Logo />
             <NavMenuBtn>
@@ -67,10 +69,10 @@ export default async function RootLayout({ children }) {
             <SearchBar />
           </NavBar>
           {/* darken background when menu is active */}
-          <DarkBg />
+          {/* <DarkBg />
           {children}
           <Footer />
-        </MenuContext>
+        </MenuContext> */}
       </body>
     </html>
   );
