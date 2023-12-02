@@ -6,10 +6,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.chec.io",
+        hostname: "e-store-images.s3.eu-west-3.amazonaws.com",
         port: "",
-        pathname: "/merchants/54399/assets/*",
-      }, 
+        pathname: "/**",
+      },
     ],
   },
 };

@@ -3,6 +3,7 @@ import { Admin } from "@medusajs/medusa-js";
 import { medusa } from "src/medusa-config";
 import { createImageURLs } from "src/utils";
 
+import { JWT } from "src/app/layout";
 /* Working with API */
 
 /* ********** write ********** */
@@ -65,6 +66,16 @@ export async function addCategoriesToAPI(categoriesArray) {
 /* ********** read ********** */
 
 /* read products */
+
+export async function getProductsByCategoryFromAPI(categoriesArr) {
+  return await medusa.admin.products
+    .list({ category_id: categoriesArr })
+    .then(({ products, limit, offset, count }) => {
+      console.log("products are: ", products);
+      return products;
+    });
+}
+
 export async function getAllProductsFromAPI() {
   const allProducts = [];
   await medusa.admin.products.list().then(({ products }) => {

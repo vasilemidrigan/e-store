@@ -13,9 +13,20 @@ import { v4 } from "uuid";
 import CategoryIllustration from "@/components/category/categoryIllustration/CategoryIllustration";
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
+import {
+  getAllProductsFromAPI,
+  getCategoryByName,
+  getProductsByCategoryFromAPI,
+} from "src/lib/api";
 
 export default async function CategoryPage({ params, searchParams }) {
-  // const { products, metadata } = await getProductsByCategoryName(
+  const categoryArr = [];
+  const { id: categoryId } = await getCategoryByName(params.id);
+  categoryArr.push(categoryId);
+
+  const products = await getProductsByCategoryFromAPI(categoryArr);
+
+  // const products = await getProductsByCategoryName(
   //   params.id,
   //   searchParams?.page
   // );
@@ -29,20 +40,20 @@ export default async function CategoryPage({ params, searchParams }) {
     <div className="CategoryPage">
       {/* <CategoryIllustration
         categoryIllustrationImage={categoryIllustrationImage[0]}
-      />
+      /> */}
       <div className="CategoryPage__grid">
         {products?.map((product) => (
           <ProductCard
             key={v4()}
-            name={product.name}
+            name={product.subtitle}
             id={product.id}
-            price={product.price}
-            image={product.image?.url}
-            nr={product.meta.nr}
+            price={product.variants[0].prices.amount}
+            image={product.thumbnail}
+            // nr={product.meta.nr}
           />
         ))}
       </div>
-      <div className="CategoryPage__pagination">
+      {/* <div className="CategoryPage__pagination">
         <Pagination page={searchParams.page || 1} metadata={metadata} />
       </div> */}
     </div>

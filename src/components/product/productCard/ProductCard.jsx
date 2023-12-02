@@ -1,13 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ProductCard({
-  name,
-  id, 
-  price,
-  image,
-  nr,
-}) {
+export default function ProductCard({ name, id, price, image, nr }) {
   return (
     <Link href={`/product/${id}`}>
       <div className="ProductCard">
@@ -17,7 +11,7 @@ export default function ProductCard({
         <div className="ProductCard__id">
           {name} {nr}
         </div>
-        <div className="ProductCard__price">{price.formatted_with_symbol}</div>
+        <div className="ProductCard__price">{price}</div>
       </div>
     </Link>
   );

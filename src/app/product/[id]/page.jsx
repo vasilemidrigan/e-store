@@ -1,10 +1,10 @@
-import ProductCollage from "@/components/product/productCollage/ProductCollage";
-import ProductDetails from "@/components/product/productDetails/ProductDetails";
-import {
-  getProductFromAPI,
-  getProductFromAPIByID,
-  getProductsByCategoryName,
-} from "src/lib/ap";
+// import ProductCollage from "@/components/product/productCollage/ProductCollage";
+// import ProductDetails from "@/components/product/productDetails/ProductDetails";
+// import {
+//   getProductFromAPI,
+//   getProductFromAPIByID,
+//   getProductsByCategoryName,
+// } from "src/lib/ap";
 
 export default async function ProductPage({ params }) {
   // const product = await getProductFromAPIByID(params.id);
