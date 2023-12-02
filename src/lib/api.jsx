@@ -94,6 +94,7 @@ export async function getAllCategoriesFromAPI() {
     .list()
     .then(({ product_categories }) => {
       console.log("All categories from API: ", product_categories);
+      return product_categories;
     });
 }
 

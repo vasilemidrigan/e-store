@@ -11,9 +11,9 @@ export default async function NavMenu() {
   return (
     <div className="NavMenu">
       <ul className="NavMenu__categories">
-        {categories?.map((cat) => (
+        {categories?.map((category) => (
           <li key={v4()} className="NavMenu__category">
-            <Link href={`/category/${cat.handle}`}>{cat.handle}</Link>
+            <Link href={`/category/${category.name}`}>{category.name}</Link>
           </li>
         ))}
       </ul>
