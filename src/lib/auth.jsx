@@ -1,4 +1,4 @@
-import { medusa } from "src/api/medusa-config";
+import { medusa } from "src/medusa-config";
 
 /* API Auth */
 

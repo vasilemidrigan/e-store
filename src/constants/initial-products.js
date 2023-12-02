@@ -1,4 +1,4 @@
-export const initialProductsData = [
+export const INITIAL_PRODUCTS = [
   {
     category: "smartphones",
     products: [

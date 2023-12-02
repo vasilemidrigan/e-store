@@ -1,4 +1,4 @@
-export const carouselBtns = [
+export const CAROUSEL_BTNS = [
   {
     id: 1,
     isActive: true,

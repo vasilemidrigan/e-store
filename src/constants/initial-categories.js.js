@@ -1,4 +1,4 @@
-export const initialCategories = [
+export const INITIAL_CATEGORIES = [
   "smartphones",
   "apple",
   "displays",

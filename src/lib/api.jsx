@@ -1,5 +1,5 @@
-import { s3ProductImagesBucketURL } from "src/api/endpoints";
-import { medusa } from "src/api/medusa-config";
+import { s3ProductImagesBucketURL } from "src/api-configs/endpoints";
+import { medusa } from "src/medusa-config";
 import { createImageURLs } from "src/utils";
 
 /* Working with API */

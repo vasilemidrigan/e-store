@@ -1,4 +1,4 @@
-export const imageCarousel = [
+export const IMAGE_CAROUSEL = [
   {
     id: 1,
     src: "/images/desktop-version/image-carousel/black-friday.jpg",

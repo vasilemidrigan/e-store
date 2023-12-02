@@ -4,9 +4,9 @@
     "paths": {
       "@/public/*": ["public/*"],
       "@/components/*": ["src/components/*"],
-      "@/data/*": ["src/data/*"],
+      "@/data/*": ["src/constants/*"],
       "@/pages/*": ["src/app/pages/*"],
-      "@/styles/*": ["src/app/styles/*"], 
+      "@/styles/*": ["src/app/styles/*"]
     }
   }
 }
