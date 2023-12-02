@@ -4,12 +4,18 @@
 import { useEffect } from "react";
 import { initializeAPI } from "src/lib/initialize-api";
 
+import { getAllCategoriesFromAPI } from "src/lib/api";
+import { adminLogin, getCurrentUser } from "src/lib/auth";
+
 export default function ClientLog() {
   useEffect(() => {
     // initializeAPI();
     // getAllProductsFromAPI();
+    // medusa.admin.auth.deleteSession();
     // getAllCategoriesFromAPI();
-    // createSession();
+    // getCurrentUser();
+    // medusa.admin.auth.deleteSession();
+    // getCurrentUser();
   }, []);
 
   return <></>;

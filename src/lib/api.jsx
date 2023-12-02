@@ -1,4 +1,5 @@
 import { S3_PRODUCT_IMAGES_URL } from "@/data/s3-endpoints";
+import { Admin } from "@medusajs/medusa-js";
 import { medusa } from "src/medusa-config";
 import { createImageURLs } from "src/utils";
 
@@ -89,9 +90,11 @@ export async function getCategoryByName(categoryName) {
 }
 
 export async function getAllCategoriesFromAPI() {
-  medusa.admin.productCategories.list().then(({ product_categories }) => {
-    console.log("All categories from API: ", product_categories);
-  });
+  return await medusa.admin.productCategories
+    .list()
+    .then(({ product_categories }) => {
+      console.log("All categories from API: ", product_categories);
+    });
 }
 
 /* update */
