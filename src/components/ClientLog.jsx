@@ -1,32 +1,15 @@
 "use client";
 /* Temporary Component for logging data into dev console */
 
-import {
-  INITIAL_CATEGORIES,
-  INITIAL_PRODUCTS,
-} from "@/data/initial-categories.js";
-
-import {
-  addInitialProductsToAPI,
-  addImagesToAllProducts,
-  addCategoriesToAPI,
-  getAllCategoriesFromAPI,
-  getAllProductsFromAPI,
-  assignImagesToAllProductsFromAPI,
-} from "src/lib/api";
-import { createSession } from "src/lib/auth";
-
 import { useEffect } from "react";
+import { initializeAPI } from "src/lib/initialize-api";
 
 export default function ClientLog() {
   useEffect(() => {
-    // addInitialProductsToAPI(INITIAL_PRODUCTS);
-    // addImagesToAllProducts();
-    // addCategoriesToAPI(INITIAL_CATEGORIES);
+    // initializeAPI();
+    // getAllProductsFromAPI();
     // getAllCategoriesFromAPI();
     // createSession();
-    // getAllProductsFromAPI();
-    // assignImagesToAllProductsFromAPI();
   }, []);
 
   return <></>;

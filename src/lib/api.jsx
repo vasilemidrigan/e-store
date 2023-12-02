@@ -1,4 +1,4 @@
-import { s3ProductImagesBucketURL } from "src/api-configs/endpoints";
+import { S3_PRODUCT_IMAGES_URL } from "@/data/s3-endpoints";
 import { medusa } from "src/medusa-config";
 import { createImageURLs } from "src/utils";
 
@@ -116,7 +116,7 @@ export async function assignImagesToAllProductsFromAPI() {
 
   allProducts.forEach(async (product) => {
     const urls = createImageURLs(
-      s3ProductImagesBucketURL,
+      S3_PRODUCT_IMAGES_URL,
       product.categories[0].name,
       product.title
     );

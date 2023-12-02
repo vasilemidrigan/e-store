@@ -1,5 +1,5 @@
 import ControlBtn from "./ControlBtn";
-import { carouselBtns } from "@/data/carousel-btns";
+import { CAROUSEL_BTNS } from "@/data/carousel-btns";
 
 export default function ControlsBar({
   activeStates: { activeId, setActiveId },
@@ -7,7 +7,7 @@ export default function ControlsBar({
   return (
     <div className="ControlsBar">
       <div className="ControlsBar__btns-wrapper">
-        {carouselBtns.map((btn) => (
+        {CAROUSEL_BTNS.map((btn) => (
           <ControlBtn
             key={btn.id}
             activeStates={{
