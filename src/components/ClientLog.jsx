@@ -7,6 +7,8 @@ import { initializeAPI } from "src/lib/initialize-api";
 import { getAllCategoriesFromAPI } from "src/lib/api";
 import { adminLogin, getCurrentUser } from "src/lib/auth";
 
+import { fetchImages } from "src/utils";
+
 export default function ClientLog() {
   useEffect(() => {
     // initializeAPI();
@@ -16,6 +18,7 @@ export default function ClientLog() {
     // getCurrentUser();
     // medusa.admin.auth.deleteSession();
     // getCurrentUser();
+    // fetchImages("smartphone");
   }, []);
 
   return <></>;

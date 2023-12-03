@@ -13,11 +13,17 @@ import { v4 } from "uuid";
 import CategoryIllustration from "@/components/category/categoryIllustration/CategoryIllustration";
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
-import {
-  getAllProductsFromAPI,
-  getCategoryByName,
-  getProductsByCategoryFromAPI,
-} from "src/lib/api";
+
+import { getCategoryByName, getProductsByCategoryFromAPI } from "src/lib/api";
+
+import { S3_CATEGORY_ILLUSTRATION_URL } from "@/data/s3-endpoints";
+
+async function fetchData(category) {
+  const response = await fetch(
+    `${S3_CATEGORY_ILLUSTRATION_URL}/${category}.jpg`
+  );
+  return response.url;
+}
 
 export default async function CategoryPage({ params, searchParams }) {
   const categoryArr = [];
@@ -25,22 +31,13 @@ export default async function CategoryPage({ params, searchParams }) {
   categoryArr.push(categoryId);
 
   const products = await getProductsByCategoryFromAPI(categoryArr);
-
-  // const products = await getProductsByCategoryName(
-  //   params.id,
-  //   searchParams?.page
-  // );
-
-  // const categoryIllustrationImage = await getImageByName(
-  //   "category-illustration",
-  //   params.id
-  // );
+  const categoryIllustrationImage = await fetchData(params.id);
 
   return (
     <div className="CategoryPage">
-      {/* <CategoryIllustration
-        categoryIllustrationImage={categoryIllustrationImage[0]}
-      /> */}
+      <CategoryIllustration
+        categoryIllustrationImage={categoryIllustrationImage}
+      />
       <div className="CategoryPage__grid">
         {products?.map((product) => (
           <ProductCard
