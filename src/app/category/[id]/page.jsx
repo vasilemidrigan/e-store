@@ -14,7 +14,10 @@ import CategoryIllustration from "@/components/category/categoryIllustration/Cat
 import ProductCard from "@/components/product/productCard/ProductCard";
 import Pagination from "@/components/globals/pagination/Pagination";
 
-import { getCategoryByName, getProductsByCategoryFromAPI } from "src/lib/api";
+import {
+  getCategoryByNameFromMedusa,
+  getProductsByCategoryFromMedusa,
+} from "src/lib/api";
 
 import { S3_CATEGORY_ILLUSTRATION_URL } from "@/data/s3-endpoints";
 
@@ -27,10 +30,10 @@ async function fetchData(category) {
 
 export default async function CategoryPage({ params, searchParams }) {
   const categoryArr = [];
-  const { id: categoryId } = await getCategoryByName(params.id);
+  const { id: categoryId } = await getCategoryByNameFromMedusa(params.id);
   categoryArr.push(categoryId);
 
-  const products = await getProductsByCategoryFromAPI(categoryArr);
+  const products = await getProductsByCategoryFromMedusa(categoryArr);
   const categoryIllustrationImage = await fetchData(params.id);
 
   return (

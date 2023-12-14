@@ -1,12 +1,12 @@
 import { v4 } from "uuid";
 import Link from "next/link";
 
-import { getAllCategoriesFromAPI } from "src/lib/api";
+import { getAllCategoriesFromMedusa } from "src/lib/api";
 
 import closeIcon from "@/public/icons/menu/close.png";
 
 export default async function NavMenu() {
-  const categories = await getAllCategoriesFromAPI();
+  const categories = await getAllCategoriesFromMedusa();
 
   return (
     <div className="NavMenu">
