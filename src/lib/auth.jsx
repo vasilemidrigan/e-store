@@ -2,6 +2,7 @@ import { medusa } from "src/medusa-config";
 
 /* API Auth */
 
+/* write */
 export async function createSession(email, password) {
   medusa.admin.auth
     .createSession({
@@ -13,6 +14,7 @@ export async function createSession(email, password) {
     });
 }
 
+/* read */
 export async function adminLogin(email, password) {
   return await medusa.admin.auth
     .getToken({
@@ -20,7 +22,6 @@ export async function adminLogin(email, password) {
       password: password,
     })
     .then(({ access_token }) => {
-      console.log("Access token generated: ", access_token);
       return access_token;
     });
 }
@@ -29,4 +30,9 @@ export async function getCurrentUser() {
   medusa.admin.auth.getSession().then(({ user }) => {
     console.log(user);
   });
+}
+
+/* delete */
+export async function deleteSession() {
+  medusa.admin.auth.deleteSession();
 }

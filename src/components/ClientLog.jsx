@@ -4,8 +4,20 @@
 import { useEffect } from "react";
 import { initializeAPI } from "src/lib/initialize-api";
 
-import { getAllCategoriesFromAPI } from "src/lib/api";
-import { adminLogin, getCurrentUser } from "src/lib/auth";
+import { medusa } from "src/medusa-config";
+import {
+  deleteAllCategories,
+  deleteAllCategoriesFromAPI,
+  deleteProductFromAPI,
+  getAllCategoriesFromAPI,
+  getAllProductsFromAPI,
+} from "src/lib/api";
+import {
+  adminLogin,
+  createSession,
+  deleteSession,
+  getCurrentUser,
+} from "src/lib/auth";
 
 import { fetchImages } from "src/utils";
 
@@ -14,11 +26,17 @@ export default function ClientLog() {
     // initializeAPI();
     // getAllProductsFromAPI();
     // medusa.admin.auth.deleteSession();
-    // getAllCategoriesFromAPI();
     // getCurrentUser();
     // medusa.admin.auth.deleteSession();
+    // deleteSession();
     // getCurrentUser();
     // fetchImages("smartphone");
+    // deleteProductFromAPI();
+    // async function foo() {
+    //   await getAllCategoriesFromAPI();
+    //   await getAllProductsFromAPI();
+    //   await deleteAllCategoriesFromAPI();
+    // }
   }, []);
 
   return <></>;

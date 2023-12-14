@@ -3,7 +3,7 @@
   https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 */
 
-import { adminLogin } from "src/lib/auth";
+import { adminLogin, createSession } from "src/lib/auth";
 
 /* temp component for logging data into dev console */
 import ClientLog from "@/components/ClientLog";

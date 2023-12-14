@@ -1,9 +1,7 @@
 import { S3_PRODUCT_IMAGES_URL } from "@/data/s3-endpoints";
-import { Admin } from "@medusajs/medusa-js";
 import { medusa } from "src/medusa-config";
 import { createImageURLs } from "src/utils";
 
-import { JWT } from "src/app/layout";
 /* Working with API */
 
 /* ********** write ********** */
@@ -101,6 +99,7 @@ export async function getCategoryByName(categoryName) {
 }
 
 export async function getAllCategoriesFromAPI() {
+  console.log("getAllCAtegories funciton ran");
   return await medusa.admin.productCategories
     .list()
     .then(({ product_categories }) => {
@@ -137,4 +136,41 @@ export async function assignImagesToAllProductsFromAPI() {
     );
     await updateProduct(product.id, "images", [...urls]);
   });
+}
+
+/* delete */
+
+/* delete a product */
+
+export async function deleteProductFromAPI() {
+  const allProducts = await getAllProductsFromAPI();
+
+  medusa.admin.products
+    .delete(allProducts[0].id)
+    .then(({ id, object, deleted }) => {
+      console.log(`Product ${id}, was deleted!!!`);
+    });
+}
+
+/* delete categories */
+
+export async function deleteAllCategoriesFromAPI() {
+  const allCategories = await medusa.admin.productCategories
+    .list()
+    .then(({ product_categories, limit, offset, count }) => {
+      console.log(
+        "There are: ",
+        product_categories.length,
+        " product categories"
+      );
+      return product_categories;
+    });
+
+  for (const category of allCategories) {
+    await medusa.admin.productCategories
+      .delete(category.id)
+      .then(({ id, object, deleted }) => {
+        console.log(`Category ${id} is deleted!`);
+      });
+  }
 }
