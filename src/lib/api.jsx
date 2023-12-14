@@ -8,7 +8,7 @@ import { createImageURLs } from "src/utils";
 
 /* write products */
 
-export async function addProductToAPI(name, variant, price, categoryID) {
+export async function addProductToMedusa(name, variant, price, categoryID) {
   await medusa.admin.products
     .create({
       title: name,
@@ -30,13 +30,13 @@ export async function addProductToAPI(name, variant, price, categoryID) {
     );
 }
 
-export async function addInitialProductsToAPI(productsArray) {
+export async function addInitialProductsToMedusa(productsArray) {
   productsArray.forEach(async (productsParentObj) => {
     productsParentObj.products.forEach(async (product) => {
       const productCategory = await getCategoryByName(
         productsParentObj.category
       );
-      await addProductToAPI(
+      await addProductToMedusa(
         product.name,
         product.variant,
         product.price,
@@ -47,7 +47,7 @@ export async function addInitialProductsToAPI(productsArray) {
 }
 
 /* write categories */
-export async function addCategoriesToAPI(categoriesArray) {
+export async function addCategoriesToMedusa(categoriesArray) {
   categoriesArray.forEach(async (cat) => {
     await medusa.admin.productCategories
       .create({
@@ -65,7 +65,7 @@ export async function addCategoriesToAPI(categoriesArray) {
 
 /* read products */
 
-export async function getProductsByCategoryFromAPI(categoriesArr) {
+export async function getProductsByCategoryFromMedusa(categoriesArr) {
   return await medusa.admin.products
     .list({ category_id: categoriesArr })
     .then(({ products, limit, offset, count }) => {
@@ -74,7 +74,7 @@ export async function getProductsByCategoryFromAPI(categoriesArr) {
     });
 }
 
-export async function getAllProductsFromAPI() {
+export async function getAllProductsFromMedusa() {
   const allProducts = [];
   await medusa.admin.products.list().then(({ products }) => {
     console.log(
@@ -88,7 +88,7 @@ export async function getAllProductsFromAPI() {
 
 /* read categories */
 
-export async function getCategoryByName(categoryName) {
+export async function getCategoryByNameFromMedusa(categoryName) {
   let targetCategory;
   await medusa.admin.productCategories.list().then(({ product_categories }) => {
     targetCategory = product_categories.find(
@@ -98,7 +98,7 @@ export async function getCategoryByName(categoryName) {
   return targetCategory;
 }
 
-export async function getAllCategoriesFromAPI() {
+export async function getAllCategoriesFromMedusa() {
   console.log("getAllCAtegories funciton ran");
   return await medusa.admin.productCategories
     .list()
@@ -111,7 +111,7 @@ export async function getAllCategoriesFromAPI() {
 /* update */
 
 /* update products */
-export async function updateProduct(productID, property, value) {
+export async function updateProductFromMedusa(productID, property, value) {
   medusa.admin.products
     .update(productID, {
       [property]: value,
@@ -125,8 +125,8 @@ export async function updateProduct(productID, property, value) {
 }
 
 /* update products images*/
-export async function assignImagesToAllProductsFromAPI() {
-  const allProducts = await getAllProductsFromAPI();
+export async function assignImagesToAllProductsFromMedusa() {
+  const allProducts = await getAllProductsFromMedusa();
 
   allProducts.forEach(async (product) => {
     const urls = createImageURLs(
@@ -134,7 +134,7 @@ export async function assignImagesToAllProductsFromAPI() {
       product.categories[0].name,
       product.title
     );
-    await updateProduct(product.id, "images", [...urls]);
+    await updateProductFromMedusa(product.id, "images", [...urls]);
   });
 }
 
@@ -142,7 +142,7 @@ export async function assignImagesToAllProductsFromAPI() {
 
 /* delete a product */
 
-export async function deleteProductFromAPI() {
+export async function deleteProductFromMedusa() {
   const allProducts = await getAllProductsFromAPI();
 
   medusa.admin.products
@@ -152,8 +152,8 @@ export async function deleteProductFromAPI() {
     });
 }
 
-export async function deleteAllProductsFromAPI() {
-  const allProducts = await getAllProductsFromAPI();
+export async function deleteAllProductsFromMedusa() {
+  const allProducts = await getAllProductsFromMedusa();
 
   for (const product of allProducts) {
     await medusa.admin.products
@@ -166,7 +166,7 @@ export async function deleteAllProductsFromAPI() {
 
 /* delete categories */
 
-export async function deleteAllCategoriesFromAPI() {
+export async function deleteAllCategoriesFromMedusa() {
   const allCategories = await medusa.admin.productCategories
     .list()
     .then(({ product_categories, limit, offset, count }) => {
@@ -178,11 +178,11 @@ export async function deleteAllCategoriesFromAPI() {
       return product_categories;
     });
 
-  for (const category of allCategories) {
+  allCategories.forEach(async (category) => {
     await medusa.admin.productCategories
       .delete(category.id)
       .then(({ id, object, deleted }) => {
         console.log(`Category ${id} is deleted!`);
       });
-  }
+  });
 }

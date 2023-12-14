@@ -2,10 +2,13 @@
 /* Temporary Component for logging data into dev console */
 
 import { useEffect } from "react";
-import { initializeAPI } from "src/lib/initialize-api";
+import { initializeAPI } from "src/lib/temp";
 
 import { medusa } from "src/medusa-config";
 import {
+  addCategoriesToAPI,
+  addInitialProductsToAPI,
+  assignImagesToAllProductsFromAPI,
   deleteAllCategories,
   deleteAllCategoriesFromAPI,
   deleteProductFromAPI,
@@ -20,6 +23,8 @@ import {
 } from "src/lib/auth";
 
 import { fetchImages } from "src/utils";
+import { INITIAL_PRODUCTS } from "@/data/initial-products";
+import { INITIAL_CATEGORIES } from "@/data/initial-categories.js";
 
 export default function ClientLog() {
   useEffect(() => {
@@ -37,6 +42,7 @@ export default function ClientLog() {
     //   await getAllProductsFromAPI();
     //   await deleteAllCategoriesFromAPI();
     // }
+    // addInitialProductsToAPI(INITIAL_PRODUCTS);
   }, []);
 
   return <></>;
