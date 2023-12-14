@@ -21,7 +21,10 @@ import "../styles/index.scss";
 import { MenuContext } from "src/context/providers";
 
 export default async function RootLayout({ children }) {
-  await adminLogin("e.store.7845@gmail.com", "hjkl");
+  await adminLogin(
+    process.env.NEXT_PUBLIC_ADMIN_EMAIL,
+    process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+  );
 
   return (
     <html lang="en">

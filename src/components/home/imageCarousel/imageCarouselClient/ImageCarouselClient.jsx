@@ -8,7 +8,9 @@ import ControlsBar from "../controls/ControlsBar";
 export default function ImageCarouselClient({ images }) {
   const [activeId, setActiveId] = useState(1);
 
-  let activeImg = images.filter((img) => img.meta[1].id == activeId);
+  let activeImg = images.filter((img) => img.id == activeId);
+
+  console.log(images);
 
   return (
     <div className="ImageCarouselClient">

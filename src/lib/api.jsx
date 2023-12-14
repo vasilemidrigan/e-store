@@ -1,8 +1,12 @@
-import { S3_PRODUCT_IMAGES_URL } from "@/data/s3-endpoints";
+import { IMAGE_CAROUSEL } from "@/data/image-carousel";
+import {
+  S3_IMAGE_CAROUSEL_URL,
+  S3_PRODUCT_IMAGES_URL,
+} from "@/data/s3-endpoints";
 import { medusa } from "src/medusa-config";
 import { createImageURLs } from "src/utils";
 
-/* Working with API */
+/* Working with Medusa API and S3 */
 
 /* ********** write ********** */
 
@@ -106,6 +110,18 @@ export async function getAllCategoriesFromMedusa() {
       console.log("All categories from API: ", product_categories);
       return product_categories;
     });
+}
+
+/* read images */
+
+export async function getImagesForImageCarouselFromS3() {
+  const images = [];
+  for (let i = 1; i < 4; i++) {
+    const response = await fetch(`${S3_IMAGE_CAROUSEL_URL}/img-${i}.jpg`);
+    images.push({ id: i, url: response.url });
+  }
+
+  return images;
 }
 
 /* update */

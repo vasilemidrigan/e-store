@@ -14,6 +14,7 @@ import {
   deleteProductFromAPI,
   getAllCategoriesFromAPI,
   getAllProductsFromAPI,
+  getImagesForImageCarouselFromS3,
 } from "src/lib/api";
 import {
   adminLogin,

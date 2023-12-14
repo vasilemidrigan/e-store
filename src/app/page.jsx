@@ -4,8 +4,8 @@ import HomeGrid from "src/components/home/homeGrid/HomeGrid";
 export default function HomePage() {
   return (
     <div className="Homepage">
-      {/* <ImageCarousel />
-      <HomeGrid /> */}
+      <ImageCarousel />
+      <HomeGrid />
     </div>
   );
 }
