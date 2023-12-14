@@ -152,6 +152,18 @@ export async function deleteProductFromAPI() {
     });
 }
 
+export async function deleteAllProductsFromAPI() {
+  const allProducts = await getAllProductsFromAPI();
+
+  for (const product of allProducts) {
+    await medusa.admin.products
+      .delete(product.id)
+      .then(({ id, object, deleted }) => {
+        console.log(`Product ${id}, was deleted!!!`);
+      });
+  }
+}
+
 /* delete categories */
 
 export async function deleteAllCategoriesFromAPI() {
