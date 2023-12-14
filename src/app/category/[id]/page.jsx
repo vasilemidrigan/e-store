@@ -42,20 +42,26 @@ export default async function CategoryPage({ params, searchParams }) {
         categoryIllustrationImage={categoryIllustrationImage}
       />
       <div className="CategoryPage__grid">
-        {products?.map((product) => (
+        {products.products?.map((product) => (
           <ProductCard
             key={v4()}
             name={product.subtitle}
             id={product.id}
             price={product.variants[0].prices.amount}
             image={product.thumbnail}
-            // nr={product.meta.nr}
           />
         ))}
       </div>
-      {/* <div className="CategoryPage__pagination">
-        <Pagination page={searchParams.page || 1} metadata={metadata} />
-      </div> */}
+      <div className="CategoryPage__pagination">
+        <Pagination
+          page={searchParams.page || 1}
+          metadata={{
+            count: products.count,
+            limit: products.limit,
+            offset: products.offset,
+          }}
+        />
+      </div>
     </div>
   );
 }

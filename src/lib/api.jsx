@@ -80,7 +80,12 @@ export async function getProductsByCategoryFromMedusa(categoriesArr) {
     .list({ category_id: categoriesArr })
     .then(({ products, limit, offset, count }) => {
       console.log("products are: ", products);
-      return products;
+      return {
+        products: [...products],
+        offset,
+        limit,
+        count,
+      };
     });
 }
 
