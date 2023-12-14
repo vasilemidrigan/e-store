@@ -69,6 +69,12 @@ export async function addCategoriesToMedusa(categoriesArray) {
 
 /* read products */
 
+export async function getProductByIdFromMedusa(productId) {
+  return await medusa.admin.products.retrieve(productId).then(({ product }) => {
+    return product;
+  });
+}
+
 export async function getProductsByCategoryFromMedusa(categoriesArr) {
   return await medusa.admin.products
     .list({ category_id: categoriesArr })
