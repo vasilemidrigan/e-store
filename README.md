@@ -2,7 +2,7 @@
 
 _E-commerce web application_
 
-####Temporary solutions to populate and delete data from Medusa.js
+#### Temporary solutions to populate and delete data from Medusa.js
 
 **Initialize Medusa.js** _with categories, products and product images_
 
