@@ -2,18 +2,18 @@
 
 import { INITIAL_CATEGORIES } from "@/data/initial-categories.js";
 import {
-  addCategoriesToAPI,
-  addInitialProductsToAPI,
-  assignImagesToAllProductsFromAPI,
+  addCategoriesToMedusa,
+  addInitialProductsToMedusa,
+  assignImagesToAllProductsFromMedusa,
   deleteAllCategoriesFromMedusa,
   deleteAllProductsFromMedusa,
 } from "./api";
 import { INITIAL_PRODUCTS } from "@/data/initial-products";
 
 export async function initializeMedusa() {
-  await addCategoriesToAPI(INITIAL_CATEGORIES);
-  await addInitialProductsToAPI(INITIAL_PRODUCTS);
-  await assignImagesToAllProductsFromAPI();
+  await addCategoriesToMedusa(INITIAL_CATEGORIES);
+  await addInitialProductsToMedusa(INITIAL_PRODUCTS);
+  await assignImagesToAllProductsFromMedusa();
   console.log("Medusa is populated with all initial data!");
 }
 
