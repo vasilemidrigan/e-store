@@ -35,8 +35,9 @@ export async function addProductToMedusa(name, variant, price, categoryID) {
 }
 
 export async function addInitialProductsToMedusa(productsArray, iterations) {
-  const iterations = generateSequenceFrom0ToN(iterations);
-  for (const n of iterations) {
+  const iterationsArr = generateSequenceFrom0ToN(iterations);
+
+  for (const n of iterationsArr) {
     productsArray.forEach(async (productsParentObj) => {
       productsParentObj.products.forEach(async (product) => {
         const productCategory = await getCategoryByNameFromMedusa(
