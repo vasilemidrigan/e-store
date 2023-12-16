@@ -36,6 +36,8 @@ export default async function CategoryPage({ params, searchParams }) {
   const products = await getProductsByCategoryFromMedusa(categoryArr);
   const categoryIllustrationImage = await fetchData(params.id);
 
+  console.log(products, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
   return (
     <div className="CategoryPage">
       <CategoryIllustration
@@ -45,9 +47,9 @@ export default async function CategoryPage({ params, searchParams }) {
         {products.products?.map((product) => (
           <ProductCard
             key={v4()}
-            name={product.subtitle}
+            name={product.title}
             id={product.id}
-            price={product.variants[0].prices.amount}
+            price={product.variants[0].prices[0].amount}
             image={product.thumbnail}
           />
         ))}

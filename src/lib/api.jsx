@@ -118,7 +118,6 @@ export async function getCategoryByNameFromMedusa(categoryName) {
 }
 
 export async function getAllCategoriesFromMedusa() {
-  console.log("getAllCAtegories funciton ran");
   return await medusa.admin.productCategories
     .list()
     .then(({ product_categories }) => {
