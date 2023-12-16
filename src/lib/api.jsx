@@ -1,8 +1,8 @@
-import { IMAGE_CAROUSEL } from "@/data/image-carousel";
 import {
   S3_IMAGE_CAROUSEL_URL,
   S3_PRODUCT_IMAGES_URL,
 } from "@/data/s3-endpoints";
+
 import { medusa } from "src/medusa-config";
 import { createImageURLs, generateSequenceFrom0ToN } from "src/utils";
 
@@ -94,15 +94,29 @@ export async function getProductsByCategoryFromMedusa(categoriesArr) {
     });
 }
 
+export async function getProductsSpecificPageFromMedusa(page) {
+  const products = await medusa.admin.products
+    .list({ offset: page * LIMIT - LIMIT })
+    .then(({ products, limit, offset, count }) => {
+      return { products, limit, offset, count };
+    });
+
+  return products;
+}
+
 export async function getAllProductsFromMedusa() {
-  const allProducts = [];
-  await medusa.admin.products.list().then(({ products }) => {
-    console.log(
-      `All products from API (total amount: ${products.length}): `,
-      products
+  let page = 1;
+  const { products: allProducts, count } =
+    await getProductsSpecificPageFromMedusa(page);
+
+  while (allProducts.length !== count) {
+    const { products: nextPage } = await getProductsSpecificPageFromMedusa(
+      page + 1
     );
-    products.forEach((product) => allProducts.push(product));
-  });
+    allProducts.push(...nextPage);
+    page++;
+  }
+
   return allProducts;
 }
 
@@ -159,6 +173,7 @@ export async function updateProductFromMedusa(productID, property, value) {
 /* update products images*/
 
 export async function assignImagesToAllProductsFromMedusa() {
+  let i = 1;
   const allProducts = await getAllProductsFromMedusa();
 
   allProducts.forEach(async (product) => {
@@ -167,6 +182,7 @@ export async function assignImagesToAllProductsFromMedusa() {
       product.categories[0].name,
       product.title.substring(0, product.title.indexOf(" "))
     );
+    i++;
     await updateProductFromMedusa(product.id, "images", [...urls]);
   });
 }
@@ -176,7 +192,7 @@ export async function assignImagesToAllProductsFromMedusa() {
 /* delete a product */
 
 export async function deleteProductFromMedusa() {
-  const allProducts = await getAllProductsFromAPI();
+  const allProducts = await getAllProductsFromMedusa();
 
   medusa.admin.products
     .delete(allProducts[0].id)

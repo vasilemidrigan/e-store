@@ -10,8 +10,6 @@ export default function ImageCarouselClient({ images }) {
 
   let activeImg = images.filter((img) => img.id == activeId);
 
-  console.log(images);
-
   return (
     <div className="ImageCarouselClient">
       <ImageCard data={{ activeId, setActiveId, activeImg: activeImg[0] }} />
