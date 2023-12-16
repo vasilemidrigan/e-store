@@ -6,15 +6,12 @@ import { initializeAPI } from "src/lib/temp";
 
 import { medusa } from "src/medusa-config";
 import {
-  addCategoriesToAPI,
-  addInitialProductsToAPI,
   addInitialProductsToMedusa,
-  assignImagesToAllProductsFromAPI,
-  deleteAllCategories,
-  deleteAllCategoriesFromAPI,
+  assignImagesToAllProductsFromMedusa,
+  deleteAllCategoriesFromMedusa,
   deleteAllProductsFromMedusa,
-  deleteProductFromAPI,
-  getAllCategoriesFromAPI,
+  deleteProductFromMedusa,
+  getAllCategoriesFromMedusa,
   getAllProductsFromMedusa,
   getImagesForImageCarouselFromS3,
 } from "src/lib/api";
@@ -45,8 +42,10 @@ export default function ClientLog() {
     //   await getAllProductsFromAPI();
     //   await deleteAllCategoriesFromAPI();
     // }
-    // addInitialProductsToMedusa(INITIAL_PRODUCTS);
+    // addInitialProductsToMedusa(INITIAL_PRODUCTS, 4);
+    // assignImagesToAllProductsFromMedusa();
     // deleteAllProductsFromMedusa();
+    // getAllProductsFromMedusa();
   }, []);
 
   return <></>;

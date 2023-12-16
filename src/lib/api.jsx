@@ -165,7 +165,7 @@ export async function assignImagesToAllProductsFromMedusa() {
     const urls = createImageURLs(
       S3_PRODUCT_IMAGES_URL,
       product.categories[0].name,
-      product.title
+      product.title.substring(0, product.title.indexOf(" "))
     );
     await updateProductFromMedusa(product.id, "images", [...urls]);
   });
