@@ -16,7 +16,7 @@ export default function ProductCollage({ images }) {
             )}`}
           >
             <Image
-              src={img.url ? img.url : noImage.src}
+              src={img.url}
               fill
               sizes="(min-width: 81.25rem) 100vw"
               alt="product photo"
