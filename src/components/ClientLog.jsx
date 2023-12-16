@@ -8,12 +8,14 @@ import { medusa } from "src/medusa-config";
 import {
   addCategoriesToAPI,
   addInitialProductsToAPI,
+  addInitialProductsToMedusa,
   assignImagesToAllProductsFromAPI,
   deleteAllCategories,
   deleteAllCategoriesFromAPI,
+  deleteAllProductsFromMedusa,
   deleteProductFromAPI,
   getAllCategoriesFromAPI,
-  getAllProductsFromAPI,
+  getAllProductsFromMedusa,
   getImagesForImageCarouselFromS3,
 } from "src/lib/api";
 import {
@@ -30,7 +32,7 @@ import { INITIAL_CATEGORIES } from "@/data/initial-categories.js";
 export default function ClientLog() {
   useEffect(() => {
     // initializeAPI();
-    // getAllProductsFromAPI();
+    // getAllProductsFromMedusa();
     // medusa.admin.auth.deleteSession();
     // getCurrentUser();
     // medusa.admin.auth.deleteSession();
@@ -43,7 +45,8 @@ export default function ClientLog() {
     //   await getAllProductsFromAPI();
     //   await deleteAllCategoriesFromAPI();
     // }
-    // addInitialProductsToAPI(INITIAL_PRODUCTS);
+    // addInitialProductsToMedusa(INITIAL_PRODUCTS);
+    // deleteAllProductsFromMedusa();
   }, []);
 
   return <></>;

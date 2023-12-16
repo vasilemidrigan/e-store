@@ -4,7 +4,7 @@ import {
   S3_PRODUCT_IMAGES_URL,
 } from "@/data/s3-endpoints";
 import { medusa } from "src/medusa-config";
-import { createImageURLs } from "src/utils";
+import { createImageURLs, generateSequenceFrom0ToN } from "src/utils";
 
 /* Working with Medusa API and S3 */
 
@@ -34,23 +34,27 @@ export async function addProductToMedusa(name, variant, price, categoryID) {
     );
 }
 
-export async function addInitialProductsToMedusa(productsArray) {
-  productsArray.forEach(async (productsParentObj) => {
-    productsParentObj.products.forEach(async (product) => {
-      const productCategory = await getCategoryByName(
-        productsParentObj.category
-      );
-      await addProductToMedusa(
-        product.name,
-        product.variant,
-        product.price,
-        productCategory.id
-      );
+export async function addInitialProductsToMedusa(productsArray, iterations) {
+  const iterations = generateSequenceFrom0ToN(iterations);
+  for (const n of iterations) {
+    productsArray.forEach(async (productsParentObj) => {
+      productsParentObj.products.forEach(async (product) => {
+        const productCategory = await getCategoryByNameFromMedusa(
+          productsParentObj.category
+        );
+        await addProductToMedusa(
+          `${product.name} ${n}`,
+          `${product.variant} ${n}`,
+          product.price,
+          productCategory.id
+        );
+      });
     });
-  });
+  }
 }
 
 /* write categories */
+
 export async function addCategoriesToMedusa(categoriesArray) {
   categoriesArray.forEach(async (cat) => {
     await medusa.admin.productCategories
@@ -138,6 +142,7 @@ export async function getImagesForImageCarouselFromS3() {
 /* update */
 
 /* update products */
+
 export async function updateProductFromMedusa(productID, property, value) {
   medusa.admin.products
     .update(productID, {
@@ -152,6 +157,7 @@ export async function updateProductFromMedusa(productID, property, value) {
 }
 
 /* update products images*/
+
 export async function assignImagesToAllProductsFromMedusa() {
   const allProducts = await getAllProductsFromMedusa();
 

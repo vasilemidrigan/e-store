@@ -5,12 +5,10 @@ export const INITIAL_PRODUCTS = [
       {
         name: "iphone",
         price: 999,
-        variant: "14",
       },
       {
         name: "samsung",
         price: 1199,
-        variant: "S20",
       },
       {
         name: "pixel",
@@ -24,12 +22,10 @@ export const INITIAL_PRODUCTS = [
       {
         name: "macbook",
         price: 1299,
-        variant: "Air",
       },
       {
         name: "macbook-pro",
         price: 1299,
-        variant: "M1",
       },
       {
         name: "imac",

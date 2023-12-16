@@ -5,3 +5,10 @@ export function createImageURLs(mainURL, category, productName) {
   }
   return urls;
 }
+
+export function generateSequenceFrom0ToN(n) {
+  let sequence = [];
+  for (let i = 1; i <= n; i++) sequence.push(i);
+
+  return sequence;
+}
