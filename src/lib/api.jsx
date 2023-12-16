@@ -95,6 +95,8 @@ export async function getProductsByCategoryFromMedusa(categoriesArr) {
 }
 
 export async function getProductsSpecificPageFromMedusa(page) {
+  const LIMIT = 50;
+
   const products = await medusa.admin.products
     .list({ offset: page * LIMIT - LIMIT })
     .then(({ products, limit, offset, count }) => {
