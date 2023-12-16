@@ -15,8 +15,9 @@ export default function ProductCollage({ images }) {
             <Image
               src={img.url}
               fill
+              sizes="(min-width: 81.25rem) 100vw"
               alt="product photo"
-              style={{ objectFit: "contain"}}
+              style={{ objectFit: "contain" }}
             />
           </div>
         ))}
