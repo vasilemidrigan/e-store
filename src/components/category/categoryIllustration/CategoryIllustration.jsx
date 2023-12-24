@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-import noImage from "@/public/icons/placeholders/no-image.png";
+import noImage from "@/public/icons/placeholders/no-image.jpg";
 
 export default function CategoryIllustration({ categoryIllustrationImage }) {
   return (

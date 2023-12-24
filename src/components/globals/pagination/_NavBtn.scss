@@ -1,8 +1,9 @@
 .NavBtn {
   @include nav-btns-l;
   @include pagination-common-styles-l;
+  @include d-flex(center, center, unset);
 
-  &:hover {
-    background-color: $white;
+  &--inactive {
+    color: grey;
   }
 }

@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function NavBtn({ sense, page, totalPages }) {
   let updatedPage;
-  const isFirstPage = Number(page) === 1 && sense === "Back" ? true : false;
+  const isFirstPage = Number(page) == 1 && sense == "Back" ? true : false;
   const isLastPage =
-    Number(page) === totalPages && sense === "Next" ? true : false;
+    Number(page) == totalPages && sense == "Next" ? true : false;
 
   if (sense === "Back") {
     updatedPage = `?page=${Number(page) - 1}`;
@@ -25,10 +25,14 @@ export default function NavBtn({ sense, page, totalPages }) {
 
   return (
     <>
-      <Link href={updatedPage}>
-        <button className="NavBtn" disabled={isFirstPage || isLastPage}>
-          {sense}
-        </button>
+      <Link
+        href={updatedPage}
+        className={`NavBtn ${
+          isFirstPage || isLastPage ? "NavBtn--inactive" : ""
+        }`}
+        onClick={isFirstPage || isLastPage ? (e) => e.preventDefault() : null}
+      >
+        {sense}
       </Link>
     </>
   );

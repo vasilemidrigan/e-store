@@ -17,7 +17,7 @@
   padding: 3.125rem;
   width: 31.4375rem;
   @include d-flex(unset, center, column);
-  border: .5px solid $silver-tone;
+  border: 0.5px solid $silver-tone;
   border-radius: 0.625rem;
   background-color: $light-gray;
 }
@@ -74,6 +74,5 @@
   height: 2.5rem;
   @include font("Roboto", $font-size-s, $font-weigth-regular);
   border: 1px solid $silver-tone;
-  cursor: pointer;
   background-color: $grey98;
 }
