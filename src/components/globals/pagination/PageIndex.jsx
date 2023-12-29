@@ -1,6 +1,7 @@
 "use client";
 
 export default function PageIndex({ data }) {
+  console.log(data);
   function LinkWrapper(href, pageIndex) {
     if (href == "#") {
       return <button>{pageIndex}</button>;
@@ -15,7 +16,7 @@ export default function PageIndex({ data }) {
   return (
     <div
       className={`PageIndex 
-        ${Number(data.pages[0]) == 1 ? "PageIndex--inactive" : ""}`}
+        ${data.pages.length == 1 ? "PageIndex--inactive" : ""}`}
     >
       {LinkWrapper("#", data.pageIndex)}
     </div>
