@@ -17,7 +17,7 @@ export default function PageIndex({ data }) {
       className={`PageIndex 
         ${Number(data.pages[0]) == 1 ? "PageIndex--inactive" : ""}`}
     >
-      {LinkWrapper("#", data.page)}
+      {LinkWrapper("#", data.pageIndex)}
     </div>
   );
 }
