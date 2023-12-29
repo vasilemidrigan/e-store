@@ -7,7 +7,7 @@ export default function IndexBtns({ page, pages }) {
     <div className="Indexes">
       {pages.map((pageIndex) => (
         <div className="Indexes__index" key={v4()}>
-          <PageIndex data={{ pages, pageIndex }} />
+          <PageIndex data={{ page, pages, pageIndex }} />
         </div>
       ))}
     </div>
