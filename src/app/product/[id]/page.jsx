@@ -3,7 +3,7 @@ import { getProductByIdFromMedusa } from "src/lib/api";
 import ProductCollage from "@/components/product/productCollage/ProductCollage";
 import ProductDetails from "@/components/product/productDetails/ProductDetails";
 
-import noImage from "@/public/icons/placeholders/no-image.png";
+// import noImage from "@/public/icons/placeholders/no-image.png";
 
 export default async function ProductPage({ params }) {
   const product = await getProductByIdFromMedusa(params.id);

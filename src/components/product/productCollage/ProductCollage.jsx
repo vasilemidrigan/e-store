@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { v4 } from "uuid";
 
-import noImage from "@/public/icons/placeholders/no-image.png";
+// import noImage from "@/public/icons/placeholders/no-image.png";
 
 export default function ProductCollage({ images }) {
   return (

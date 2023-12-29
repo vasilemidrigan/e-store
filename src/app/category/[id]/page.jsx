@@ -36,8 +36,6 @@ export default async function CategoryPage({ params, searchParams }) {
   const products = await getProductsByCategoryFromMedusa(categoryArr);
   const categoryIllustrationImage = await fetchData(params.id);
 
-  console.log(params, searchParams);
-
   return (
     <div className="CategoryPage">
       <CategoryIllustration

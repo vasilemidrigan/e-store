@@ -73,6 +73,5 @@
 @mixin pagination-common-styles-l {
   height: 2.5rem;
   @include font("Roboto", $font-size-s, $font-weigth-regular);
-  border: 1px solid $silver-tone;
-  background-color: $grey98;
+  // background-color: $grey98;
 }

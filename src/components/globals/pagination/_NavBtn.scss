@@ -2,8 +2,18 @@
   @include nav-btns-l;
   @include pagination-common-styles-l;
   @include d-flex(center, center, unset);
+  border: 1px solid $silver-tone;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $white;
+  }
 
   &--inactive {
     color: grey;
+    &:hover {
+      cursor: default;
+      background-color: unset;
+    }
   }
 }
