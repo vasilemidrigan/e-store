@@ -1,4 +1,7 @@
-"use client";
+/*
+ * Find a solution to disable the link so it will not react when clicking on it,
+ * we need it for current page index button in pagingation component
+ */
 
 import Link from "next/link";
 
