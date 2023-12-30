@@ -6,6 +6,8 @@ import {
 import { medusa } from "src/medusa-config";
 import { createImageURLs, generateSequenceFrom0ToN } from "src/utils";
 
+import { LIMIT } from "@/data/medusa-variables";
+
 /* Working with Medusa API and S3 */
 
 /* ********** write ********** */
@@ -80,11 +82,14 @@ export async function getProductByIdFromMedusa(productId) {
   });
 }
 
-export async function getProductsByCategoryFromMedusa(categoriesArr) {
+export async function getProductsByCategoryFromMedusa(categoriesArr, page = 1) {
   return await medusa.admin.products
-    .list({ category_id: categoriesArr, offset: 12 })
+    .list({
+      category_id: categoriesArr,
+      limit: LIMIT,
+      offset: page * LIMIT - LIMIT,
+    })
     .then(({ products, limit, offset, count }) => {
-      console.log("products are: ", products);
       return {
         products: [...products],
         offset,
@@ -95,8 +100,6 @@ export async function getProductsByCategoryFromMedusa(categoriesArr) {
 }
 
 export async function getProductsSpecificPageFromMedusa(page) {
-  const LIMIT = 50;
-
   const products = await medusa.admin.products
     .list({ offset: page * LIMIT - LIMIT })
     .then(({ products, limit, offset, count }) => {
@@ -205,7 +208,6 @@ export async function deleteProductFromMedusa() {
 
 export async function deleteAllProductsFromMedusa() {
   const allProducts = await getAllProductsFromMedusa();
-
   for (const product of allProducts) {
     await medusa.admin.products
       .delete(product.id)

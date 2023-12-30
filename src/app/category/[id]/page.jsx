@@ -32,9 +32,39 @@ export default async function CategoryPage({ params, searchParams }) {
   const categoryArr = [];
   const { id: categoryId } = await getCategoryByNameFromMedusa(params.id);
   categoryArr.push(categoryId);
+  const products = await getProductsByCategoryFromMedusa(
+    categoryArr,
+    searchParams.page
+  );
 
-  const products = await getProductsByCategoryFromMedusa(categoryArr);
   const categoryIllustrationImage = await fetchData(params.id);
+
+  console.log("#####################################################");
+  console.log("############ CategoryPage - params ##################");
+  console.log("#####################################################");
+  console.log(params);
+  console.log("#####################################################");
+  console.log("#####################################################");
+  console.log("#####################################################");
+  console.log("");
+
+  console.log("#####################################################");
+  console.log("########## CategoryPage - searchParams ##############");
+  console.log("#####################################################");
+  console.log(searchParams);
+  console.log("#####################################################");
+  console.log("#####################################################");
+  console.log("#####################################################");
+  console.log("");
+
+  console.log("#####################################################");
+  console.log("############ CategoryPage - products ################");
+  console.log("#####################################################");
+  console.log(products);
+  console.log("#####################################################");
+  console.log("#####################################################");
+  console.log("#####################################################");
+  console.log("");
 
   return (
     <div className="CategoryPage">
@@ -58,7 +88,7 @@ export default async function CategoryPage({ params, searchParams }) {
           metadata={{
             count: products.count,
             limit: products.limit,
-            offset: products.offset,
+            offset: products.offset || 1,
           }}
         />
       </div>

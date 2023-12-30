@@ -6,7 +6,6 @@
 import Link from "next/link";
 
 export default function PageIndex({ data }) {
-  console.log(data);
   function LinkWrapper(href, pageIndex) {
     if (href == "#") {
       return <button>{pageIndex}</button>;
