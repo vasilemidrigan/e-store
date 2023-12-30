@@ -9,7 +9,7 @@ import NavBtn from "./NavBtn";
 import IndexBtns from "./IndexBtns";
 
 export default async function Pagination({ page, metadata }) {
-  const totalPages = Math.ceil(metadata.count / metadata.offset);
+  const totalPages = Math.ceil(metadata.count / metadata.limit);
   const pages = Array.from({ length: totalPages }, (_, i) => START_PAGE + i);
 
   const pagination = (

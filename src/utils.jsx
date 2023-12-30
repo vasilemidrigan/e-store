@@ -12,3 +12,13 @@ export function generateSequenceFrom0ToN(n) {
 
   return sequence;
 }
+
+export function log(target, targetString) {
+  console.log("########################################");
+  console.log("# ", targetString, " #");
+  console.log("########################################");
+  console.log(target);
+  console.log("########################################");
+  console.log("########################################");
+  console.log("");
+}
