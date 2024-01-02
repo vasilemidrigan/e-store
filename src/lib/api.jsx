@@ -4,9 +4,14 @@ import {
 } from "@/data/s3-endpoints";
 
 import { medusa } from "src/medusa-config";
-import { createImageURLs, generateSequenceFrom0ToN } from "src/utils";
+import {
+  createImageURLs,
+  generateSequenceFrom0ToN,
+  getOffset,
+  log,
+} from "src/utils";
 
-import { LIMIT } from "@/data/medusa-variables";
+import { LIMIT, GET_ALL_ITEMS_LIMIT } from "@/data/medusa-variables";
 
 /* Working with Medusa API and S3 */
 
@@ -87,7 +92,7 @@ export async function getProductsByCategoryFromMedusa(categoriesArr, page = 1) {
     .list({
       category_id: categoriesArr,
       limit: LIMIT,
-      offset: page * LIMIT - LIMIT,
+      offset: getOffset(page, LIMIT),
     })
     .then(({ products, limit, offset, count }) => {
       return {
@@ -101,7 +106,7 @@ export async function getProductsByCategoryFromMedusa(categoriesArr, page = 1) {
 
 export async function getProductsSpecificPageFromMedusa(page) {
   const products = await medusa.admin.products
-    .list({ offset: page * LIMIT - LIMIT })
+    .list({ offset: getOffset(page, LIMIT) })
     .then(({ products, limit, offset, count }) => {
       return { products, limit, offset, count };
     });
@@ -110,19 +115,12 @@ export async function getProductsSpecificPageFromMedusa(page) {
 }
 
 export async function getAllProductsFromMedusa() {
-  let page = 1;
-  const { products: allProducts, count } =
-    await getProductsSpecificPageFromMedusa(page);
-
-  while (allProducts.length !== count) {
-    const { products: nextPage } = await getProductsSpecificPageFromMedusa(
-      page + 1
-    );
-    allProducts.push(...nextPage);
-    page++;
-  }
-
-  return allProducts;
+  return await medusa.admin.products
+    .list({ limit: GET_ALL_ITEMS_LIMIT })
+    .then(({ products }) => {
+      console.log(products);
+      return products;
+    });
 }
 
 /* read categories */

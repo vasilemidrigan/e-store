@@ -39,33 +39,6 @@ export default async function CategoryPage({ params, searchParams }) {
 
   const categoryIllustrationImage = await fetchData(params.id);
 
-  console.log("#####################################################");
-  console.log("############ CategoryPage - params ##################");
-  console.log("#####################################################");
-  console.log(params);
-  console.log("#####################################################");
-  console.log("#####################################################");
-  console.log("#####################################################");
-  console.log("");
-
-  console.log("#####################################################");
-  console.log("########## CategoryPage - searchParams ##############");
-  console.log("#####################################################");
-  console.log(searchParams);
-  console.log("#####################################################");
-  console.log("#####################################################");
-  console.log("#####################################################");
-  console.log("");
-
-  console.log("#####################################################");
-  console.log("############ CategoryPage - products ################");
-  console.log("#####################################################");
-  console.log(products);
-  console.log("#####################################################");
-  console.log("#####################################################");
-  console.log("#####################################################");
-  console.log("");
-
   return (
     <div className="CategoryPage">
       <CategoryIllustration

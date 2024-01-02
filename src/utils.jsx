@@ -22,3 +22,7 @@ export function log(target, targetString) {
   console.log("########################################");
   console.log("");
 }
+
+export function getOffset(page, limit) {
+  return page * limit - limit;
+}

@@ -42,9 +42,9 @@ export default function ClientLog() {
     //   await getAllProductsFromAPI();
     //   await deleteAllCategoriesFromAPI();
     // }
-    // addInitialProductsToMedusa(INITIAL_PRODUCTS, 8);
+    // addInitialProductsToMedusa(INITIAL_PRODUCTS, 50);
     // assignImagesToAllProductsFromMedusa();
-    // deleteAllProductsFromMedusa();
+    deleteAllProductsFromMedusa();
     // getAllProductsFromMedusa();
   }, []);
 
