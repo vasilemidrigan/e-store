@@ -1,4 +1,4 @@
-export default async function Nav({ children }) {
+export default async function NavBar({ children }) {
   return (
     <>
       <div className="Navigation">

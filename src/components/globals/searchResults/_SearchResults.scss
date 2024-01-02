@@ -9,12 +9,12 @@
   display: none;
   background-color: $white;
   @include font("Roboto", $font-size-s, $font-weigth-regular);
-  
+
   &__list {
     margin-left: $margin-m;
   }
 
   &__item {
-    margin: $margin-xl 0 ;
+    margin: $margin-xl 0;
   }
 }

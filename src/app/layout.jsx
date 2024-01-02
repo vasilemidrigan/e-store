@@ -14,17 +14,22 @@ import NavMenu from "../components/globals/navBar/subcomponents/navMenu/NavMenu"
 import NavMenuBtn from "../components/globals/navBar/subcomponents/navMenu/navMenuBtn/NavMenuBtn";
 import DarkBg from "../components/globals/darkBg/DarkBg";
 import SearchBar from "../components/globals/navBar/subcomponents/searchBar/SearchBar";
+import SearchResults from "@/components/globals/searchResults/SearchResults";
 import Footer from "../components/globals/footer/Footer";
 
 import "../styles/index.scss";
 
 import { MenuContext } from "src/context/providers";
 
-export default async function RootLayout({ children }) {
+import { log } from "src/utils";
+
+export default async function RootLayout({ children, searchParams }) {
   await adminLogin(
     process.env.NEXT_PUBLIC_ADMIN_EMAIL,
     process.env.NEXT_PUBLIC_ADMIN_PASSWORD
   );
+
+  log(searchParams, "searchParams root layout");
 
   return (
     <html lang="en">
@@ -72,6 +77,7 @@ export default async function RootLayout({ children }) {
               <NavMenu />
             </NavMenuBtn>
             <SearchBar />
+            <SearchResults query={searchParams} />
           </NavBar>
           {/* darken background when menu is active */}
           <DarkBg />

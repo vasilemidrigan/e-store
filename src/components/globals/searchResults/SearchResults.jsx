@@ -1,4 +1,4 @@
-export default function SearchResults() {
+export default function SearchResults({ query }) {
   return (
     <div className="SearchResults">
       <ul className="SearchResults__list">
@@ -9,5 +9,5 @@ export default function SearchResults() {
         <li className="SearchResults__item">item 1</li>
       </ul>
     </div>
-  )
+  );
 }
