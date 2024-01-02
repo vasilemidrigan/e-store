@@ -21,6 +21,8 @@ import {
 
 import { S3_CATEGORY_ILLUSTRATION_URL } from "@/data/s3-endpoints";
 
+import { log } from "src/utils";
+
 async function fetchData(category) {
   const response = await fetch(
     `${S3_CATEGORY_ILLUSTRATION_URL}/${category}.jpg`
@@ -42,6 +44,7 @@ export default async function CategoryPage({ params, searchParams }) {
   return (
     <div className="CategoryPage">
       <CategoryIllustration
+        categoryName={params.id}
         categoryIllustrationImage={categoryIllustrationImage}
       />
       <div className="CategoryPage__grid">

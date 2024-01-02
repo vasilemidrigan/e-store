@@ -3,10 +3,13 @@
 import Image from "next/image";
 import noImage from "@/public/icons/placeholders/no-image.jpg";
 
-export default function CategoryIllustration({ categoryIllustrationImage }) {
+export default function CategoryIllustration({
+  categoryName,
+  categoryIllustrationImage,
+}) {
   return (
     <div className="CategoryIllustration">
-      <h2 className="CategoryIllustration__header">Smartphones</h2>
+      <h2 className="CategoryIllustration__header">{categoryName}</h2>
       <div className="CategoryIllustration__img-wrapper">
         {categoryIllustrationImage && (
           <Image
